@@ -136,7 +136,7 @@
     background-color: transparent;
   }
   .pink-bg {
-    background-color: #414141;
+    background-color: #ffe4f8;
     @apply dark:dark-pink-bg;
   }
   .drkpink-bg {

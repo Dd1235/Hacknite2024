@@ -102,6 +102,10 @@ export default function AboutUs(props) {
         date3="- June 10, 2024"
         isDarkMode={props.isDarkMode}
       />
+      <img
+        src={props.isDarkMode ? drkline : line}
+        className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
+      ></img>
       <div className="h-[10vh] flex justify-center relative">
         <img
           src="https://i.pinimg.com/564x/50/2e/e3/502ee362c57841b0c1cb3d20483d9d1d.jpg"
