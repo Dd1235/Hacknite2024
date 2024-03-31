@@ -16,6 +16,7 @@
     "express-validator": "^7.0.1",
     "libphonenumber-js": "^1.10.59",
     "mongodb": "^6.5.0",
-    "mongoose": "^8.2.4"
+    "mongoose": "^8.2.4",
+    "nodemon": "^3.1.0"
   }
 }
