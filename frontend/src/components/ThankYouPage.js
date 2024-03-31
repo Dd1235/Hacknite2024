@@ -3,9 +3,8 @@ import { useLocation } from "react-router-dom";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import image from "./cool-background.png";
-import { props } from "react";
 
-const ThankYouPage = () => {
+const ThankYouPage = (props) => {
   const location = useLocation();
   const { name } = location.state || {};
 
@@ -21,10 +20,14 @@ const ThankYouPage = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
-          backgroundImage: `url(${image})`,
+
+          backgroundColor: "#00e921",
+          backgroundImage:
+            "linear-gradient(160deg, #00e921 0%, #2eb7a8 50%, #ffffff 100%)",
+
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          color: "white",
+          color: "Black",
         }}
       >
         <h1
