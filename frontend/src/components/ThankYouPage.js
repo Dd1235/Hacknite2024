@@ -1,7 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
+
 import image from "./cool-background.png";
 
 const ThankYouPage = (props) => {
@@ -22,6 +21,7 @@ const ThankYouPage = (props) => {
           height: "100vh",
 
           backgroundColor: "#00e921",
+          // backgroundImage: `url(${image})`,
           backgroundImage:
             "linear-gradient(160deg, #00e921 0%, #2eb7a8 50%, #ffffff 100%)",
 
