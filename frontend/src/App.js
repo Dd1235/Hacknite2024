@@ -33,7 +33,17 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/thank-you",
-      element: <ThankYouPage />,
+      element: (
+        <>
+          <Navbar
+            title="EduReach"
+            isDarkMode={isDarkMode}
+            setIsDarkMode={setIsDarkMode}
+          />
+          <ThankYouPage isDarkMode={isDarkMode} />
+          <Footer />
+        </>
+      ),
     },
     {
       path: "/",

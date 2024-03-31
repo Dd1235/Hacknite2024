@@ -10,6 +10,11 @@ export default function Navbar(props) {
 
   const HandleNav = (id) => {
     setActiveElement(id);
+
+    // goose chaged, now you go to the top of the page when you click on a nav item, can have smooth behaviour too
+    window.scrollTo({ top: 0, behavior: "auto" });
+    setIsMenuOpen(false);
+    // goose changed
   };
 
   const toggleMenu = () => {

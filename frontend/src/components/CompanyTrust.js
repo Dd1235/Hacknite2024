@@ -9,36 +9,38 @@ import Slider from "react-infinite-logo-slider";
 
 const Component = () => {
   return (
-    <div className="flex flex-col items-center justify-center py-14">
+    <div className="flex flex-col items-center justify-center py-14 overflow-x-hidden">
       <div className="playfair font-bold text-center w-4/5 black-text dark:white-text  text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-10">
         Trusted by over 20,000 brands
       </div>
-      <Slider
-        width="250px"
-        duration={40}
-        pauseOnHover={true}
-        blurBorders={false}
-        blurBoderColor={"#fff"}
-      >
-        <Slider.Slide>
-          <img src={logo1} alt="logo1" className="w-36" />
-        </Slider.Slide>
-        <Slider.Slide>
-          <img src={logo2} alt="logo2" className="w-36" />
-        </Slider.Slide>
-        <Slider.Slide>
-          <img src={logo3} alt="logo3" className="w-36" />
-        </Slider.Slide>
-        <Slider.Slide>
-          <img src={logo4} alt="logo4" className="w-36" />
-        </Slider.Slide>
-        <Slider.Slide>
-          <img src={logo5} alt="logo5" className="w-36" />
-        </Slider.Slide>
-        <Slider.Slide>
-          <img src={logo6} alt="logo6" className="w-36" />
-        </Slider.Slide>
-      </Slider>
+      <div className="flex items-center justify-center">
+        <Slider
+          width="250px"
+          duration={40}
+          pauseOnHover={true}
+          blurBorders={false}
+          blurBoderColor={"#fff"}
+        >
+          <Slider.Slide>
+            <img src={logo1} alt="logo1" className="w-36" />
+          </Slider.Slide>
+          <Slider.Slide>
+            <img src={logo2} alt="logo2" className="w-36" />
+          </Slider.Slide>
+          <Slider.Slide>
+            <img src={logo3} alt="logo3" className="w-36" />
+          </Slider.Slide>
+          <Slider.Slide>
+            <img src={logo4} alt="logo4" className="w-36" />
+          </Slider.Slide>
+          <Slider.Slide>
+            <img src={logo5} alt="logo5" className="w-36" />
+          </Slider.Slide>
+          <Slider.Slide>
+            <img src={logo6} alt="logo6" className="w-36" />
+          </Slider.Slide>
+        </Slider>
+      </div>
     </div>
   );
 };

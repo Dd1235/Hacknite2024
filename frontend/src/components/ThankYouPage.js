@@ -2,6 +2,8 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import image from "./cool-background.png";
+import { props } from "react";
 
 const ThankYouPage = () => {
   const location = useLocation();
@@ -9,7 +11,6 @@ const ThankYouPage = () => {
 
   return (
     <div>
-      <Navbar />
       <div
         className={"thank-you-page-container"}
         style={{
@@ -20,6 +21,10 @@ const ThankYouPage = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
+          backgroundImage: `url(${image})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          color: "white",
         }}
       >
         <h1
@@ -43,7 +48,6 @@ const ThankYouPage = () => {
           </p>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
