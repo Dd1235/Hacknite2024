@@ -1,5 +1,4 @@
 const express = require("express");
-const { body, validationResult } = require("express-validator");
 const Donation = require("../models/donationModel");
 const router = express.Router();
 const { parsePhoneNumberFromString } = require("libphonenumber-js");

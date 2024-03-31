@@ -1,6 +1,7 @@
-import React from "react";
+import React, { props } from "react";
 import { useLocation } from "react-router-dom";
 
+// can use png images instead of gradients for background images
 import image from "./cool-background.png";
 
 const ThankYouPage = (props) => {
@@ -20,14 +21,14 @@ const ThankYouPage = (props) => {
           alignItems: "center",
           height: "100vh",
 
-          backgroundColor: "#00e921",
+          backgroundColor: props.isDarkMode ? "#065f12" : "#00e921",
           // backgroundImage: `url(${image})`,
-          backgroundImage:
-            "linear-gradient(160deg, #00e921 0%, #2eb7a8 50%, #ffffff 100%)",
-
+          backgroundImage: props.isDarkMode
+            ? "linear-gradient(160deg, #065f12 0%, #23b3a4 50%, #ffffff 100%)"
+            : "linear-gradient(160deg, #00e921 0%, #2eb7a8 50%, #ffffff 100%)",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          color: "Black",
+          color: props.isDarkMode ? "White" : "Black",
         }}
       >
         <h1
