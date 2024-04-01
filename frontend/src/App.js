@@ -18,6 +18,8 @@ import GetInvolved from "./GetInvolved";
 import ErrorPage from "./components/ErrorPage";
 import DonateForm from "./components/DonateForm";
 import ThankYouPage from "./components/ThankYouPage";
+import DonationTrendChart from "./charts/DonationTrendChart";
+
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("color-theme") === "dark" ||
@@ -31,6 +33,14 @@ function App() {
   }, [isDarkMode]);
 
   const router = createBrowserRouter([
+    {
+      path: "/charts",
+      element: (
+        <>
+          <DonationTrendChart />
+        </>
+      ),
+    },
     {
       path: "/thank-you",
       element: (
