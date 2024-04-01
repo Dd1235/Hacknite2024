@@ -20,6 +20,7 @@ import DonateForm from "./pages/DonateForm";
 import ThankYouPage from "./pages/ThankYouPage";
 import DonationTrendChart from "./charts/DonationTrendChart";
 import VolunteerForm from "./pages/VolunteerForm";
+import EmailVerificationForm from "./pages/dummyVolunteer";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -34,6 +35,14 @@ function App() {
   }, [isDarkMode]);
 
   const router = createBrowserRouter([
+    {
+      path: "/volunteer-email",
+      element: (
+        <>
+          <EmailVerificationForm />
+        </>
+      ),
+    },
     {
       path: "/charts",
       element: (

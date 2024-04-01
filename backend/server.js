@@ -6,14 +6,15 @@ const mongoose = require("mongoose");
 const app = express();
 const port = process.env.PORT || 5000;
 const donationRoutes = require("./routes/donations");
-const volunteerRoutes = require("./routes/volunteers");
+// const volunteerRoutes = require("./routes/volunteers");
+const volunteerEmailRoutes = require("./routes/volunteerEmail");
 
 // Middlewares
 // app.use(cors());
 app.use(express.json()); // for parsing application/json
 
 app.use("/api/donations", donationRoutes);
-app.use("/api/volunteer", volunteerRoutes);
+app.use("/api/validate_email", volunteerEmailRoutes);
 
 mongoose
   .connect(process.env.MONGODB_URI)
