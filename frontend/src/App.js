@@ -9,15 +9,16 @@ import drktop from "./resources/drktop.png";
 import line from "./resources/line.png";
 import drkline from "./resources/drkline.png";
 import Footer from "./components/Footer";
-import Homepage from "./Homepage";
-import AboutUs from "./AboutUs";
-import MeetOurTeam from "./MeetOurTeam";
-import Projects from "./Projects";
-import FAQs from "./FAQs";
-import GetInvolved from "./GetInvolved";
-import ErrorPage from "./components/ErrorPage";
-import DonateForm from "./components/DonateForm";
-import ThankYouPage from "./components/ThankYouPage";
+import Homepage from "./pages/Homepage";
+import AboutUs from "./pages/AboutUs";
+import MeetOurTeam from "./pages/MeetOurTeam";
+import Projects from "./pages/Projects";
+import FAQs from "./pages/FAQs";
+import GetInvolved from "./pages/GetInvolved";
+import ErrorPage from "./pages/ErrorPage";
+import DonateForm from "./pages/DonateForm";
+import ThankYouPage from "./pages/ThankYouPage";
+import DonationTrendChart from "./charts/DonationTrendChart";
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("color-theme") === "dark" ||
@@ -35,7 +36,13 @@ function App() {
       path: "/charts",
       element: (
         <>
+          <Navbar
+            title="EduReach"
+            isDarkMode={isDarkMode}
+            setIsDarkMode={setIsDarkMode}
+          />
           <DonationTrendChart />
+          <Footer />
         </>
       ),
     },
@@ -65,11 +72,13 @@ function App() {
           <Homepage isDarkMode={isDarkMode} />
           <img
             src={isDarkMode ? drkline : line}
+            alt="line"
             className="h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
             style={{ backgroundColor: "#6E6E6E" }}
           ></img>
           <CallToAction
             image="https://media.gettyimages.com/id/181891488/photo/group-of-running-happy-indian-children-desert-village-india.jpg?s=2048x2048&w=gi&k=20&c=v4Swj556ZiE9FRm_kD5ZhWaLH4_kff_qfAcVnjwkPkI="
+            alt="children"
             AR="708 / 398"
             title="Help Support Jhunjhunu"
             text="Support our mission to empower rural communities through education. Donate now to make a difference!"
@@ -77,12 +86,14 @@ function App() {
           />
           <img
             src={isDarkMode ? drkline : line}
+            alt="line"
             className="h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
             style={{ backgroundColor: "#6E6E6E" }}
           ></img>
           <div className="h-[10vh] dark:dark-bg"></div>
           <img
             src={isDarkMode ? drktop : top}
+            alt="top"
             className="mint-2-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
           ></img>
           <Footer />
@@ -102,11 +113,13 @@ function App() {
           <AboutUs isDarkMode={isDarkMode} />
           <img
             src={isDarkMode ? drkline : line}
+            alt="line"
             className="h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
             style={{ backgroundColor: "#6E6E6E" }}
           ></img>
           <CallToAction
             image="https://media.gettyimages.com/id/181891488/photo/group-of-running-happy-indian-children-desert-village-india.jpg?s=2048x2048&w=gi&k=20&c=v4Swj556ZiE9FRm_kD5ZhWaLH4_kff_qfAcVnjwkPkI="
+            alt="children"
             AR="708 / 398"
             title="Help Support Jhunjhunu"
             text="Support our mission to empower rural communities through education. Donate now to make a difference!"
@@ -114,12 +127,14 @@ function App() {
           />
           <img
             src={isDarkMode ? drkline : line}
+            alt="line"
             className="h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
             style={{ backgroundColor: "#6E6E6E" }}
           ></img>
           <div className="h-[10vh] dark:dark-bg"></div>
           <img
             src={isDarkMode ? drktop : top}
+            alt="top"
             className="mint-2-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
           ></img>
           <Footer />
@@ -138,11 +153,13 @@ function App() {
           <MeetOurTeam isDarkMode={isDarkMode} />
           <img
             src={isDarkMode ? drkline : line}
+            alt="line"
             className="h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
             style={{ backgroundColor: "#6E6E6E" }}
           ></img>
           <CallToAction
             image="https://media.gettyimages.com/id/181891488/photo/group-of-running-happy-indian-children-desert-village-india.jpg?s=2048x2048&w=gi&k=20&c=v4Swj556ZiE9FRm_kD5ZhWaLH4_kff_qfAcVnjwkPkI="
+            alt="children"
             AR="708 / 398"
             title="Help Support Jhunjhunu"
             text="Support our mission to empower rural communities through education. Donate now to make a difference!"
@@ -150,12 +167,14 @@ function App() {
           />
           <img
             src={isDarkMode ? drkline : line}
+            alt="line"
             className="h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
             style={{ backgroundColor: "#6E6E6E" }}
           ></img>
           <div className="h-[10vh] dark:dark-bg"></div>
           <img
             src={isDarkMode ? drktop : top}
+            alt="top"
             className="mint-2-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
           ></img>
           <Footer />
@@ -174,11 +193,13 @@ function App() {
           <Projects isDarkMode={isDarkMode} />
           <img
             src={isDarkMode ? drkline : line}
+            alt="line"
             className="h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
             style={{ backgroundColor: "#6E6E6E" }}
           ></img>
           <CallToAction
             image="https://media.gettyimages.com/id/181891488/photo/group-of-running-happy-indian-children-desert-village-india.jpg?s=2048x2048&w=gi&k=20&c=v4Swj556ZiE9FRm_kD5ZhWaLH4_kff_qfAcVnjwkPkI="
+            alt="children"
             AR="708 / 398"
             title="Help Support Jhunjhunu"
             text="Support our mission to empower rural communities through education. Donate now to make a difference!"
@@ -186,12 +207,14 @@ function App() {
           />
           <img
             src={isDarkMode ? drkline : line}
+            alt="line"
             className="h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
             style={{ backgroundColor: "#6E6E6E" }}
           ></img>
           <div className="h-[10vh] dark:dark-bg"></div>
           <img
             src={isDarkMode ? drktop : top}
+            alt="top"
             className="mint-2-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
           ></img>
           <Footer />
@@ -210,11 +233,13 @@ function App() {
           <GetInvolved isDarkMode={isDarkMode} />
           <img
             src={isDarkMode ? drkline : line}
+            alt="line"
             className="h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
             style={{ backgroundColor: "#6E6E6E" }}
           ></img>
           <CallToAction
             image="https://media.gettyimages.com/id/181891488/photo/group-of-running-happy-indian-children-desert-village-india.jpg?s=2048x2048&w=gi&k=20&c=v4Swj556ZiE9FRm_kD5ZhWaLH4_kff_qfAcVnjwkPkI="
+            alt="children"
             AR="708 / 398"
             title="Help Support Jhunjhunu"
             text="Support our mission to empower rural communities through education. Donate now to make a difference!"
@@ -222,12 +247,14 @@ function App() {
           />
           <img
             src={isDarkMode ? drkline : line}
+            alt="line"
             className="h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
             style={{ backgroundColor: "#6E6E6E" }}
           ></img>
           <div className="h-[10vh] dark:dark-bg"></div>
           <img
             src={isDarkMode ? drktop : top}
+            alt="top"
             className="mint-2-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
           ></img>
           <Footer />
@@ -246,11 +273,13 @@ function App() {
           <FAQs isDarkMode={isDarkMode} />
           <img
             src={isDarkMode ? drkline : line}
+            alt="line"
             className="h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
             style={{ backgroundColor: "#6E6E6E" }}
           ></img>
           <CallToAction
             image="https://media.gettyimages.com/id/181891488/photo/group-of-running-happy-indian-children-desert-village-india.jpg?s=2048x2048&w=gi&k=20&c=v4Swj556ZiE9FRm_kD5ZhWaLH4_kff_qfAcVnjwkPkI="
+            alt="children"
             AR="708 / 398"
             title="Help Support Jhunjhunu"
             text="Support our mission to empower rural communities through education. Donate now to make a difference!"
@@ -258,12 +287,14 @@ function App() {
           />
           <img
             src={isDarkMode ? drkline : line}
+            alt="line"
             className="h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
             style={{ backgroundColor: "#6E6E6E" }}
           ></img>
           <div className="h-[10vh] dark:dark-bg"></div>
           <img
             src={isDarkMode ? drktop : top}
+            alt="top"
             className="mint-2-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
           ></img>
           <Footer />
