@@ -94,7 +94,7 @@ function App() {
           <img
             src={isDarkMode ? drktop : top}
             alt="top"
-            className="mint-2-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
+            className="mint-1-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
           ></img>
           <Footer />
         </>
@@ -135,7 +135,7 @@ function App() {
           <img
             src={isDarkMode ? drktop : top}
             alt="top"
-            className="mint-2-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
+            className="mint-1-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
           ></img>
           <Footer />
         </>
@@ -175,7 +175,7 @@ function App() {
           <img
             src={isDarkMode ? drktop : top}
             alt="top"
-            className="mint-2-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
+            className="mint-1-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
           ></img>
           <Footer />
         </>
@@ -215,7 +215,7 @@ function App() {
           <img
             src={isDarkMode ? drktop : top}
             alt="top"
-            className="mint-2-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
+            className="mint-1-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
           ></img>
           <Footer />
         </>
@@ -255,7 +255,7 @@ function App() {
           <img
             src={isDarkMode ? drktop : top}
             alt="top"
-            className="mint-2-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
+            className="mint-1-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
           ></img>
           <Footer />
         </>
@@ -295,7 +295,7 @@ function App() {
           <img
             src={isDarkMode ? drktop : top}
             alt="top"
-            className="mint-2-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
+            className="mint-1-bg dark:mint-3-bg h-6 w-full sm:h-10 md:h-[35px] lg:h-[55px]"
           ></img>
           <Footer />
         </>

@@ -12,7 +12,7 @@ function DonationTrendChart() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("/api/donations/chart", {
+    fetch("/api/donations/monthly_chart", {
       method: "GET",
     })
       .then((response) => response.json())

@@ -11,11 +11,11 @@
   }
   .btn {
     transition: all 0.5s;
-    @apply lg:text-lg md:text-base mint-2-text border-[3px] mint-2-border focus:outline-none hover:white-bg font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:white-text dark:border-white hover:dark:black-text;
+    @apply lg:text-lg md:text-base font-semibold mint-2-text border-[3px] mint-2-border focus:outline-none hover:white-bg rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:white-text dark:border-white hover:dark:black-text;
   }
   .btn2 {
     transition: all 0.5s;
-    @apply text-sm lg:text-lg md:text-base white-text border-[3px] border-white focus:outline-none hover:black-text hover:white-bg font-medium rounded-full px-5 py-2.5 me-2 mb-2;
+    @apply text-sm lg:text-lg md:text-base font-semibold white-text border-[3px] border-white focus:outline-none hover:black-text hover:white-bg rounded-full px-5 py-2.5 me-2 mb-2;
   }
   .circle {
     @apply before:left-1/4 md:before:left-[10%] before:-top-2 sm:before:-top-5 lg:before:-top-10 before:w-[70px] before:h-[70px] md:before:w-[130px] md:before:h-[130px] lg:before:w-[200px] lg:before:h-[200px] before:block before:absolute before:grey-bg before:opacity-50 before:-z-[1] before:rounded-full;
@@ -31,7 +31,7 @@
     transition: all 0.5s;
   }
   .footer li:hover {
-    @apply mint-1-text underline;
+    @apply mint-2-text dark:mint-1-text underline;
   }
   .come-up {
     transition: all 0.5s;
@@ -127,7 +127,7 @@
     background-color: #293235;
   }
   .black-text {
-    color: #293235;
+    color: #121212;
   }
   .dark-pink-bg {
     background-color: #525252;
@@ -153,5 +153,63 @@
     height: 14px;
     transform: skew(-12deg) translateX(-50%);
     background: rgba(238, 111, 87, 0.5);
+  }
+  .wrapper-pnk {
+    background: #be1e2d;
+  }
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    background: #f97582;
+    overflow: hidden;
+    position: relative;
+    @apply dark:wrapper-pnk;
+  }
+  .heart {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation-name: radiate;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: normal;
+    animation-fill-mode: backwards;
+  }
+  .heart path {
+    fill: #fff;
+  }
+
+  .heart:nth-child(1) {
+    animation-delay: -1s;
+  }
+  .heart:nth-child(2) {
+    animation-delay: -2s;
+  }
+  .heart:nth-child(3) {
+    animation-delay: -3s;
+  }
+  .heart:nth-child(4) {
+    animation-delay: -4s;
+  }
+  .heart:nth-child(5) {
+    animation-delay: -5s;
+  }
+
+  @keyframes radiate {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    1% {
+      opacity: 0.15;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(2);
+    }
   }
 }
