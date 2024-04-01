@@ -1,14 +1,14 @@
 import React, { useState, useEffect, props } from "react";
 import { Link } from "react-router-dom";
-import FullImgPara from "./components/FullImgPara";
-import Hero from "./components/Hero";
-import Images from "./components/Images";
-import ParaRow from "./components/ParaRow";
-import TextRow from "./components/TextRow";
-import line from "./line.png";
-import drkline from "./drkline.png";
-import Mission from "./components/Mission";
-import CompanyTrust from "./components/CompanyTrust";
+import FullImgPara from "../components/FullImgPara";
+import Hero from "../components/Hero";
+import Images from "../components/Images";
+import ParaRow from "../components/ParaRow";
+import TextRow from "../components/TextRow";
+import line from "../resources/line.png";
+import drkline from "../resources/drkline.png";
+import Mission from "../components/Mission";
+import CompanyTrust from "../components/CompanyTrust";
 
 export default function Homepage(props) {
   return (

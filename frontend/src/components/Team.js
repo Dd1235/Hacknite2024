@@ -1,7 +1,7 @@
 import React from "react";
-import Jayant from "./Jayant.jpeg";
-import Modi from "./Modi.jpeg";
-import Dedeepya from "./Dedeepya.jpeg";
+import Jayant from "../resources/Jayant.jpeg";
+import Modi from "../resources/Modi.jpeg";
+import Dedeepya from "../resources/Dedeepya.jpeg";
 
 export default function Team() {
   return (

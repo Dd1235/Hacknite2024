@@ -2,7 +2,7 @@ import React, { props } from "react";
 import { useLocation } from "react-router-dom";
 
 // can use png images instead of gradients for background images
-import image from "./cool-background.png";
+import image from "../resources/cool-background.png";
 
 const ThankYouPage = (props) => {
   const location = useLocation();

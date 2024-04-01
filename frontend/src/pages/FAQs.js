@@ -1,6 +1,6 @@
 import React, { props } from "react";
-import HeadingRow from "./components/HeadingRow";
-import Accordion from "./components/Accordion";
+import HeadingRow from "../components/HeadingRow";
+import Accordion from "../components/Accordion";
 
 export default function FAQs(props) {
   return (

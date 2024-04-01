@@ -4,10 +4,10 @@ import "./fonts/font.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CallToAction from "./components/CallToAction";
 import Navbar from "./components/Navbar";
-import top from "./top.png";
-import drktop from "./drktop.png";
-import line from "./line.png";
-import drkline from "./drkline.png";
+import top from "./resources/top.png";
+import drktop from "./resources/drktop.png";
+import line from "./resources/line.png";
+import drkline from "./resources/drkline.png";
 import Footer from "./components/Footer";
 import Homepage from "./Homepage";
 import AboutUs from "./AboutUs";
@@ -18,8 +18,6 @@ import GetInvolved from "./GetInvolved";
 import ErrorPage from "./components/ErrorPage";
 import DonateForm from "./components/DonateForm";
 import ThankYouPage from "./components/ThankYouPage";
-import DonationTrendChart from "./charts/DonationTrendChart";
-
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("color-theme") === "dark" ||

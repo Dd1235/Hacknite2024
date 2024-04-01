@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "./Vector.png";
-import drkLogo from "./Vector-blk.png";
+import Logo from "../resources/Vector.png";
+import drkLogo from "../resources/Vector-blk.png";
 
 export default function Navbar(props) {
   const [activeElement, setActiveElement] = useState("Homepage");
@@ -89,7 +89,9 @@ export default function Navbar(props) {
             <button
               id="theme-toggle"
               type="button"
-              onClick={() => props.setIsDarkMode((prev) => !prev)}
+              onClick={() => {
+                props.setIsDarkMode((prev) => !prev);
+              }}
               className="black-text dark:white-text hover:white-bg dark:hover:mint-2-bg rounded-full text-sm p-2.5"
             >
               {props.isDarkMode ? (
