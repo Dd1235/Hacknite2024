@@ -4,20 +4,20 @@ import "./fonts/font.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CallToAction from "./components/CallToAction";
 import Navbar from "./components/Navbar";
-import top from "./top.png";
-import drktop from "./drktop.png";
-import line from "./line.png";
-import drkline from "./drkline.png";
+import top from "./resources/top.png";
+import drktop from "./resources/drktop.png";
+import line from "./resources/line.png";
+import drkline from "./resources/drkline.png";
 import Footer from "./components/Footer";
-import Homepage from "./Homepage";
-import AboutUs from "./AboutUs";
-import MeetOurTeam from "./MeetOurTeam";
-import Projects from "./Projects";
-import FAQs from "./FAQs";
-import GetInvolved from "./GetInvolved";
-import ErrorPage from "./components/ErrorPage";
-import DonateForm from "./components/DonateForm";
-import ThankYouPage from "./components/ThankYouPage";
+import Homepage from "./pages/Homepage";
+import AboutUs from "./pages/AboutUs";
+import MeetOurTeam from "./pages/MeetOurTeam";
+import Projects from "./pages/Projects";
+import FAQs from "./pages/FAQs";
+import GetInvolved from "./pages/GetInvolved";
+import ErrorPage from "./pages/ErrorPage";
+import DonateForm from "./pages/DonateForm";
+import ThankYouPage from "./pages/ThankYouPage";
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("color-theme") === "dark" ||

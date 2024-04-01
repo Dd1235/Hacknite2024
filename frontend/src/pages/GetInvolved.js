@@ -1,10 +1,10 @@
 import React, { props } from "react";
-import HeadingRow from "./components/HeadingRow";
-import line from "./line.png";
-import drkline from "./drkline.png";
-import Quote from "./components/Quote";
-import FromCards from "./components/FromCards";
-import Mission from "./components/Mission";
+import HeadingRow from "../components/HeadingRow";
+import line from "../resources/line.png";
+import drkline from "../resources/drkline.png";
+import Quote from "../components/Quote";
+import FromCards from "../components/FromCards";
+import Mission from "../components/Mission";
 
 export default function GetInvolved(props) {
   return (

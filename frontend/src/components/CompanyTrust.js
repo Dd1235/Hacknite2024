@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import logo1 from "./logo-1.webp";
-import logo2 from "./logo-2.webp";
-import logo3 from "./logo-3.webp";
-import logo4 from "./logo-4.svg";
-import logo5 from "./logo-5.webp";
-import logo6 from "./logo-6.png";
+import logo1 from "../resources/logo-1.webp";
+import logo2 from "../resources/logo-2.webp";
+import logo3 from "../resources/logo-3.webp";
+import logo4 from "../resources/logo-4.svg";
+import logo5 from "../resources/logo-5.webp";
+import logo6 from "../resources/logo-6.png";
 import Slider from "react-infinite-logo-slider";
 
 const Component = () => {

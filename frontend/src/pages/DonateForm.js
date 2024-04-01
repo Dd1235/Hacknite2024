@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useDonation } from "./useDonation";
+import { useDonation } from "../useDonation";
 
 export default function DonateForm() {
   const [firstName, setFirstName] = useState("");

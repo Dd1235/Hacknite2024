@@ -1,10 +1,10 @@
 import React, { props } from "react";
-import HeadingRow from "./components/HeadingRow";
-import line from "./line.png";
-import drkline from "./drkline.png";
-import Mission from "./components/Mission";
-import Bullets from "./components/Bullets";
-import Gallery from "./components/Gallery";
+import HeadingRow from "../components/HeadingRow";
+import line from "../resources/line.png";
+import drkline from "../resources/drkline.png";
+import Mission from "../components/Mission";
+import Bullets from "../components/Bullets";
+import Gallery from "../components/Gallery";
 
 export default function Projects(props) {
   return (

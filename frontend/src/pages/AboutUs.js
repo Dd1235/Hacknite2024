@@ -1,13 +1,13 @@
 import React, { props } from "react";
-import HeadingRow from "./components/HeadingRow";
-import ImgParaRow from "./components/ImgParaRow";
-import TextRow from "./components/TextRow";
-import line from "./line.png";
-import drkline from "./drkline.png";
-import Quote from "./components/Quote";
-import Mission from "./components/Mission";
-import ThreePara from "./components/ThreePara";
-import SmallHeading from "./components/SmallHeading";
+import HeadingRow from "../components/HeadingRow";
+import ImgParaRow from "../components/ImgParaRow";
+import TextRow from "../components/TextRow";
+import line from "../resources/line.png";
+import drkline from "../resources/drkline.png";
+import Quote from "../components/Quote";
+import Mission from "../components/Mission";
+import ThreePara from "../components/ThreePara";
+import SmallHeading from "../components/SmallHeading";
 
 export default function AboutUs(props) {
   return (

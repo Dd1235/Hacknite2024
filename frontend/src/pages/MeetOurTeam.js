@@ -1,13 +1,13 @@
 import React, { props } from "react";
-import HeadingRow from "./components/HeadingRow";
-import TextRow from "./components/TextRow";
-import line from "./line.png";
-import drkline from "./drkline.png";
-import Mission from "./components/Mission";
-import Team from "./components/Team";
-import Quote from "./components/Quote";
-import SmallHeading from "./components/SmallHeading";
-import ThreePara from "./components/ThreePara";
+import HeadingRow from "../components/HeadingRow";
+import TextRow from "../components/TextRow";
+import line from "../resources/line.png";
+import drkline from "../resources/drkline.png";
+import Mission from "../components/Mission";
+import Team from "../components/Team";
+import Quote from "../components/Quote";
+import SmallHeading from "../components/SmallHeading";
+import ThreePara from "../components/ThreePara";
 
 export default function MeetOurTeam(props) {
   return (
