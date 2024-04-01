@@ -19,6 +19,8 @@ import ErrorPage from "./pages/ErrorPage";
 import DonateForm from "./pages/DonateForm";
 import ThankYouPage from "./pages/ThankYouPage";
 import DonationTrendChart from "./charts/DonationTrendChart";
+import VolunteerForm from "./pages/VolunteerForm";
+
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("color-theme") === "dark" ||
@@ -306,6 +308,14 @@ function App() {
       element: (
         <>
           <DonateForm />
+        </>
+      ),
+    },
+    {
+      path: "/volunteer-form",
+      element: (
+        <>
+          <VolunteerForm />
         </>
       ),
     },

@@ -31,7 +31,7 @@
     transition: all 0.5s;
   }
   .footer li:hover {
-    @apply mint-2-text dark:mint-1-text underline;
+    @apply mint-2-text dark:mint-1-text;
   }
   .come-up {
     transition: all 0.5s;
@@ -197,6 +197,14 @@
   }
   .heart:nth-child(5) {
     animation-delay: -5s;
+  }
+  .fade-in-component {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .fade-in-component.visible {
+    opacity: 1;
   }
 
   @keyframes radiate {

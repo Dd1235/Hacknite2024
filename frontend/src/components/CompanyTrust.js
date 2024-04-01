@@ -6,6 +6,7 @@ import logo4 from "../resources/logo-4.svg";
 import logo5 from "../resources/logo-5.webp";
 import logo6 from "../resources/logo-6.png";
 import Slider from "react-infinite-logo-slider";
+import { Link } from "react-router-dom";
 
 const Component = () => {
   return (
@@ -41,6 +42,12 @@ const Component = () => {
           </Slider.Slide>
         </Slider>
       </div>
+      <Link
+        to=""
+        className="btn py-4 text-sm sm:text-base mt-5 hover:mint-2-bg hover:white-text sanspro"
+      >
+        Become a Corporate Partner
+      </Link>
     </div>
   );
 };

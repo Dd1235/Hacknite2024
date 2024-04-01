@@ -1,4 +1,5 @@
 import React, { props } from "react";
+import { Link } from "react-router-dom";
 
 function QuoteImg(props) {
   if (props.invert) {
@@ -54,11 +55,12 @@ export default function Quote(props) {
           <div className="z-10 tracking-wide sm:w-full sm:text-left font-light text-sm md:text-base">
             {props.job}
           </div>
-          <div
+          <Link
+            to="/volunteer-form"
             className={props.btn ? "btn mt-2 z-10 cursor-pointer" : "hidden"}
           >
             Volunteer with Us!
-          </div>
+          </Link>
         </div>
         <QuoteImg image={props.image} invert={props.invert} />
       </div>

@@ -1,17 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export default function Hero(props) {
   return (
     <div className="block relative h-screen">
       <div className="z-0 w-full h-full absolute flex items-start justify-center overflow-hidden">
         <img
-          className="max-h-[163%] w-auto max-w-none dark:brightness-50"
+          className="max-h-[163%] w-auto max-w-none brightness-75 dark:brightness-50"
           src={props.image}
           style={{ aspectRatio: 626 / 417 }}
         />
       </div>
-      <div className="z-10 relative add-shadow h-full pt-12 w-full flex flex-col justify-center items-center box-border sm:h-full lg:w-[65vw] lg:ml-[26vw] lg:pl-48">
+      <div className="z-10 relative h-full pt-12 w-full flex flex-col justify-center items-center box-border sm:h-full lg:w-[65vw] lg:ml-[26vw] lg:pl-48">
         <h1 className="playfair transform-scale text-white font-bold text-center w-[90vw] text-4xl sm:w-[80vw] sm:text-6xl lg:w-full lg:text-7xl lg:text-right">
           {props.title}
         </h1>
@@ -19,12 +20,12 @@ export default function Hero(props) {
           {props.text}
         </p>
         <div className="sanspro flex gap-4 w-full my-6 justify-center lg:justify-end lg:gap-6">
-          <button type="button" className="btn">
+          <Link to="/donate-form" className="btn">
             {props.bttnText1}
-          </button>
-          <button type="button" className="btn">
+          </Link>
+          <Link to="/get-involved" className="btn">
             {props.bttnText2}
-          </button>
+          </Link>
         </div>
       </div>
     </div>

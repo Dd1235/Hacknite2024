@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function FromCards() {
   return (
@@ -14,8 +15,8 @@ export default function FromCards() {
             Join us in making a difference in rural communities across India by
             volunteering with EduReach India Foundation.
           </p>
-          <a
-            href="#"
+          <Link
+            to="/volunteer-form"
             class="inline-flex items-center px-4 py-3 text-sm font-semibold text-center mint-2-text mint-2-border border-4 rounded-full hover:mint-2-bg hover:white-text"
           >
             Volunteer
@@ -34,7 +35,7 @@ export default function FromCards() {
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
-          </a>
+          </Link>
         </div>
         <div class="max-w-sm p-6 bg-slate-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <a href="#">
@@ -46,8 +47,8 @@ export default function FromCards() {
             Your donation can help us expand our reach and impact more lives in
             rural India, every donation makes a difference.
           </p>
-          <a
-            href="#"
+          <Link
+            to="/donate-form"
             class="font-semibold inline-flex items-center px-4 py-3 text-sm text-center mint-2-text mint-2-border border-4 rounded-full hover:mint-2-bg hover:white-text"
           >
             Donate
@@ -66,7 +67,7 @@ export default function FromCards() {
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
-          </a>
+          </Link>
         </div>
         <div class="max-w-sm p-6 bg-slate-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <a href="#">

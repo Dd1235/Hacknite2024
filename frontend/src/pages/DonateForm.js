@@ -22,19 +22,15 @@ export default function DonateForm() {
   return (
     <div className="sanspro mint-1-bg dark:dark-bg flex justify-center items-center gap-5 py-8 flex-col lg:flex-row lg:h-screen">
       <div className="w-[90%] sm:w-4/5 md:w-3/5 lg:max-w-lg lg:h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <a href="#">
-          <img
-            className="rounded-t-lg"
-            src="https://imgs.search.brave.com/FIuSpkkRG-LsUBqJZjA4CqmPxfPPyoXOUKBx2ng3Tgo/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNTM1/NTU1MzQ5L3Bob3Rv/L2dyb3VwLW9mLWhh/cHB5LWluZGlhbi1j/aGlsZHJlbi5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9MXpK/QmRZNC0zVWZvbk05/NTVBR2I5a0hRUmNq/R1FMTTZGQXVSR185/SkdNST0"
-            alt=""
-          />
-        </a>
+        <img
+          className="rounded-t-lg"
+          src="https://imgs.search.brave.com/FIuSpkkRG-LsUBqJZjA4CqmPxfPPyoXOUKBx2ng3Tgo/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNTM1/NTU1MzQ5L3Bob3Rv/L2dyb3VwLW9mLWhh/cHB5LWluZGlhbi1j/aGlsZHJlbi5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9MXpK/QmRZNC0zVWZvbk05/NTVBR2I5a0hRUmNq/R1FMTTZGQXVSR185/SkdNST0"
+          alt=""
+        />
         <div className="p-5">
-          <a href="#">
-            <h5 className="playfair mb-2 text-2xl font-bold text-gray-900 dark:text-white">
-              Your Gift Will Help Children Now
-            </h5>
-          </a>
+          <h5 className="playfair mb-2 text-2xl font-bold text-gray-900 dark:text-white">
+            Your Gift Will Help Children Now
+          </h5>
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
             Millions of children in rural India lack access to quality
             education, healthcare, and basic necessities. With your support,
@@ -109,13 +105,13 @@ export default function DonateForm() {
           <div>
             <label
               for="countries"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Select an option
             </label>
             <select
               id="donation-type"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option selected value="cash">
                 Cash
@@ -139,7 +135,7 @@ export default function DonateForm() {
               type="text"
               id="phone"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="123-45-678"
+              placeholder="+91**********"
               // pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
               required
               onChange={(e) => setPhoneNumber(e.target.value)}
@@ -167,14 +163,14 @@ export default function DonateForm() {
         <div className="mb-6">
           <label
             for="Note"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Donation Notes
           </label>
           <textarea
             id="Note"
             rows="4"
-            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Write your thoughts here..."
             onChange={(e) => setMessage(e.target.value)}
             value={message}

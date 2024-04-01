@@ -9,15 +9,20 @@ import line from "../resources/line.png";
 import drkline from "../resources/drkline.png";
 import Mission from "../components/Mission";
 import CompanyTrust from "../components/CompanyTrust";
+import useScrollAnimation from "../components/useScrollAnimation";
 
 export default function Homepage(props) {
+  const { ref: missionRef, isVisible: isMissionVisible } = useScrollAnimation();
+  const { ref: mission2Ref, isVisible: isMission2Visible } =
+    useScrollAnimation();
+
   return (
     <div className="dark:dark-bg">
       <Hero
         title="Welcome to EduReach India Foundation"
         text="At EduReach India Foundation, we believe that education is the key to unlocking a brighter future. We are a nonprofit organization dedicated to eradicating illiteracy and providing quality education to rural communities across India."
-        bttnText1="Normal mode"
-        bttnText2="Death mode"
+        bttnText1="Donate Now!"
+        bttnText2="Get Involved!"
         image="https://media.gettyimages.com/id/1286549098/photo/indian-village-girl-operating-laptop-computer-system-seating-at-home-corridor.jpg?s=2048x2048&w=gi&k=20&c=0fhFyA8s6cAxQsn2Aabdk_5LUbTzXVIwWolzuaiScpQ="
       />
       <img
@@ -31,10 +36,15 @@ export default function Homepage(props) {
           className="absolute -z-[1] w-32 md:w-40 lg:w-60 dark:hidden"
         />
       </div>
-      <Mission
-        title="Our Mission"
-        text="We believe that education is the key to unlocking a brighter future and empowering individuals to build a better life for themselves and their communities"
-      />
+      <div
+        ref={missionRef}
+        className={`fade-in-component ${isMissionVisible ? "visible" : ""}`}
+      >
+        <Mission
+          title="Our Mission"
+          text="We believe that education is the key to unlocking a brighter future and empowering individuals to build a better life for themselves and their communities"
+        />
+      </div>
       <div className="h-[10vh] flex justify-end relative">
         <img
           src="https://cdn.dribbble.com/users/4281/screenshots/6797345/tiny_dood.png"
@@ -74,15 +84,20 @@ export default function Homepage(props) {
       ></img>
       <div className="h-[10vh] flex">
         <img
-          src="https://i.pinimg.com/originals/00/49/30/00493024b6a6629e0d0e385defb0fbdf.jpg"
+          src="https://i.pinimg.com/564x/42/ab/ac/42abac19815b7c25ff405e549e5358f7.jpg"
           className="absolute -z-[1] w-32 lg:w-44 ml-8"
         />
       </div>
-      <TextRow text="Together, we can make a difference in the lives of thousands of children and adults in rural India. Join us in our mission to build a brighter future through education." />
+      <div
+        ref={mission2Ref}
+        className={`fade-in-component ${isMission2Visible ? "visible" : ""}`}
+      >
+        <TextRow text="Together, we can make a difference in the lives of thousands of children and adults in rural India. Join us in our mission to build a brighter future through education." />
+      </div>
       <div className="h-[10vh] flex justify-end relative">
         {" "}
         <img
-          src="https://i.pinimg.com/564x/a6/6e/89/a66e89ef97eaf8824d8f8822d491659f.jpg"
+          src="https://i.pinimg.com/564x/fd/5e/96/fd5e96e50aa1591acc56274935c2fc5d.jpg"
           className="absolute -z-[1] -top-20 w-40 lg:w-44 mr-8"
         />
       </div>
@@ -102,6 +117,34 @@ export default function Homepage(props) {
         className="mint-1-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-2-bg"
       ></img>
       <CompanyTrust />
+      <img
+        src={props.isDarkMode ? drkline : line}
+        className="mint-1-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-2-bg"
+      ></img>
+      <div className="sanspro black-text h-[50vh] mint-1-bg flex flex-col gap-5 items-center justify-center">
+        <div className="uppercase text-sm sm:text-base font-semibold">
+          Stay Involved
+        </div>
+        <div className="w-4/5 text-center font-bold text-4xl sm:text-5xl playfair tracking-wide">
+          Never miss a chance to help
+        </div>
+        <form className="w-4/5 sm:w-3/5 lg:w-2/5">
+          <input
+            type="email"
+            className="text-sm sm:text-base mt-5 h-12 w-4/5 rounded-l-full px-5"
+            placeholder="Subscrible for email updates"
+          />
+          <input
+            type="submit"
+            className="h-12 text-sm sm:text-base w-1/5 rounded-r-full border-4 mint-2-border font-semibold mint-2-text hover:white-bg cursor-pointer"
+          />
+        </form>
+      </div>
+      <img
+        src={props.isDarkMode ? drkline : line}
+        className="mint-1-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-2-bg"
+      ></img>
+      <div className="h-[10vh]"></div>
     </div>
   );
 }
