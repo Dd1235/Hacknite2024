@@ -16,11 +16,51 @@ export default function VolunteerForm() {
   const [company, setCompany] = useState("");
   const [position, setPosition] = useState("");
   const [experience, setExperience] = useState("");
-  const [availableDays, setAvailableDays] = useState([]);
+  const [monday, setMonday] = useState(false);
+  const [tuesday, setTuesday] = useState(false);
+  const [wednesday, setWednesday] = useState(false);
+  const [thursday, setThursday] = useState(false);
+  const [friday, setFriday] = useState(false);
+  const [saturday, setSaturday] = useState(false);
+  const [sunday, setSunday] = useState(false);
   const [notes, setNotes] = useState("");
+
+  const handleMondayChange = (e) => {
+    setMonday(e.target.checked);
+  };
+
+  const handleTuesdayChange = (e) => {
+    setTuesday(e.target.checked);
+  };
+
+  const handleWednesdayChange = (e) => {
+    setWednesday(e.target.checked);
+  };
+  const handleThursdayChange = (e) => {
+    setThursday(e.target.checked);
+  };
+  const handleFridayChange = (e) => {
+    setFriday(e.target.checked);
+  };
+  const handleSaturdayChange = (e) => {
+    setSaturday(e.target.checked);
+  };
+  const handleSundayChange = (e) => {
+    setSunday(e.target.checked);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const availableDays = [
+      monday && "Monday",
+      tuesday && "Tuesday",
+      wednesday && "Wednesday",
+      thursday && "Thursday",
+      friday && "Friday",
+      saturday && "Saturday",
+      sunday && "Sunday",
+    ].filter(Boolean);
 
     // Prepare data to be sent
     const volunteerData = {
@@ -282,7 +322,7 @@ export default function VolunteerForm() {
                 type="checkbox"
                 value=""
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                onChange={() => setAvailableDays([...availableDays, "Monday"])}
+                onChange={handleMondayChange}
               />
               <label
                 for="default-checkbox"
@@ -297,6 +337,7 @@ export default function VolunteerForm() {
                 type="checkbox"
                 value=""
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                onChange={handleTuesdayChange}
               />
               <label
                 for="checked-checkbox"
@@ -311,6 +352,7 @@ export default function VolunteerForm() {
                 type="checkbox"
                 value=""
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                onChange={handleWednesdayChange}
               />
               <label
                 for="default-checkbox"
@@ -325,6 +367,7 @@ export default function VolunteerForm() {
                 type="checkbox"
                 value=""
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                onChange={handleThursdayChange}
               />
               <label
                 for="default-checkbox"
@@ -339,6 +382,7 @@ export default function VolunteerForm() {
                 type="checkbox"
                 value=""
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                onChange={handleFridayChange}
               />
               <label
                 for="default-checkbox"
@@ -353,6 +397,7 @@ export default function VolunteerForm() {
                 type="checkbox"
                 value=""
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                onChange={handleSaturdayChange}
               />
               <label
                 for="default-checkbox"
@@ -367,6 +412,7 @@ export default function VolunteerForm() {
                 type="checkbox"
                 value=""
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                onChange={handleSundayChange}
               />
               <label
                 for="default-checkbox"
