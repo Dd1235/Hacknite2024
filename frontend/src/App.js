@@ -21,6 +21,7 @@ import ThankYouPage from "./pages/ThankYouPage";
 import DonationTrendChart from "./charts/DonationTrendChart";
 import VolunteerForm from "./pages/VolunteerForm";
 import EmailVerification from "./pages/dummyEmailVerification";
+import PartnerForm from "./pages/PartnerForm";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(

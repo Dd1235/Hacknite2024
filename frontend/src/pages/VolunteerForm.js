@@ -320,12 +320,8 @@ export default function VolunteerForm() {
                 id="default-checkbox"
                 type="checkbox"
                 value=""
-<<<<<<< HEAD
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-=======
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 onChange={handleMondayChange}
->>>>>>> b207e2ebd50344e3bd3eeaddb4c95c4cae697153
               />
               <label
                 for="default-checkbox"
