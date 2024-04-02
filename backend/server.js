@@ -7,15 +7,15 @@ const app = express();
 const port = process.env.PORT || 5000;
 const donationRoutes = require("./routes/donations");
 // const volunteerRoutes = require("./routes/volunteers");
-const volunteerEmailRoutes = require("./routes/volunteerEmail");
+const verifyEmail = require("./routes/volunteerEmailVerification");
 const volunteerRoutes = require("./routes/volunteers");
 
 // Middlewares
 // app.use(cors());
 app.use(express.json()); // for parsing application/json
 
-app.use("/api/donations", donationRoutes);
-app.use("/api/validate_email", volunteerEmailRoutes);
+app.use("/api/donatiogitns", donationRoutes);
+app.use("/api/validate_email", verifyEmail);
 app.use("/api/volunteer", volunteerRoutes);
 
 mongoose
