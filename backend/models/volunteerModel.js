@@ -1,11 +1,6 @@
 const mongoose = require("mongoose");
 
 const volunteerSchema = new mongoose.Schema({
-  prefix: {
-    type: String,
-    enum: ["Mr", "Mrs", "Miss"],
-    required: true,
-  },
   firstName: {
     type: String,
     required: true,
@@ -18,43 +13,51 @@ const volunteerSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  phoneNumber: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     required: true,
     unique: true,
   },
-  phoneNumber: {
+  college: {
     type: String,
+    required: false,
+  },
+  field: {
+    type: String,
+    required: false,
+  },
+  company: {
+    type: String,
+    required: false,
+  },
+  position: {
+    type: String,
+    required: false,
+  },
+  experience: {
+    type: String,
+    required: false,
+  },
+  availableDays: {
+    type: [String],
+    enum: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ],
     required: true,
   },
-  address: {
+  notes: {
     type: String,
-    required: true,
-  },
-  city: {
-    type: String,
-    required: true,
-  },
-  state: {
-    type: String,
-    required: true,
-  },
-  country: {
-    type: String,
-    required: true,
-  },
-  zipCode: {
-    type: String,
-    required: true,
-  },
-  applicationDate: {
-    type: Date,
-    default: Date.now,
-  },
-  status: {
-    type: String,
-    enum: ["Pending", "Approved", "Rejected"],
-    default: "Pending",
+    required: false,
   },
 });
 

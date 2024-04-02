@@ -15,13 +15,6 @@ async function sendOTP(email, otp) {
     onError: (e) => console.log(e),
     onSuccess: (i) => console.log(i),
   });
-
-  try {
-    await transporter.sendMail(mailOptions);
-    console.log("OTP sent to " + email);
-  } catch (error) {
-    console.error("Failed to send OTP", error);
-  }
 }
 
 module.exports = { sendOTP };

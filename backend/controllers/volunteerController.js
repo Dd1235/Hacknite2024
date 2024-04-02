@@ -16,35 +16,37 @@ const createVolunteer = async (req, res) => {
   }
 
   const {
-    prefix,
     firstName,
     lastName,
     birthDate,
-    email,
     phoneNumber,
-    address,
-    city,
-    state,
-    country,
-    zipCode,
+    email,
+    college,
+    field,
+    company,
+    position,
+    experience,
+    availableDays,
+    notes,
   } = req.body;
 
   try {
     const newVolunteer = await Volunteer.create({
-      prefix,
       firstName,
       lastName,
       birthDate,
-      email,
       phoneNumber,
-      address,
-      city,
-      state,
-      country,
-      zipCode,
+      email,
+      college,
+      field,
+      company,
+      position,
+      experience,
+      availableDays,
+      notes,
     });
 
-    await newVolunteer.save();
+    // await newVolunteer.save();
 
     res.status(201).json({
       message: "Volunteer application successfully",

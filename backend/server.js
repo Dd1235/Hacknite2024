@@ -16,7 +16,7 @@ app.use(express.json()); // for parsing application/json
 
 app.use("/api/donatiogitns", donationRoutes);
 app.use("/api/validate_email", verifyEmail);
-app.use("/api/volunteer", volunteerRoutes);
+app.use("/api/make-volunteer", volunteerRoutes);
 
 mongoose
   .connect(process.env.MONGODB_URI)

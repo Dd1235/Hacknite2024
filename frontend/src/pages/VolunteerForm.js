@@ -1,7 +1,65 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 export default function VolunteerForm() {
+  const location = useLocation();
+  const verifiedEmail = location.state?.email;
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [college, setCollege] = useState("");
+  const [field, setField] = useState("");
+  const [company, setCompany] = useState("");
+  const [position, setPosition] = useState("");
+  const [experience, setExperience] = useState("");
+  const [availableDays, setAvailableDays] = useState([]);
+  const [notes, setNotes] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Prepare data to be sent
+    const volunteerData = {
+      firstName,
+      lastName,
+      birthDate,
+      phoneNumber,
+      email: verifiedEmail,
+      college,
+      field,
+      company,
+      position,
+      experience,
+      availableDays,
+      notes,
+    };
+
+    try {
+      const response = await fetch("api/make-volunteer", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(volunteerData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Volunteer application submitted successfully.");
+      } else {
+        alert(data.message || "An error occurred. Please try again.");
+      }
+    } catch (error) {
+      console.error("Failed to submit volunteer application:", error);
+      alert("An error occurred. Please try again.");
+    }
+  };
+
   return (
     <div className="sanspro mint-1-bg dark:dark-bg flex justify-center items-center gap-5 py-8 flex-col lg:flex-row lg:h-screen">
       <div className="w-[90%] sm:w-4/5 md:w-3/5 lg:max-w-lg lg:h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -46,7 +104,10 @@ export default function VolunteerForm() {
         </div>
       </div>
 
-      <form className="w-[90%] sm:w-4/5 md:w-3/5 lg:w-[600px] px-5 py-8 bg-white border dark:bg-gray-800 dark:border-gray-700 border-gray-200 rounded-lg shadow lg:h-full lg:overflow-auto">
+      <form
+        className="w-[90%] sm:w-4/5 md:w-3/5 lg:w-[600px] px-5 py-8 bg-white border dark:bg-gray-800 dark:border-gray-700 border-gray-200 rounded-lg shadow lg:h-full lg:overflow-auto"
+        onSubmit={handleSubmit}
+      >
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <label
@@ -61,6 +122,7 @@ export default function VolunteerForm() {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
+              onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
           <div>
@@ -76,6 +138,7 @@ export default function VolunteerForm() {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Doe"
               required
+              onChange={(e) => setLastName(e.target.value)}
             />
           </div>
           <div>
@@ -90,6 +153,7 @@ export default function VolunteerForm() {
               id="birthdate-volunteer"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
+              onChange={(e) => setBirthDate(e.target.value)}
             />
           </div>
           <div>
@@ -105,6 +169,7 @@ export default function VolunteerForm() {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="+91**********"
               required
+              onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </div>
         </div>
@@ -119,8 +184,9 @@ export default function VolunteerForm() {
             type="email"
             id="email"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="john.doe@company.com"
-            required
+            // placeholder="john.doe@company.com"
+            // required
+            value={verifiedEmail || ""}
           />
         </div>
         <h1 className="mb-6 text-lg dark:white-text">Education background</h1>
@@ -137,6 +203,7 @@ export default function VolunteerForm() {
               id="college_name-volunteer"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="International Institute of Information Technology"
+              onChange={(e) => setCollege(e.target.value)}
             />
           </div>
           <div>
@@ -151,6 +218,7 @@ export default function VolunteerForm() {
               id="Department_name-volunteer"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="iMtech"
+              onChange={(e) => setField(e.target.value)}
             />
           </div>
         </div>
@@ -168,6 +236,7 @@ export default function VolunteerForm() {
               id="company_name-volunteer"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Avtar Bijli Company"
+              onChange={(e) => setCompany(e.target.value)}
             />
           </div>
           <div>
@@ -182,6 +251,7 @@ export default function VolunteerForm() {
               id="Position_name-volunteer"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Avtar"
+              onChange={(e) => setPosition(e.target.value)}
             />
           </div>
         </div>
@@ -198,6 +268,7 @@ export default function VolunteerForm() {
             rows="4"
             className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Write your thoughts here..."
+            onChange={(e) => setExperience(e.target.value)}
           ></textarea>
         </div>
         <div className="mb-6">
@@ -211,6 +282,7 @@ export default function VolunteerForm() {
                 type="checkbox"
                 value=""
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                onChange={() => setAvailableDays([...availableDays, "Monday"])}
               />
               <label
                 for="default-checkbox"
@@ -317,6 +389,7 @@ export default function VolunteerForm() {
             rows="4"
             className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Write your thoughts here..."
+            onChange={(e) => setNotes(e.target.value)}
           ></textarea>
         </div>
 
