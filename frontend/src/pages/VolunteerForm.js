@@ -335,12 +335,8 @@ export default function VolunteerForm() {
                 id="checked-checkbox"
                 type="checkbox"
                 value=""
-<<<<<<< HEAD
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-=======
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 onChange={handleTuesdayChange}
->>>>>>> b207e2ebd50344e3bd3eeaddb4c95c4cae697153
               />
               <label
                 for="checked-checkbox"
@@ -354,12 +350,8 @@ export default function VolunteerForm() {
                 id="default-checkbox"
                 type="checkbox"
                 value=""
-<<<<<<< HEAD
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-=======
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 onChange={handleWednesdayChange}
->>>>>>> b207e2ebd50344e3bd3eeaddb4c95c4cae697153
               />
               <label
                 for="default-checkbox"
@@ -373,12 +365,8 @@ export default function VolunteerForm() {
                 id="default-checkbox"
                 type="checkbox"
                 value=""
-<<<<<<< HEAD
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-=======
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 onChange={handleThursdayChange}
->>>>>>> b207e2ebd50344e3bd3eeaddb4c95c4cae697153
               />
               <label
                 for="default-checkbox"
@@ -392,12 +380,8 @@ export default function VolunteerForm() {
                 id="default-checkbox"
                 type="checkbox"
                 value=""
-<<<<<<< HEAD
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-=======
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 onChange={handleFridayChange}
->>>>>>> b207e2ebd50344e3bd3eeaddb4c95c4cae697153
               />
               <label
                 for="default-checkbox"
@@ -411,12 +395,8 @@ export default function VolunteerForm() {
                 id="default-checkbox"
                 type="checkbox"
                 value=""
-<<<<<<< HEAD
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-=======
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 onChange={handleSaturdayChange}
->>>>>>> b207e2ebd50344e3bd3eeaddb4c95c4cae697153
               />
               <label
                 for="default-checkbox"
@@ -430,12 +410,8 @@ export default function VolunteerForm() {
                 id="default-checkbox"
                 type="checkbox"
                 value=""
-<<<<<<< HEAD
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-=======
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 onChange={handleSundayChange}
->>>>>>> b207e2ebd50344e3bd3eeaddb4c95c4cae697153
               />
               <label
                 for="default-checkbox"
