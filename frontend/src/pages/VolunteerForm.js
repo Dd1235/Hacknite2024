@@ -62,7 +62,6 @@ export default function VolunteerForm() {
       sunday && "Sunday",
     ].filter(Boolean);
 
-    // Prepare data to be sent
     const volunteerData = {
       firstName,
       lastName,
