@@ -22,7 +22,7 @@ export default function Homepage(props) {
         title="Welcome to EduReach India Foundation"
         text="At EduReach India Foundation, we believe that education is the key to unlocking a brighter future. We are a nonprofit organization dedicated to eradicating illiteracy and providing quality education to rural communities across India."
         bttnText1="Donate Now!"
-        bttnText2="Get Involved!"
+        bttnText2="Volunteer with us!"
         image="https://media.gettyimages.com/id/1286549098/photo/indian-village-girl-operating-laptop-computer-system-seating-at-home-corridor.jpg?s=2048x2048&w=gi&k=20&c=0fhFyA8s6cAxQsn2Aabdk_5LUbTzXVIwWolzuaiScpQ="
       />
       <img

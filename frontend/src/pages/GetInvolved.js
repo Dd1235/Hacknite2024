@@ -54,6 +54,7 @@ export default function GetInvolved(props) {
         text='"I am the kinda guy to look forward to volunteer at EduReach foundation every week. It is a special time for me because I know what I am doing helps makes a difference and is truly appreciated."'
         from="Drake"
         job="EduReach Volunteer"
+        isDarkMode={props.isDarkMode}
         btn={true}
         invert={true}
       />
@@ -64,11 +65,6 @@ export default function GetInvolved(props) {
       ></img>
       <Mission title="Stay Involved" text="Never miss a chance to help" />
       <FromCards />
-      <img
-        src={props.isDarkMode ? drkline : line}
-        className="mint-2-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
-      ></img>
-      <div className="h-[15vh]"></div>
     </div>
   );
 }

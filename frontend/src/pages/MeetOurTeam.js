@@ -1,4 +1,4 @@
-import React, { props } from "react";
+import React, { props, useState } from "react";
 import HeadingRow from "../components/HeadingRow";
 import TextRow from "../components/TextRow";
 import line from "../resources/line.png";
@@ -8,8 +8,11 @@ import Team from "../components/Team";
 import Quote from "../components/Quote";
 import SmallHeading from "../components/SmallHeading";
 import ThreePara from "../components/ThreePara";
+import useScrollAnimation from "../components/useScrollAnimation";
 
 export default function MeetOurTeam(props) {
+  const { ref: teamRef, isVisible: isTeamVisible } = useScrollAnimation();
+
   return (
     <div className="dark:dark-bg">
       <div className="overflow-hidden relative">
@@ -176,12 +179,25 @@ export default function MeetOurTeam(props) {
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-3-bg"
       ></img>
-      <Mission
-        title="Join our Team"
-        text="Interested in joining our team and making a difference in rural communities across India? Check out our current job openings and volunteer opportunities."
-        btn={true}
-        btnText="Get Involved"
-      />
+      <div
+        ref={teamRef}
+        className={`fade-in-component ${isTeamVisible ? "visible" : ""}`}
+      >
+        <Mission
+          title="Join our Team"
+          text="Interested in joining our team and making a difference in rural communities across India? Check out our current job openings and volunteer opportunities."
+          btn={true}
+          isDarkMode={props.isDarkMode}
+          btnText="Volunteer with us!"
+          link="/volunteer-form"
+        />
+      </div>
+      <div className="relative flex justify-end">
+        <img
+          src="https://i.pinimg.com/564x/9b/5a/20/9b5a20ef51fbac452b07f22dbdaa3e11.jpg"
+          className="absolute -z-[1] w-24 -top-20 md:w-32 md:-top-28 lg:w-56 lg:-top-52 brightness-110"
+        />
+      </div>
       <img
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-3-bg"
@@ -195,11 +211,6 @@ export default function MeetOurTeam(props) {
         text3="By partnering with EduReach India Foundation, you'll have the opportunity to align your brand with a reputable nonprofit organization."
       />
       <div className="md:h-[10vh] flex justify-evenly"></div>
-      <img
-        src={props.isDarkMode ? drkline : line}
-        className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-3-bg"
-      ></img>
-      <div className="h-[10vh]"></div>
     </div>
   );
 }

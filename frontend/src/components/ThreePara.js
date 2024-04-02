@@ -6,23 +6,24 @@ export default function ThreePara(props) {
     <div className="black-text dark:white-text z-10 sanspro three-para flex items-center justify-center h-fit py-5 flex-col gap-5 sm:py-7 md:h-[45vh] md:flex-row lg:items-start lg:h-fit lg:py-20 relative">
       <div className="w-[90%] text-center sm:text-justify sm:w-[80%] md:w-[27%] md:h-2/3 lg:h-4/5 relative flex flex-col items-center">
         <svg
-          className="hidden md:block svg-border absolute w-[250px] h-[250px] opacity-75 -z-[1]"
           viewBox="0 0 100 100"
           xmlns="http://www.w3.org/2000/svg"
+          className="hidden md:block svg-border absolute w-[250px] h-[250px] opacity-75 -z-[1]"
         >
           <path
-            d="M83.5,63.5Q82,77,69,81.5Q56,86,41.5,88Q27,90,16.5,78Q6,66,9,51Q12,36,22,28Q32,20,45,11Q58,2,71,12Q84,22,84.5,36Q85,50,83.5,63.5Z"
+            d="M81.5,64Q73,78,57,84.5Q41,91,29,78.5Q17,66,11,47Q5,28,22,15.5Q39,3,56.5,11Q74,19,82,34.5Q90,50,81.5,64Z"
             stroke="none"
             fill={props.isDarkMode ? "#298373" : "#44b7a1"}
           ></path>
           <path
-            d="M83.5,63.5Q82,77,69,81.5Q56,86,41.5,88Q27,90,16.5,78Q6,66,9,51Q12,36,22,28Q32,20,45,11Q58,2,71,12Q84,22,84.5,36Q85,50,83.5,63.5Z"
-            transform="translate(0.86 -4.99)"
+            d="M81.5,64Q73,78,57,84.5Q41,91,29,78.5Q17,66,11,47Q5,28,22,15.5Q39,3,56.5,11Q74,19,82,34.5Q90,50,81.5,64Z"
+            transform="translate(0.45 -3.98)"
             stroke={props.isDarkMode ? "#004d44" : "#2c796b"}
             stroke-width="1"
             fill="none"
           ></path>
         </svg>
+
         <div className="playfair font-bold w-full text-2xl sm:text-3xl md:text-center md:text-3xl lg:text-4xl">
           {props.title1}
         </div>

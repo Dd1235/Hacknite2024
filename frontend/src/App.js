@@ -20,6 +20,7 @@ import DonateForm from "./pages/DonateForm";
 import ThankYouPage from "./pages/ThankYouPage";
 import DonationTrendChart from "./charts/DonationTrendChart";
 import VolunteerForm from "./pages/VolunteerForm";
+import PartnerForm from "./pages/PartnerForm";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -316,6 +317,14 @@ function App() {
       element: (
         <>
           <VolunteerForm />
+        </>
+      ),
+    },
+    {
+      path: "/partner-form",
+      element: (
+        <>
+          <PartnerForm />
         </>
       ),
     },

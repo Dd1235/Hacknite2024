@@ -43,7 +43,7 @@ const Component = () => {
         </Slider>
       </div>
       <Link
-        to=""
+        to="/partner-form"
         className="btn py-4 text-sm sm:text-base mt-5 hover:mint-2-bg hover:white-text sanspro"
       >
         Become a Corporate Partner

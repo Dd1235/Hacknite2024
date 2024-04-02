@@ -1,5 +1,6 @@
-import React, { props } from "react";
+import React, { props, useState } from "react";
 import { Link } from "react-router-dom";
+import useScrollAnimation from "../components/useScrollAnimation";
 
 function QuoteImg(props) {
   if (props.invert) {
@@ -17,6 +18,8 @@ function QuoteImg(props) {
 }
 
 export default function Quote(props) {
+  const { ref: quoteRef, isVisible: isQuoteVisible } = useScrollAnimation();
+
   return (
     <div>
       <div className="z-10 sanspro h-fit sm:h-[50vh] md:h-[70vh] w-full overflow-hidden flex flex-col sm:flex-row items-center justify-center sm:gap-10 black-text dark:white-text">
@@ -43,24 +46,31 @@ export default function Quote(props) {
               fill="none"
             ></path>
           </svg>
-          <div className="z-10 font-semibold sm:w-full sm:text-left uppercase pt-4 sm:pt-0 text-base md:text-lg tracking-wide">
-            {props.title}
-          </div>
-          <div className="z-10 text-xl md:text-2xl text-center sm:text-left lg:text-3xl font-light md:leading-[2.5rem] lg:leading-[3rem] tracking-wide lg:tracking-wider py-4">
-            {props.text}
-          </div>
-          <div className="z-10 tracking-wide sm:w-full sm:text-left font-light text-sm md:text-base">
-            {props.from}
-          </div>
-          <div className="z-10 tracking-wide sm:w-full sm:text-left font-light text-sm md:text-base">
-            {props.job}
-          </div>
-          <Link
-            to="/volunteer-form"
-            className={props.btn ? "btn mt-2 z-10 cursor-pointer" : "hidden"}
+          <div
+            ref={quoteRef}
+            className={`z-10 w-full flex flex-col justify-center items-center fade-in-component ${
+              isQuoteVisible ? "visible" : ""
+            }`}
           >
-            Volunteer with Us!
-          </Link>
+            <div className="z-10 font-semibold sm:w-full sm:text-left uppercase pt-4 sm:pt-0 text-base md:text-lg tracking-wide">
+              {props.title}
+            </div>
+            <div className="z-10 text-xl md:text-2xl text-center sm:text-left lg:text-3xl font-light md:leading-[2.5rem] lg:leading-[3rem] tracking-wide lg:tracking-wider py-4">
+              {props.text}
+            </div>
+            <div className="z-10 tracking-wide sm:w-full sm:text-left font-light text-sm md:text-base">
+              {props.from}
+            </div>
+            <div className="z-10 tracking-wide sm:w-full sm:text-left font-light text-sm md:text-base">
+              {props.job}
+            </div>
+            <Link
+              to="/volunteer-form"
+              className={props.btn ? "btn mt-2 z-10 cursor-pointer" : "hidden"}
+            >
+              Volunteer with Us!
+            </Link>
+          </div>
         </div>
         <QuoteImg image={props.image} invert={props.invert} />
       </div>

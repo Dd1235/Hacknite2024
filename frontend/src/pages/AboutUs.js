@@ -8,6 +8,7 @@ import Quote from "../components/Quote";
 import Mission from "../components/Mission";
 import ThreePara from "../components/ThreePara";
 import SmallHeading from "../components/SmallHeading";
+import ImpactOverTime from "../charts/ImpactOverTime";
 
 export default function AboutUs(props) {
   return (
@@ -62,12 +63,23 @@ export default function AboutUs(props) {
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:drkgrey-bg"
       ></img>
-      <div className="h-[5vh]"></div>
+      {/* <div className="h-[5vh]"></div> */}
+      <div className="h-[10vh] flex justify-start">
+        <img
+          src="https://i.pinimg.com/564x/54/8a/69/548a698bc60f033c7eb78e65a076f70e.jpg"
+          className="absolute -z-[1] w-24 md:w-28 ml-6 lg:ml-10 lg:w-40 dark:hidden"
+        />
+      </div>
       <Mission
         title="Our Motto"
         text='"Empowering Minds and Transforming Communities"'
       />
-      <div className="h-[5vh]"></div>
+      <div className="h-[10vh] flex justify-end relative">
+        <img
+          src="https://i.pinimg.com/564x/28/83/a8/2883a84d0e22adf825e7602eb333cf22.jpg"
+          className="absolute -z-[1] w-40 -top-14 md:w-52 md:-top-20 lg:w-64 lg:-top-32"
+        />
+      </div>
       <img
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
@@ -83,48 +95,12 @@ export default function AboutUs(props) {
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
       ></img>
-      <div className="h-[10vh] flex justify-center relative">
-        <img
-          src="https://i.pinimg.com/564x/50/2e/e3/502ee362c57841b0c1cb3d20483d9d1d.jpg"
-          className="absolute -z-[1] h-20 top-10 md:h-24 md:top-10 dark:hidden"
-        />
+      <div className="h-[70vh] py-10 sanspro black-text dark:white-text lg:px-20">
+        <div className="text-base sm:text-lg uppercase font-semibold text-center sanspro">
+          Our Impact Over Time
+        </div>
+        <ImpactOverTime />
       </div>
-      <SmallHeading text="Upcoming Events" />
-      <ThreePara
-        title1="BookWise Campaign Program"
-        text1="Join us for a literacy drive in Jhunjhunu, where we will be distributing books and educational materials to children in need. Volunteers are welcome!"
-        date1="- April 15, 2024"
-        title2="Teacher Training Workshop"
-        text2="Our next teacher training workshop will focus on innovative teaching methods for rural schools. Educators and school administrators are encouraged to attend."
-        date2="- May 5, 2024"
-        title3="Digital Learning Center Inauguration"
-        text3="We are excited to inaugurate a new digital learning center in Kathmandu, providing access to computers and the internet for students in rural communities."
-        date3="- June 10, 2024"
-        isDarkMode={props.isDarkMode}
-      />
-      <img
-        src={props.isDarkMode ? drkline : line}
-        className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
-      ></img>
-      <div className="h-[10vh] flex justify-center relative">
-        <img
-          src="https://i.pinimg.com/564x/50/2e/e3/502ee362c57841b0c1cb3d20483d9d1d.jpg"
-          className="absolute -z-[1] h-20 top-10 md:h-24 md:top-10 dark:hidden"
-        />
-      </div>
-      <SmallHeading text="Past Events" />
-      <ThreePara
-        title1="Healthy Living Initiatives"
-        text1="Our health camp offered free medical check-ups and consultations to over 200 individuals in Mohali, promoting health and wellness in the community."
-        date1="- March 20, 2024"
-        title2="Community Clean-Up Drive "
-        text2="Volunteers came together to clean up the streets and public spaces in Vaishakapatnam, promoting environmental awareness and community pride."
-        date2="- February 5, 2024"
-        title3="Art and Music Workshop"
-        text3="Children from local schools participated in a creative workshop, where they learned about art and music, fostering creativity and self-expression."
-        date3="- January 15, 2024"
-        isDarkMode={props.isDarkMode}
-      />
       <img
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-3-bg"
@@ -154,4 +130,26 @@ export default function AboutUs(props) {
       <div className="h-[20vh]"></div>
     </div>
   );
+}
+
+{
+  /* <div className="h-[10vh] flex justify-center relative">
+        <img
+          src="https://i.pinimg.com/564x/50/2e/e3/502ee362c57841b0c1cb3d20483d9d1d.jpg"
+          className="absolute -z-[1] h-20 top-10 md:h-24 md:top-10 dark:hidden"
+        />
+      </div>
+      <SmallHeading text="Past Events" />
+      <ThreePara
+        title1="Healthy Living Initiatives"
+        text1="Our health camp offered free medical check-ups and consultations to over 200 individuals in Mohali, promoting health and wellness in the community."
+        date1="- March 20, 2024"
+        title2="Community Clean-Up Drive "
+        text2="Volunteers came together to clean up the streets and public spaces in Vaishakapatnam, promoting environmental awareness and community pride."
+        date2="- February 5, 2024"
+        title3="Art and Music Workshop"
+        text3="Children from local schools participated in a creative workshop, where they learned about art and music, fostering creativity and self-expression."
+        date3="- January 15, 2024"
+        isDarkMode={props.isDarkMode}
+      /> */
 }

@@ -9,8 +9,10 @@ export default function ErrorPage() {
       className="h-screen flex flex-col items-center justify-center gap-5"
       id="error-page"
     >
-      <h1 className="text-5xl">Oops!</h1>
-      <p className="text-lg">Sorry, an unexpected error has occurred.</p>
+      <h1 className="text-7xl playfair font-bold">Oops!</h1>
+      <p className="text-lg sanspro">
+        Sorry, an unexpected error has occurred.
+      </p>
       <p className="text-lg">
         <i>{error.statusText || error.message}</i>
       </p>

@@ -23,7 +23,7 @@ export default function Hero(props) {
           <Link to="/donate-form" className="btn">
             {props.bttnText1}
           </Link>
-          <Link to="/get-involved" className="btn">
+          <Link to="/volunteer-form" className="btn">
             {props.bttnText2}
           </Link>
         </div>

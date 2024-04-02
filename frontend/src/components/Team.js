@@ -18,7 +18,7 @@ export default function Team() {
               </h5>
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Soup.
+              "Soup."
             </p>
           </div>
         </div>
@@ -34,7 +34,7 @@ export default function Team() {
               </h5>
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Zzzzzzzzzzzzzzzzzzzzz
+              "Send help"
             </p>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function Team() {
               Fruity
             </h5>
             <p class="font-normal text-sm text-gray-700 dark:text-gray-400">
-              Soup
+              "Soup.""
             </p>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function Team() {
               Goose
             </h5>
             <p class="font-normal text-sm text-gray-700 dark:text-gray-400">
-              Sup Homies
+              "Send Help"
             </p>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function Team() {
               Deathmode
             </h5>
             <p class="font-normal text-sm text-gray-700 dark:text-gray-400">
-              Sup Homies
+              "Teri marzi hai vo daalde bhai"
             </p>
           </div>
         </div>

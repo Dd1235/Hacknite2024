@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Mission(props) {
   return (
@@ -9,7 +10,8 @@ export default function Mission(props) {
       <div className="sanspro text-base text-center tracking-wide w-[90%] sm:text-xl md:text-2xl lg:w-9/12 lg:leading-[3.3rem] lg:text-4xl">
         {props.text}
       </div>
-      <div
+      <Link
+        to={props.link}
         className={
           props.btn
             ? "btn mt-2 cursor-pointer hover:mint-2-bg hover:white-text"
@@ -17,7 +19,7 @@ export default function Mission(props) {
         }
       >
         {props.btnText}
-      </div>
+      </Link>
     </div>
   );
 }
