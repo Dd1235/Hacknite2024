@@ -1,7 +1,7 @@
 const otpGenerator = require("otp-generator");
 const OTP = require("../models/otpModel");
 
-const { sendOTP } = require("../controllers/otpController");
+const { sendOTP } = require("./otpController");
 
 const emailoptsend = async (req, res) => {
   try {
@@ -12,6 +12,10 @@ const emailoptsend = async (req, res) => {
       specialChars: false,
     });
     const email = req.body.email;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ error: "Invalid email format" });
+    }
     const expiresAt = new Date(new Date().getTime() + 10 * 60000); // OTP expires in 10 minutes
 
     const upsertData = { otp, expiresAt };

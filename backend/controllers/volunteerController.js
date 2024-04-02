@@ -62,3 +62,5 @@ const createVolunteer = async (req, res) => {
       .json({ error: "An unexpected error has occured, please try again." });
   }
 };
+
+module.exports = { createVolunteer };

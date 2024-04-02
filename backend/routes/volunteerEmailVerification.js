@@ -7,7 +7,7 @@ const router = express.Router();
 const {
   emailoptsend,
   verifyOTP,
-} = require("../controllers/volunteerEmailVerification");
+} = require("../controllers/emailVerificatonController");
 
 // if correct otp redirect to volunteer page
 
