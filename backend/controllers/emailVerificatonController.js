@@ -24,7 +24,7 @@ const emailoptsend = async (req, res) => {
       new: true,
     });
 
-    sendOTP(email, otp);
+    await sendOTP(email, otp);
     res.status(200).json({ message: "OTP sent successfully" });
   } catch (error) {
     console.error(error);
