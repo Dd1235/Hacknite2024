@@ -44,6 +44,7 @@ const createVolunteer = async (req, res) => {
       experience,
       availableDays,
       notes,
+      status: "pending",
     });
 
     // await newVolunteer.save();
@@ -84,15 +85,25 @@ const updateStatus = async (req, res) => {
 };
 
 const getAllApplications = async (req, res) => {
-  const volunteers = await Volunteer.find({}).sort({ createdAt: -1 });
-  res.status(200).json(volunteers);
+  try {
+    const volunteers = await Volunteer.find({}).sort({ createdAt: -1 });
+    res.status(200).json(volunteers);
+  } catch (error) {
+    console.error("Error fetching all applications:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
 
 const getPendingApplications = async (req, res) => {
-  const volunteers = await Volunteer.find({ status: "pending" }).sort({
-    createdAt: -1,
-  });
-  res.status(200).json(volunteers);
+  try {
+    const volunteers = await Volunteer.find({ status: "pending" }).sort({
+      createdAt: -1,
+    });
+    res.status(200).json(volunteers);
+  } catch (error) {
+    console.error("Error fetching pending applications:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
 
 const getAcceptedApplications = async (req, res) => {
@@ -103,16 +114,16 @@ const getAcceptedApplications = async (req, res) => {
 };
 
 const getNumberOfAcceptedApplications = async (req, res) => {
-  const numberOfAcceptedApplications = await Volunteer.countDocuments({
+  const count = await Volunteer.countDocuments({
     status: "accepted",
   });
-  res.status(200).json({ numberOfAcceptedApplications });
+  res.status(200).json({ count });
 };
 const getNumberOfPendingApplications = async (req, res) => {
-  const numberOfPendingApplications = await Volunteer.countDocuments({
+  const count = await Volunteer.countDocuments({
     status: "pending",
   });
-  res.status(200).json({ numberOfPendingApplications });
+  res.status(200).json({ count });
 };
 
 module.exports = {
