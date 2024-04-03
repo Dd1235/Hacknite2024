@@ -23,6 +23,7 @@ import VolunteerForm from "./pages/VolunteerForm";
 import EmailVerification from "./pages/dummyEmailVerification";
 import PartnerForm from "./pages/PartnerForm";
 import VolunteerManagement from "./pages/dummyVolunteerOperations";
+import ThankVolunteers from "./pages/ThankVolunteers";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(
