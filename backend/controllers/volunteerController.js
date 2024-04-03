@@ -44,6 +44,7 @@ const createVolunteer = async (req, res) => {
       experience,
       availableDays,
       notes,
+      status: "pending",
     });
 
     // await newVolunteer.save();
@@ -64,5 +65,73 @@ const createVolunteer = async (req, res) => {
       .json({ error: "An unexpected error has occured, please try again." });
   }
 };
+// /volunteers/:id/updateStatus
+// make a patch request to update status of volunteer from pending to accepted or rejected
+const updateStatus = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "No such application " });
+  }
+  const newStatus = req.body.status;
+  const volunteer = await Volunteer.findOneAndUpdate(
+    { _id: id },
+    { status: newStatus }
+  );
+  if (!volunteer) {
+    return res.status(404).json({ error: "No such application " });
+  }
 
-module.exports = { createVolunteer };
+  res.status(200).json(workout);
+};
+
+const getAllApplications = async (req, res) => {
+  try {
+    const volunteers = await Volunteer.find({}).sort({ createdAt: -1 });
+    res.status(200).json(volunteers);
+  } catch (error) {
+    console.error("Error fetching all applications:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+const getPendingApplications = async (req, res) => {
+  try {
+    const volunteers = await Volunteer.find({ status: "pending" }).sort({
+      createdAt: -1,
+    });
+    res.status(200).json(volunteers);
+  } catch (error) {
+    console.error("Error fetching pending applications:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+const getAcceptedApplications = async (req, res) => {
+  const volunteers = await Volunteer.find({ status: "accepted" }).sort({
+    createdAt: -1,
+  });
+  res.status(200).json(volunteers);
+};
+
+const getNumberOfAcceptedApplications = async (req, res) => {
+  const count = await Volunteer.countDocuments({
+    status: "accepted",
+  });
+  res.status(200).json({ count });
+};
+const getNumberOfPendingApplications = async (req, res) => {
+  const count = await Volunteer.countDocuments({
+    status: "pending",
+  });
+  res.status(200).json({ count });
+};
+
+module.exports = {
+  createVolunteer,
+  updateStatus,
+  getAllApplications,
+  getPendingApplications,
+  getAcceptedApplications,
+  getNumberOfAcceptedApplications,
+  getNumberOfPendingApplications,
+};

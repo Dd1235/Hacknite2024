@@ -78,7 +78,7 @@ export default function VolunteerForm() {
     };
 
     try {
-      const response = await fetch("api/make-volunteer", {
+      const response = await fetch("api/volunteers", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
