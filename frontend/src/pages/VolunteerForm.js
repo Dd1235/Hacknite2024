@@ -4,9 +4,6 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
 export default function VolunteerForm() {
-  const location = useLocation();
-  const verifiedEmail = location.state?.email;
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [birthDate, setBirthDate] = useState("");
@@ -24,6 +21,11 @@ export default function VolunteerForm() {
   const [saturday, setSaturday] = useState(false);
   const [sunday, setSunday] = useState(false);
   const [notes, setNotes] = useState("");
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const [message, setMessage] = useState("");
+  const [isOtpSent, setIsOtpSent] = useState(false);
+  // const navigate = useNavigate();
 
   const handleMondayChange = (e) => {
     setMonday(e.target.checked);
@@ -67,7 +69,7 @@ export default function VolunteerForm() {
       lastName,
       birthDate,
       phoneNumber,
-      email: verifiedEmail,
+      email,
       college,
       field,
       company,
@@ -91,11 +93,51 @@ export default function VolunteerForm() {
       if (response.ok) {
         alert("Volunteer application submitted successfully.");
       } else {
-        alert(data.message || "An error occurred. Please try again.");
+        alert(data.error || "An error occurred. Please try again.");
+        // alert(data.message);
       }
     } catch (error) {
       console.error("Failed to submit volunteer application:", error);
       alert("An error occurred. Please try again.");
+    }
+  };
+
+  const handleSendOtp = async (e) => {
+    e.preventDefault();
+    const response = await fetch("api/validate_email/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      setIsOtpSent(true);
+      setMessage("OTP has been sent to your email.");
+    } else {
+      setMessage(data.error || "An error occurred while sending OTP.");
+    }
+  };
+
+  const handleVerifyOtp = async (e) => {
+    e.preventDefault();
+    const response = await fetch("/api/validate_email/verify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, enteredOTP: otp }),
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      setMessage("OTP verified successfully.");
+      document.getElementById("email-verification").classList.add("hidden");
+      document.getElementById("volunteer-form").classList.remove("hidden");
+    } else {
+      setMessage(data.error || "An error occurred during OTP verification.");
     }
   };
 
@@ -143,8 +185,79 @@ export default function VolunteerForm() {
         </div>
       </div>
 
+      <div
+        id="email-verification"
+        className=" w-[90%] sm:w-4/5 md:w-3/5 lg:w-[600px] px-5 py-8 bg-white border dark:bg-gray-800 dark:border-gray-700 border-gray-200 rounded-lg shadow lg:h-full lg:overflow-auto"
+      >
+        <h1 className="mb-6 text-lg dark:white-text">
+          Confirm Your Email Address for Volunteer Sign Up
+        </h1>
+        <h1 className="dark:white-text">
+          Thank you for your interest in volunteering with us to make a
+          difference in the lives of others. Before you can proceed with your
+          volunteer sign-up, we need to verify your email address.
+        </h1>
+        <h1 className="dark:white-text">
+          Once your email address is verified, you will be redirected to the
+          volunteer sign-up form to complete your registration process.
+        </h1>
+        <hr className="my-3" />
+        <h1 className="mb-3">Email Verification</h1>
+        {!isOtpSent ? (
+          <form onSubmit={handleSendOtp}>
+            <div className="mb-3">
+              <label
+                for="email"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Enter your Email
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Send OTP
+            </button>
+          </form>
+        ) : (
+          <form onSubmit={handleVerifyOtp}>
+            <div className="mb-3">
+              <label
+                for="email"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Enter Otp
+              </label>
+              <input
+                type="text"
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Verify OTP
+            </button>
+          </form>
+        )}
+        {message && <p>{message}</p>}
+      </div>
+
       <form
-        className="w-[90%] sm:w-4/5 md:w-3/5 lg:w-[600px] px-5 py-8 bg-white border dark:bg-gray-800 dark:border-gray-700 border-gray-200 rounded-lg shadow lg:h-full lg:overflow-auto"
+        id="volunteer-form"
+        className="hidden w-[90%] sm:w-4/5 md:w-3/5 lg:w-[600px] px-5 py-8 bg-white border dark:bg-gray-800 dark:border-gray-700 border-gray-200 rounded-lg shadow lg:h-full lg:overflow-auto"
         onSubmit={handleSubmit}
       >
         <div className="grid gap-6 mb-6 md:grid-cols-2">
@@ -225,7 +338,7 @@ export default function VolunteerForm() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             // placeholder="john.doe@company.com"
             // required
-            value={verifiedEmail || ""}
+            value={email || ""}
           />
         </div>
         <h1 className="mb-6 text-lg dark:white-text">Education background</h1>

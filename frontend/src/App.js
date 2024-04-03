@@ -23,7 +23,6 @@ import VolunteerForm from "./pages/VolunteerForm";
 import EmailVerification from "./pages/dummyEmailVerification";
 import PartnerForm from "./pages/PartnerForm";
 import VolunteerManagement from "./pages/dummyVolunteerOperations";
-import DonationOperations from "./pages/dummyDonationOperations";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -78,7 +77,7 @@ function App() {
       ),
     },
     {
-      path: "/thank-you",
+      path: "/thank-you-donation",
       element: (
         <>
           <Navbar
@@ -87,6 +86,20 @@ function App() {
             setIsDarkMode={setIsDarkMode}
           />
           <ThankYouPage isDarkMode={isDarkMode} />
+          <Footer />
+        </>
+      ),
+    },
+    {
+      path: "/thank-you-volunteer",
+      element: (
+        <>
+          <Navbar
+            title="EduReach"
+            isDarkMode={isDarkMode}
+            setIsDarkMode={setIsDarkMode}
+          />
+          <ThankVolunteers />
           <Footer />
         </>
       ),

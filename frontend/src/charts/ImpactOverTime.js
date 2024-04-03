@@ -82,19 +82,13 @@ function ImpactOverTime() {
   ];
 
   const generateRealisticData = (data) => {
-    return data.map(
-      (
-        { year, beneficiaries, communities, schools, healthcare_centers },
-        index
-      ) => ({
-        year,
-        beneficiaries:
-          beneficiaries + Math.round(Math.random() * 300) - 150 + index * 50,
-        communities:
-          communities + Math.round(Math.random() * 5) - 2 + index * 1,
-        schools: schools + Math.round(Math.random() * 3) - 1 + index * 0.5,
-      })
-    );
+    return data.map(({ year, beneficiaries, communities, schools }, index) => ({
+      year,
+      beneficiaries:
+        beneficiaries + Math.round(Math.random() * 300) - 150 + index * 50,
+      communities: communities + Math.round(Math.random() * 5) - 2 + index * 1,
+      schools: schools + Math.round(Math.random() * 3) - 1 + index * 0.5,
+    }));
   };
 
   data = generateRealisticData(data);
@@ -129,11 +123,11 @@ function ImpactOverTime() {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="year" />
-        <YAxis yAxisId="left" orientation="left" stroke="#8884d8" />
+        <YAxis yAxisId="left" orientation="left" stroke="#0088FE" />
         <YAxis
           yAxisId="right"
           orientation="right"
-          stroke="#82ca9d"
+          stroke="#00C49F"
           domain={[0, 200]}
         />
         <Tooltip />

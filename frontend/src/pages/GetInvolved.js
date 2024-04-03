@@ -5,6 +5,7 @@ import drkline from "../resources/drkline.png";
 import Quote from "../components/Quote";
 import FromCards from "../components/FromCards";
 import Mission from "../components/Mission";
+import VolunteerPartnerChart from "../charts/VolunteerPartnerChart";
 
 export default function GetInvolved(props) {
   return (
@@ -59,6 +60,16 @@ export default function GetInvolved(props) {
         invert={true}
       />
       <div className="h-[15vh]"></div>
+      <img
+        src={props.isDarkMode ? drkline : line}
+        className="mint-2-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
+      ></img>
+      <div className="h-[70vh] py-10 sanspro black-text dark:white-text lg:px-20">
+        <div className="text-base sm:text-lg uppercase font-semibold text-center sanspro">
+          Active Volunteers and Partners over the Years
+        </div>
+        <VolunteerPartnerChart />
+      </div>
       <img
         src={props.isDarkMode ? drkline : line}
         className="mint-2-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
