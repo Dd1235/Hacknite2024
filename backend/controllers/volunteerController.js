@@ -64,5 +64,63 @@ const createVolunteer = async (req, res) => {
       .json({ error: "An unexpected error has occured, please try again." });
   }
 };
+// /volunteers/:id/updateStatus
+// make a patch request to update status of volunteer from pending to accepted or rejected
+const updateStatus = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "No such application " });
+  }
+  const newStatus = req.body.status;
+  const volunteer = await Volunteer.findOneAndUpdate(
+    { _id: id },
+    { status: newStatus }
+  );
+  if (!volunteer) {
+    return res.status(404).json({ error: "No such application " });
+  }
 
-module.exports = { createVolunteer };
+  res.status(200).json(workout);
+};
+
+const getAllApplications = async (req, res) => {
+  const volunteers = await Volunteer.find({}).sort({ createdAt: -1 });
+  res.status(200).json(volunteers);
+};
+
+const getPendingApplications = async (req, res) => {
+  const volunteers = await Volunteer.find({ status: "pending" }).sort({
+    createdAt: -1,
+  });
+  res.status(200).json(volunteers);
+};
+
+const getAcceptedApplications = async (req, res) => {
+  const volunteers = await Volunteer.find({ status: "accepted" }).sort({
+    createdAt: -1,
+  });
+  res.status(200).json(volunteers);
+};
+
+const getNumberOfAcceptedApplications = async (req, res) => {
+  const numberOfAcceptedApplications = await Volunteer.countDocuments({
+    status: "accepted",
+  });
+  res.status(200).json({ numberOfAcceptedApplications });
+};
+const getNumberOfPendingApplications = async (req, res) => {
+  const numberOfPendingApplications = await Volunteer.countDocuments({
+    status: "pending",
+  });
+  res.status(200).json({ numberOfPendingApplications });
+};
+
+module.exports = {
+  createVolunteer,
+  updateStatus,
+  getAllApplications,
+  getPendingApplications,
+  getAcceptedApplications,
+  getNumberOfAcceptedApplications,
+  getNumberOfPendingApplications,
+};

@@ -14,9 +14,9 @@ const volunteerRoutes = require("./routes/volunteers");
 // app.use(cors());
 app.use(express.json()); // for parsing application/json
 
-app.use("/api/donatiogitns", donationRoutes);
+app.use("/api/donations", donationRoutes);
 app.use("/api/validate_email", verifyEmail);
-app.use("/api/make-volunteer", volunteerRoutes);
+app.use("/api/volunteers", volunteerRoutes);
 
 mongoose
   .connect(process.env.MONGODB_URI)
