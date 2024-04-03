@@ -39,7 +39,7 @@ export const useDonation = () => {
     if (response.ok) {
       setIsLoading(false);
       // Redirect to the thank you page
-      history("/thank-you", { state: { name: firstName } });
+      history("/thank-you-donation", { state: { name: firstName } });
     }
   };
 
