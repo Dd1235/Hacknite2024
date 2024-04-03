@@ -51,9 +51,52 @@ const makeDonation = async (req, res) => {
   }
 };
 
-module.exports = { makeDonation };
+const totalAmount = async (req, res) => {
+  try {
+    const total = await Donation.aggregate([
+      {
+        $group: {
+          _id: null,
+          totalAmount: { $sum: "$amount" },
+        },
+      },
+    ]);
 
-// to instead use breva
+    if (total.length > 0) {
+      res.json({ success: true, totalAmount: total[0].totalAmount });
+    } else {
+      res.json({ success: false, message: "No donations found." });
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const numberofUniqueDonors = async (req, res) => {
+  try {
+    const uniqueDonorsCount = await Donation.aggregate([
+      {
+        $group: {
+          _id: "$email",
+        },
+      },
+      {
+        $count: "uniqueDonors",
+      },
+    ]);
+
+    if (uniqueDonorsCount.length > 0) {
+      res.json({ success: true, count: uniqueDonorsCount[0].uniqueDonors });
+    } else {
+      res.json({ success: true, count: 0, message: "No donors found." });
+    }
+  } catch (error) {
+    res.status(400).json({ success: false, error: error.message });
+  }
+};
+module.exports = { makeDonation, totalAmount, numberofUniqueDonors };
+
+// to instead use breva, don't delete this comment!
 // const nodemailer = require("nodemailer");
 // async function sendThankYouEmail(donation) {
 //   const transporter = nodemailer.createTransport({
