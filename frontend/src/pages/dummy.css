@@ -1,0 +1,30 @@
+.container {
+    width: 100%;
+    margin: 0 auto; 
+  }
+  
+
+  @media (min-width: 600px) {
+    .container {
+      width: 70vw; 
+      min-width: 300px; 
+    }}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 75px 250px 1fr;
+    align-items: center;
+    gap: 10px; 
+    position: relative;
+  }
+  
+  .grid-item.icon, .grid-item.details {
+    z-index: 2;
+  }
+  
+  .grid-item.gradient-bg {
+    justify-self: end; 
+    width: 100%; 
+    grid-column: 3;
+  }
+  

@@ -8,6 +8,7 @@ const {
   getAcceptedApplications,
   getNumberOfAcceptedApplications,
   getNumberOfPendingApplications,
+  getVolunteerById,
 } = require("../controllers/volunteerController");
 
 // /api/volunteers
@@ -18,5 +19,6 @@ router.get("/pending", getPendingApplications);
 router.get("/accepted", getAcceptedApplications);
 router.get("/accepted/count", getNumberOfAcceptedApplications);
 router.get("/pending/count", getNumberOfPendingApplications);
+router.get("/:id", getVolunteerById);
 
 module.exports = router;

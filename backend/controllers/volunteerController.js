@@ -1,5 +1,6 @@
 const Volunteer = require("../models/volunteerModel");
 const { parsePhoneNumberFromString } = require("libphonenumber-js");
+const mongoose = require("mongoose");
 
 const isValidPhoneNumber = (value) => {
   if (typeof value !== "string") {
@@ -67,6 +68,17 @@ const createVolunteer = async (req, res) => {
 };
 // /volunteers/:id/updateStatus
 // make a patch request to update status of volunteer from pending to accepted or rejected
+const getVolunteerById = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "No such application " });
+  }
+  const volunteer = await Volunteer.findById(id);
+  if (!volunteer) {
+    return res.status(404).json({ error: "No such application " });
+  }
+  res.status(200).json(volunteer);
+};
 const updateStatus = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -81,7 +93,7 @@ const updateStatus = async (req, res) => {
     return res.status(404).json({ error: "No such application " });
   }
 
-  res.status(200).json(workout);
+  res.status(200).json(volunteer);
 };
 
 const getAllApplications = async (req, res) => {
@@ -134,4 +146,5 @@ module.exports = {
   getAcceptedApplications,
   getNumberOfAcceptedApplications,
   getNumberOfPendingApplications,
+  getVolunteerById,
 };
