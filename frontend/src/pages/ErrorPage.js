@@ -5,10 +5,7 @@ export default function ErrorPage() {
   console.error(error);
 
   return (
-    <div
-      className="h-screen flex flex-col items-center justify-center gap-5"
-      id="error-page"
-    >
+    <div className="h-screen flex flex-col items-center justify-center gap-5">
       <h1 className="text-7xl playfair font-bold">Oops!</h1>
       <p className="text-lg sanspro">
         Sorry, an unexpected error has occurred.
