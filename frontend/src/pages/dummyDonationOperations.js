@@ -56,7 +56,7 @@ const DonationOperations = () => {
         Donations Overview
       </h1>
       <p className="text-lg text-gray-700">
-        Total donation amount: ${totalAmount.toLocaleString()}
+        Total donation amount: Rs{totalAmount.toLocaleString()}
       </p>
       <p className="text-lg text-gray-700">
         Total unique donors: {uniqueDonors}
