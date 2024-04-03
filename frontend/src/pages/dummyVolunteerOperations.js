@@ -3,6 +3,12 @@ import React, { useState } from "react";
 function VolunteerManagement() {
   const [applications, setApplications] = useState([]);
 
+  // read this
+  // this sets applications to data, which is an array of volunteer applications
+  // you have to use the names of fields like in the model to access them
+  // like application.firstName, application.birthDate, etc. go through backend/models/volunteerModel
+  // use hooks to set the states, like i have done in the other form is possible
+
   const getAllApplications = async () => {
     try {
       const response = await fetch("/api/volunteers/all");
