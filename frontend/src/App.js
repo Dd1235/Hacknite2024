@@ -18,9 +18,7 @@ import GetInvolved from "./pages/GetInvolved";
 import ErrorPage from "./pages/ErrorPage";
 import DonateForm from "./pages/DonateForm";
 import ThankYouPage from "./pages/ThankYouPage";
-import DonationTrendChart from "./charts/DonationTrendChart";
 import VolunteerForm from "./pages/VolunteerForm";
-import EmailVerification from "./pages/dummyEmailVerification";
 import PartnerForm from "./pages/PartnerForm";
 import VolunteerManagement from "./pages/dummyVolunteerOperations";
 import ThankVolunteers from "./pages/ThankVolunteers";
@@ -71,28 +69,6 @@ function App() {
       element: (
         <>
           <VolunteerManagement />
-        </>
-      ),
-    },
-    {
-      path: "/email-verification",
-      element: (
-        <>
-          <EmailVerification />
-        </>
-      ),
-    },
-    {
-      path: "/charts",
-      element: (
-        <>
-          <Navbar
-            title="EduReach"
-            isDarkMode={isDarkMode}
-            setIsDarkMode={setIsDarkMode}
-          />
-          <DonationTrendChart />
-          <Footer />
         </>
       ),
     },

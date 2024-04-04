@@ -121,22 +121,22 @@ export default function Homepage(props) {
         src={props.isDarkMode ? drkline : line}
         className="mint-1-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-2-bg"
       ></img>
-      <div className="sanspro black-text h-[50vh] mint-1-bg flex flex-col gap-5 items-center justify-center">
+      <div className="sanspro black-text dark:white-text h-[50vh] mint-1-bg dark:mint-3-bg flex flex-col gap-5 items-center justify-center">
         <div className="uppercase text-sm sm:text-base font-semibold">
           Stay Involved
         </div>
         <div className="w-4/5 text-center font-bold text-4xl sm:text-5xl playfair tracking-wide">
           Never miss a chance to help
         </div>
-        <form className="w-4/5 sm:w-3/5 lg:w-2/5">
+        <form className="w-4/5 mt-3 sm:w-3/5 lg:w-2/5 flex items-center">
           <input
             type="email"
-            className="text-sm sm:text-base mt-5 h-12 w-4/5 rounded-l-full px-5"
+            className="text-sm sm:text-base h-12 w-4/5 rounded-l-full px-5"
             placeholder="Subscrible for email updates"
           />
           <input
             type="submit"
-            className="h-12 text-sm sm:text-base w-1/5 rounded-r-full border-4 mint-2-border font-semibold mint-2-text hover:white-bg cursor-pointer"
+            className="h-12 text-sm sm:text-base w-1/5 rounded-r-full border-4 mint-2-border dark:border-white dark:white-text dark:hover:mint-3-text font-semibold mint-2-text hover:white-bg cursor-pointer"
           />
         </form>
       </div>

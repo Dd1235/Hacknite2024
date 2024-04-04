@@ -48,10 +48,6 @@ export default function FAQs(props) {
         ></rect>
       </svg>
       <div className="h-[40vh] sm:hidden sm:h-[5vh] flex items-center justify-center">
-        <img
-          src="https://i.pinimg.com/564x/5b/03/b2/5b03b23a4fde0b9171036bc4adf63ab8.jpg"
-          className="absolute -z-[1] -top-20 w-[450px] max-w-none sm:hidden"
-        />
         <HeadingRow
           title="FAQs"
           text="Frequently Asked Questions"

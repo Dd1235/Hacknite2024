@@ -19,7 +19,7 @@ export default function ThreePara(props) {
             d="M81.5,64Q73,78,57,84.5Q41,91,29,78.5Q17,66,11,47Q5,28,22,15.5Q39,3,56.5,11Q74,19,82,34.5Q90,50,81.5,64Z"
             transform="translate(0.45 -3.98)"
             stroke={props.isDarkMode ? "#004d44" : "#2c796b"}
-            stroke-width="1"
+            strokeWidth="1"
             fill="none"
           ></path>
         </svg>
@@ -47,7 +47,7 @@ export default function ThreePara(props) {
             d="M88.5,63.5Q82,77,70,86.5Q58,96,42,94Q26,92,20,77.5Q14,63,8.5,48Q3,33,16.5,24Q30,15,43,14.5Q56,14,71,17Q86,20,90.5,35Q95,50,88.5,63.5Z"
             transform="translate(-0.21 -6.22)"
             stroke={props.isDarkMode ? "#004d44" : "#2c796b"}
-            stroke-width="1"
+            strokeWidth="1"
             fill="none"
           ></path>
         </svg>
@@ -74,7 +74,7 @@ export default function ThreePara(props) {
             d="M88,61.5Q78,73,67.5,82Q57,91,43.5,87.5Q30,84,20,74Q10,64,11.5,50.5Q13,37,22.5,28.5Q32,20,45.5,11Q59,2,69.5,13Q80,24,89,37Q98,50,88,61.5Z"
             transform="translate(-4.8 -3.05)"
             stroke={props.isDarkMode ? "#004d44" : "#2c796b"}
-            stroke-width="1"
+            strokeWidth="1"
             fill="none"
           ></path>
         </svg>

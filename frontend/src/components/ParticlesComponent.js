@@ -112,6 +112,11 @@ const ParticlesComponent = () => {
           },
         },
       },
+      // background: {
+      //   color: {
+      //     value: "#00054c",
+      //   },
+      // },
       retina_detect: true,
     }),
     []

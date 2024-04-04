@@ -42,7 +42,7 @@ export default function Quote(props) {
               d="M81.5,64Q73,78,57,84.5Q41,91,29,78.5Q17,66,11,47Q5,28,22,15.5Q39,3,56.5,11Q74,19,82,34.5Q90,50,81.5,64Z"
               transform="translate(0.45 -3.98)"
               stroke={props.isDarkMode ? "#2c796b" : "#7aa9a1"}
-              stroke-width="1"
+              strokeWidth="1"
               fill="none"
             ></path>
           </svg>

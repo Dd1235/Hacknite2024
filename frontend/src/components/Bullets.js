@@ -17,7 +17,7 @@ export default function Bullets(props) {
           d="M77.5,64Q66,78,49.5,78.5Q33,79,22.5,64.5Q12,50,19.5,30Q27,10,47,15.5Q67,21,78,35.5Q89,50,77.5,64Z"
           transform="translate(2.7 0.49)"
           stroke={props.isDarkMode ? "#19355b" : "#6387a3"}
-          stroke-width="1"
+          strokeWidth="1"
           fill="none"
         ></path>
       </svg>

@@ -11,6 +11,7 @@ import useScrollAnimation from "../components/useScrollAnimation";
 
 export default function Projects(props) {
   const { ref: involveRef, isVisible: isInvolveVisible } = useScrollAnimation();
+  const { ref: projectRef, isVisible: isProjectVisible } = useScrollAnimation();
 
   return (
     <div className="dark:dark-bg">
@@ -20,11 +21,16 @@ export default function Projects(props) {
         className="bg-amber-800 h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
       ></img>
       <div className="h-[5vh]"></div>
-      <HeadingRow
-        title="Projects"
-        text="You can support our projects by volunteering your time, donating to our cause, or partnering with us. Together, we can make a difference in the lives of individuals and communities in rural India."
-        isDarkMode={props.isDarkMode}
-      />
+      <div
+        ref={projectRef}
+        className={`fade-in-component ${isProjectVisible ? "visible" : ""}`}
+      >
+        <HeadingRow
+          title="Projects"
+          text="You can support our projects by volunteering your time, donating to our cause, or partnering with us. Together, we can make a difference in the lives of individuals and communities in rural India."
+          isDarkMode={props.isDarkMode}
+        />
+      </div>
       <div className="h-[5vh]"></div>
       <img
         src={props.isDarkMode ? drkline : line}

@@ -13,7 +13,6 @@ export default function Navbar(props) {
 
     // goose chaged, now you go to the top of the page when you click on a nav item, can have smooth behaviour too
     window.scrollTo({ top: 0, behavior: "auto" });
-    setIsMenuOpen(false);
     // goose changed
   };
 
@@ -128,6 +127,7 @@ export default function Navbar(props) {
               aria-controls="navbar-sticky"
               aria-expanded="false"
               onClick={toggleMenu}
+              id="navbar-button"
             >
               <span className="sr-only">Open main menu</span>
               <svg

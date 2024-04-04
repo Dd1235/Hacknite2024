@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function VolunteerForm() {
+  const navigate = useNavigate();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [birthDate, setBirthDate] = useState("");
@@ -94,7 +96,6 @@ export default function VolunteerForm() {
         alert("Volunteer application submitted successfully.");
       } else {
         alert(data.error || "An error occurred. Please try again.");
-        // alert(data.message);
       }
     } catch (error) {
       console.error("Failed to submit volunteer application:", error);
@@ -142,7 +143,7 @@ export default function VolunteerForm() {
   };
 
   return (
-    <div className="sanspro mint-1-bg dark:dark-bg flex justify-center items-center gap-5 py-8 flex-col lg:flex-row lg:h-screen">
+    <div className="black-text dark:white-text sanspro mint-1-bg dark:dark-bg flex justify-center items-center gap-5 py-8 flex-col lg:flex-row lg:h-screen">
       <div className="w-[90%] sm:w-4/5 md:w-3/5 lg:max-w-lg lg:h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <img
           className="rounded-t-lg"
@@ -162,10 +163,10 @@ export default function VolunteerForm() {
             making a difference. Volunteer today.
           </p>
           <Link
-            to="/"
+            onClick={() => navigate(-1)}
             className="inline-flex items-center px-3 py-2 lg:text-lg hover:mint-2-bg hover:white-text font-medium text-center mint-2-text rounded-full mint-2-border border-4"
           >
-            Go back to home
+            Go back
             <svg
               className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
               aria-hidden="true"

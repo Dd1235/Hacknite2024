@@ -16,7 +16,7 @@ export default function MeetOurTeam(props) {
   return (
     <div className="dark:dark-bg">
       <div className="overflow-hidden relative">
-        <svg class="w-full absolute" viewBox="0 0 400 400">
+        <svg className="w-full absolute" viewBox="0 0 400 400">
           <defs>
             <pattern
               id="bg_pattern"

@@ -6,11 +6,11 @@ import line from "../resources/line.png";
 import drkline from "../resources/drkline.png";
 import Quote from "../components/Quote";
 import Mission from "../components/Mission";
-import ThreePara from "../components/ThreePara";
-import SmallHeading from "../components/SmallHeading";
 import ImpactOverTime from "../charts/ImpactOverTime";
+import useScrollAnimation from "../components/useScrollAnimation";
 
 export default function AboutUs(props) {
+  const { ref: mottoRef, isVisible: isMottoVisible } = useScrollAnimation();
   return (
     <div className="dark:dark-bg">
       <div className="overflow-hidden relative flex flex-col items-center justify-center">
@@ -28,7 +28,7 @@ export default function AboutUs(props) {
             d="M83,59Q68,68,59,75Q50,82,37.5,78.5Q25,75,14.5,62.5Q4,50,12,35Q20,20,35,13.5Q50,7,58,20.5Q66,34,82,42Q98,50,83,59Z"
             transform="translate(3.77 -3.04)"
             stroke={props.isDarkMode ? "#19355b" : "#6387a3"}
-            stroke-width="1"
+            strokeWidth="1"
             fill="none"
           ></path>
         </svg>
@@ -47,7 +47,7 @@ export default function AboutUs(props) {
             d="M82,65Q86,80,70,75Q54,70,43,75.5Q32,81,20,73Q8,65,7,49.5Q6,34,23,33Q40,32,48.5,20Q57,8,67,17.5Q77,27,77.5,38.5Q78,50,82,65Z"
             transform="translate(-0.45 4.81)"
             stroke={props.isDarkMode ? "#19355b" : "#6387a3"}
-            stroke-width="1"
+            strokeWidth="1"
             fill="none"
           ></path>
         </svg>
@@ -70,10 +70,15 @@ export default function AboutUs(props) {
           className="absolute -z-[1] w-24 md:w-28 ml-6 lg:ml-10 lg:w-40 dark:hidden"
         />
       </div>
-      <Mission
-        title="Our Motto"
-        text='"Empowering Minds and Transforming Communities"'
-      />
+      <div
+        ref={mottoRef}
+        className={`fade-in-component ${isMottoVisible ? "visible" : ""}`}
+      >
+        <Mission
+          title="Our Motto"
+          text='"Empowering Minds and Transforming Communities"'
+        />
+      </div>
       <div className="h-[10vh] flex justify-end relative">
         <img
           src="https://i.pinimg.com/564x/28/83/a8/2883a84d0e22adf825e7602eb333cf22.jpg"

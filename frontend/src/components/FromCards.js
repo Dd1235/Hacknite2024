@@ -6,10 +6,10 @@ export default function FromCards() {
     <div className="sanspro black-text flex justify-center">
       <div className="flex flex-col md:flex-row gap-5 lg:gap-10 w-[90%] items-center justify-center pb-10 ">
         <div className="max-w-sm p-6 bg-slate-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-lg md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Volunteer Your Time
           </h5>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          <p className="mb-3 text-sm md:text-base font-normal text-gray-700 dark:text-gray-400">
             Join us in making a difference in rural communities across India by
             volunteering with EduReach India Foundation.
           </p>
@@ -27,19 +27,19 @@ export default function FromCards() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
           </Link>
         </div>
         <div className="max-w-sm p-6 bg-slate-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-lg md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Donate to Our Cause
           </h5>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          <p className="mb-3 text-sm md:text-base font-normal text-gray-700 dark:text-gray-400">
             Your donation can help us expand our reach and impact more lives in
             rural India, every donation makes a difference.
           </p>
@@ -57,19 +57,19 @@ export default function FromCards() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
           </Link>
         </div>
         <div className="max-w-sm p-6 bg-slate-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-lg md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Partner with Us
           </h5>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          <p className="mb-3 text-sm md:text-base font-normal text-gray-700 dark:text-gray-400">
             If you represent a institution that shares our values and goals,
             consider partnering with EduReach.
           </p>
@@ -87,9 +87,9 @@ export default function FromCards() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>

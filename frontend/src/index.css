@@ -11,11 +11,11 @@
   }
   .btn {
     transition: all 0.5s;
-    @apply lg:text-lg md:text-base font-semibold mint-2-text border-[3px] mint-2-border focus:outline-none hover:white-bg rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:white-text dark:border-white hover:dark:black-text;
+    @apply cursor-pointer lg:text-lg md:text-base font-semibold mint-2-text border-[3px] mint-2-border focus:outline-none hover:white-bg rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:white-text dark:border-white hover:dark:black-text;
   }
   .btn2 {
     transition: all 0.5s;
-    @apply text-sm lg:text-lg md:text-base font-semibold white-text border-[3px] border-white focus:outline-none hover:black-text hover:white-bg rounded-full px-5 py-2.5 me-2 mb-2;
+    @apply cursor-pointer text-sm lg:text-lg md:text-base font-semibold white-text border-[3px] border-white focus:outline-none hover:black-text hover:white-bg rounded-full px-5 py-2.5 me-2 mb-2;
   }
   .circle {
     @apply before:left-1/4 md:before:left-[10%] before:-top-2 sm:before:-top-5 lg:before:-top-10 before:w-[70px] before:h-[70px] md:before:w-[130px] md:before:h-[130px] lg:before:w-[200px] lg:before:h-[200px] before:block before:absolute before:grey-bg before:opacity-50 before:-z-[1] before:rounded-full;
