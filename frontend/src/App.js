@@ -25,6 +25,7 @@ import ThankVolunteers from "./pages/ThankVolunteers";
 import DonationOperations from "./pages/dummyDonationOperations";
 import MainPage from "./pages/dummyHandleApplications";
 import VolunteerDetails from "./pages/dummyVoluneerCard";
+import PartnersStats from "./pages/dummyPartnerOperatons";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -39,6 +40,14 @@ function App() {
   }, [isDarkMode]);
 
   const router = createBrowserRouter([
+    {
+      path: "/partner-stats",
+      element: (
+        <>
+          <PartnersStats />
+        </>
+      ),
+    },
     {
       path: "/volunteer-form/:id",
       element: (

@@ -90,7 +90,7 @@ const updateStatus = async (req, res) => {
     { status: newStatus }
   );
   if (!volunteer) {
-    return res.status(404).json({ error: "No such application " });
+    return res.status(404).json({ error: "No such application... " });
   }
 
   res.status(200).json(volunteer);
@@ -137,6 +137,43 @@ const getNumberOfPendingApplications = async (req, res) => {
   });
   res.status(200).json({ count });
 };
+const getPerYear = async (req, res) => {
+  try {
+    const applicationsPerYear = await Volunteer.aggregate([
+      {
+        $match: { status: "accepted" },
+      },
+      {
+        $addFields: {
+          // Convert createdAt to a date if it's a string
+          convertedDate: {
+            $cond: {
+              if: { $eq: [{ $type: "$createdAt" }, "string"] },
+              then: { $dateFromString: { dateString: "$createdAt" } },
+              else: "$createdAt",
+            },
+          },
+        },
+      },
+      {
+        $project: {
+          year: { $year: "$convertedDate" }, // Use the converted date here
+        },
+      },
+      {
+        $group: {
+          _id: "$year",
+          count: { $sum: 1 },
+        },
+      },
+      { $sort: { _id: 1 } },
+    ]);
+    res.status(200).json(applicationsPerYear);
+  } catch (error) {
+    console.error("Error fetching applications per year:", error);
+    res.status(500).json({ error: error.message }); // It's better to return error.message
+  }
+};
 
 module.exports = {
   createVolunteer,
@@ -147,4 +184,5 @@ module.exports = {
   getNumberOfAcceptedApplications,
   getNumberOfPendingApplications,
   getVolunteerById,
+  getPerYear,
 };

@@ -9,10 +9,12 @@ const {
   getNumberOfAcceptedApplications,
   getNumberOfPendingApplications,
   getVolunteerById,
+  getPerYear,
 } = require("../controllers/volunteerController");
 
 // /api/volunteers
 router.post("/", createVolunteer);
+router.get("/peryear", getPerYear);
 router.patch("/:id/status", updateStatus);
 router.get("/all", getAllApplications);
 router.get("/pending", getPendingApplications);

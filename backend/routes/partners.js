@@ -28,4 +28,27 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/stats", async (req, res) => {
+  try {
+    const totalPartners = await Partner.countDocuments();
+
+    const partnersPerYear = await Partner.aggregate([
+      {
+        $group: {
+          _id: { $year: "$createdAt" },
+          count: { $sum: 1 },
+        },
+      },
+      { $sort: { _id: 1 } },
+    ]);
+
+    res.json({
+      totalPartners,
+      partnersPerYear,
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 module.exports = router;
