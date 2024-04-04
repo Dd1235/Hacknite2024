@@ -10,6 +10,7 @@ import drkline from "../resources/drkline.png";
 import Mission from "../components/Mission";
 import CompanyTrust from "../components/CompanyTrust";
 import useScrollAnimation from "../components/useScrollAnimation";
+import DonorShoutout from "../components/DonorShoutout";
 
 export default function Homepage(props) {
   const { ref: missionRef, isVisible: isMissionVisible } = useScrollAnimation();
@@ -144,7 +145,8 @@ export default function Homepage(props) {
         src={props.isDarkMode ? drkline : line}
         className="mint-1-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-2-bg"
       ></img>
-      <div className="h-[10vh]"></div>
+      <DonorShoutout />
+      {/* <div className="h-[10vh]"></div> */}
     </div>
   );
 }

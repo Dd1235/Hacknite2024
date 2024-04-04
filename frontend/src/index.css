@@ -9,6 +9,10 @@
   .sanspro {
     font-family: Source Sans Pro, Arial, Helvetica, sans-serif;
   }
+
+  .dancing {
+    font-family: Dancing Script, Arial, Helvetica, sans-serif;
+  }
   .btn {
     transition: all 0.5s;
     @apply cursor-pointer lg:text-lg md:text-base font-semibold mint-2-text border-[3px] mint-2-border focus:outline-none hover:white-bg rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:white-text dark:border-white hover:dark:black-text;
