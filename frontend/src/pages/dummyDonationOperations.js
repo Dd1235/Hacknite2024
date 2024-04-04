@@ -5,6 +5,7 @@ const DonationOperations = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [uniqueDonors, setUniqueDonors] = useState(0);
+  const [recentDonations, setRecentDonations] = useState([]);
 
   const fetchTotalAmount = async () => {
     try {
@@ -13,7 +14,7 @@ const DonationOperations = () => {
       if (data.success) {
         setTotalAmount(data.totalAmount);
       } else {
-        throw new Error(data.error || "Failed to fetch the total amount");
+        throw new Error(data.message || "Failed to fetch the total amount");
       }
     } catch (error) {
       setError(error.message);
@@ -27,7 +28,21 @@ const DonationOperations = () => {
       if (data.success) {
         setUniqueDonors(data.count);
       } else {
-        throw new Error(data.error || "Failed to fetch unique donors count");
+        throw new Error(data.message || "Failed to fetch unique donors count");
+      }
+    } catch (error) {
+      setError((prevError) => prevError + " " + error.message);
+    }
+  };
+
+  const fetchRecentDonations = async () => {
+    try {
+      const response = await fetch("/api/donations/getrecent/4"); // Adjust the URL as needed
+      const data = await response.json();
+      if (data.success) {
+        setRecentDonations(data.donations);
+      } else {
+        throw new Error(data.message || "Failed to fetch recent donations");
       }
     } catch (error) {
       setError((prevError) => prevError + " " + error.message);
@@ -38,6 +53,7 @@ const DonationOperations = () => {
     const fetchData = async () => {
       await fetchTotalAmount();
       await fetchUniqueDonorsCount();
+      await fetchRecentDonations();
       setIsLoading(false);
     };
 
@@ -61,6 +77,23 @@ const DonationOperations = () => {
       <p className="text-lg text-gray-700">
         Total unique donors: {uniqueDonors}
       </p>
+      <div>
+        <h2 className="text-lg font-semibold text-center mb-2">
+          Recent Donations
+        </h2>
+        {recentDonations.length > 0 ? (
+          <ul>
+            {recentDonations.map((donation, index) => (
+              <li key={index} className="mb-2">
+                <span className="font-bold">{donation.firstName}</span>:{" "}
+                {donation.message}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No recent donations to display.</p>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,8 +1,53 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function PartnerForm() {
   const navigate = useNavigate();
+
+  const [institution, setInstitution] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const partnerData = {
+      institution,
+      firstName,
+      lastName,
+      phoneNumber,
+      email,
+      message,
+    };
+
+    try {
+      const response = await fetch("/api/partners", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(partnerData),
+      });
+
+      if (!response.ok) {
+        setError(
+          `An error with status ${response.status} has occured: ${response.error}`
+        );
+      }
+
+      const data = await response.json();
+      console.log("Success:", data);
+      setError("");
+    } catch (error) {
+      console.error("Error:", error);
+      setError((prevState) => prevState + error);
+    }
+  };
 
   return (
     <div className="black-text dark:white-text sanspro mint-1-bg dark:dark-bg flex justify-center items-center gap-5 py-8 flex-col lg:flex-row lg:h-screen">
@@ -45,7 +90,10 @@ export default function PartnerForm() {
         </div>
       </div>
 
-      <form className="w-[90%] sm:w-4/5 md:w-3/5 lg:w-[600px] px-5 py-8 bg-white border dark:bg-gray-800 dark:border-gray-700 border-gray-200 rounded-lg shadow lg:h-full lg:overflow-auto">
+      <form
+        className="w-[90%] sm:w-4/5 md:w-3/5 lg:w-[600px] px-5 py-8 bg-white border dark:bg-gray-800 dark:border-gray-700 border-gray-200 rounded-lg shadow lg:h-full lg:overflow-auto"
+        onSubmit={handleSubmit}
+      >
         <div className="mb-6">
           <label
             for="institution_name-partner"
@@ -59,13 +107,16 @@ export default function PartnerForm() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="John"
             required
+            value={institution}
+            onChange={(e) => setInstitution(e.target.value)}
           />
         </div>
         <h1 className="mb-6 text-lg dark:white-text">Contact Person</h1>
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <label
-              for="first_name-voluteer"
+              // for="first_name-voluteer"
+              for="first_name-partner"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               First name
@@ -76,6 +127,8 @@ export default function PartnerForm() {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
           <div>
@@ -91,6 +144,8 @@ export default function PartnerForm() {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Doe"
               required
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
             />
           </div>
           <div>
@@ -106,6 +161,8 @@ export default function PartnerForm() {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="+91**********"
               required
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </div>
         </div>
@@ -122,6 +179,8 @@ export default function PartnerForm() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="john.doe@company.com"
             required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="mb-6">
@@ -136,6 +195,8 @@ export default function PartnerForm() {
             rows="4"
             className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Write your thoughts here..."
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
           ></textarea>
         </div>
 
@@ -169,6 +230,7 @@ export default function PartnerForm() {
         >
           Submit
         </button>
+        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
       </form>
     </div>
   );

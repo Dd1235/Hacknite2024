@@ -24,6 +24,37 @@ async function sendEmailOutlook(donation) {
     onSuccess: (i) => console.log(i),
   });
 }
+const getRecentDonations = async (req, res) => {
+  const n = parseInt(req.params.n, 10);
+
+  if (!n || n < 1) {
+    return res
+      .status(400)
+      .json({ error: "Invalid number of donations requested" });
+  }
+
+  try {
+    const donations = await Donation.find({}).sort({ createdAt: -1 }).limit(n);
+    const totalDonations = await Donation.countDocuments();
+
+    if (donations.length < n) {
+      return res.json({
+        success: true,
+        message: `Only ${donations.length} donations found out of requested ${n}.`,
+        totalDonations: totalDonations,
+        donations: donations,
+      });
+    }
+
+    res.json({
+      success: true,
+      totalDonations: totalDonations,
+      donations: donations,
+    });
+  } catch (error) {
+    res.status(400).json({ success: false, error: error.message });
+  }
+};
 
 const makeDonation = async (req, res) => {
   const validPhoneNumber = isValidPhoneNumber(req.body.phoneNumber);
@@ -32,6 +63,9 @@ const makeDonation = async (req, res) => {
   }
 
   const { firstName, lastName, email, phoneNumber, amount, message } = req.body;
+  if (amount < 1) {
+    return res.status(400).json({ error: "Invalid donation amount" });
+  }
 
   try {
     const donation = await Donation.create({
@@ -94,7 +128,12 @@ const numberofUniqueDonors = async (req, res) => {
     res.status(400).json({ success: false, error: error.message });
   }
 };
-module.exports = { makeDonation, totalAmount, numberofUniqueDonors };
+module.exports = {
+  makeDonation,
+  totalAmount,
+  numberofUniqueDonors,
+  getRecentDonations,
+};
 
 // to instead use breva, don't delete this comment!
 // const nodemailer = require("nodemailer");
