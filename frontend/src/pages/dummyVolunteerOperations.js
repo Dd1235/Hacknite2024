@@ -50,6 +50,16 @@ function VolunteerManagement() {
     }
   };
 
+  const getRejectedApplications = async () => {
+    try {
+      const response = await fetch("/api/volunteers/rejected");
+      const data = await response.json();
+      setApplications(data);
+    } catch (error) {
+      console.error("Error getting rejected applications:", error);
+    }
+  };
+
   const getNumberOfAcceptedApplications = async () => {
     try {
       const response = await fetch("/api/volunteers/accepted/count");
@@ -96,6 +106,12 @@ function VolunteerManagement() {
           Get Accepted Applications
         </button>
         <button
+          onClick={getRejectedApplications}
+          className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+        >
+          Get Rejected Applications
+        </button>
+        <button
           onClick={getNumberOfAcceptedApplications}
           className="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600"
         >
@@ -138,7 +154,7 @@ function VolunteerManagement() {
             ))}
           </ul>
         ) : (
-          <p>No volunteers per year data available.</p>
+          <p>No volunteer applications accepted!</p>
         )}
       </section>
     </div>

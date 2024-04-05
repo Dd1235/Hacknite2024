@@ -166,9 +166,23 @@ const getAcceptedApplications = async (req, res) => {
   res.status(200).json(volunteers);
 };
 
+const getRejectedApplications = async (req, res) => {
+  const volunteers = await Volunteer.find({ status: "rejected" }).sort({
+    createdAt: -1,
+  });
+  res.status(200).json(volunteers);
+};
+
 const getNumberOfAcceptedApplications = async (req, res) => {
   const count = await Volunteer.countDocuments({
     status: "accepted",
+  });
+  res.status(200).json({ count });
+};
+
+const getNumberOfRejectedApplications = async (req, res) => {
+  const count = await Volunteer.countDocuments({
+    status: "rejected",
   });
   res.status(200).json({ count });
 };
@@ -208,6 +222,7 @@ const getPerYear = async (req, res) => {
       },
       { $sort: { _id: 1 } },
     ]);
+    console.log("succesfully sent");
     res.status(200).json(applicationsPerYear);
   } catch (error) {
     console.error("Error fetching applications per year:", error);
@@ -225,5 +240,6 @@ module.exports = {
   getNumberOfPendingApplications,
   getVolunteerById,
   getPerYear,
-  sendEmail,
+  getNumberOfRejectedApplications,
+  getRejectedApplications,
 };
