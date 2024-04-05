@@ -4,7 +4,7 @@ import RandomIcon from "../resources/chooseIcon";
 
 export default function DashList(props) {
   return (
-    <div className="lg:w-4/5">
+    <div className="lg:w-4/5 shadow rounded-lg p-2">
       <div className="bg-white py-4 px-6 rounded-md mb-6">
         <h1 className="text-lg sm:text-3xl md:text-4xl lg:text-5xl font-bold playfair leading-5">
           {props.heading}
