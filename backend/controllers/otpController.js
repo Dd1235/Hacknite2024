@@ -3,10 +3,10 @@ var nodeoutlook = require("nodejs-nodemailer-outlook");
 async function sendOTP(email, otp) {
   nodeoutlook.sendEmail({
     auth: {
-      user: "fruitygoosedeath@outlook.com",
-      pass: "Fruitygoose@123",
+      user: `${process.env.SMTP_USER}`,
+      pass: `${process.env.SMTP_PASS}`,
     },
-    from: "fruitygoosedeath@outlook.com",
+    from: `${process.env.SMTP_USER}`,
     to: `${email}`,
     subject: `OTP`,
     text: `Your OTP is ${otp}`,

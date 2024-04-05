@@ -6,6 +6,7 @@ const DonationOperations = () => {
   const [error, setError] = useState("");
   const [uniqueDonors, setUniqueDonors] = useState(0);
   const [recentDonations, setRecentDonations] = useState([]);
+  const [donations, setDonations] = useState([]);
 
   const fetchTotalAmount = async () => {
     try {
@@ -29,6 +30,20 @@ const DonationOperations = () => {
         setUniqueDonors(data.count);
       } else {
         throw new Error(data.message || "Failed to fetch unique donors count");
+      }
+    } catch (error) {
+      setError((prevError) => prevError + " " + error.message);
+    }
+  };
+
+  const getAllDonations = async () => {
+    try {
+      const response = await fetch("/api/donations/all");
+      const data = await response.json();
+      if (data.success) {
+        setDonations(data.donations);
+      } else {
+        throw new Error(data.message || "Failed to fetch all donations");
       }
     } catch (error) {
       setError((prevError) => prevError + " " + error.message);
