@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import StatsWidget from "../components/StatsWidget";
 import DashList from "./DashList";
 import { Link } from "react-router-dom";
+import VolunteerPiChart from "../charts/VolunteerPiChart";
+import { updateApplicationData } from "../charts/data.js";
 
 function MainPage() {
   const [isSidebar, setIsSidebar] = useState(false);
@@ -15,6 +17,12 @@ function MainPage() {
   const [pendingApplications, setPendingApplications] = useState([]);
   const [current, setCurrent] = useState([]);
   const [heading, setHeading] = useState("");
+
+  let newApplicationData = [
+    { name: "Accepted Applications", value: 0 },
+    { name: "Rejected Applications", value: 1 },
+    { name: "Pending Applications", value: 0 },
+  ];
 
   const fetchTotalAmount = async () => {
     try {
@@ -59,6 +67,7 @@ function MainPage() {
       const response = await fetch("/api/volunteers/accepted");
       const data = await response.json();
       setAcceptedApplications(data);
+      newApplicationData[0].value = data.length;
     } catch (error) {
       console.error("Error getting accepted applications:", error);
     }
@@ -69,6 +78,7 @@ function MainPage() {
       const response = await fetch("/api/volunteers/rejected");
       const data = await response.json();
       setRejectedApplications(data);
+      newApplicationData[1].value = data.length;
     } catch (error) {
       console.error("Error getting rejected applications:", error);
     }
@@ -79,6 +89,9 @@ function MainPage() {
       const response = await fetch("/api/volunteers/pending");
       const data = await response.json();
       setPendingApplications(data);
+      setCurrent(data);
+      newApplicationData[2].value = data.length;
+      updateApplicationData(newApplicationData);
     } catch (error) {
       console.error("Error getting number of pending applications:", error);
     }
@@ -93,8 +106,9 @@ function MainPage() {
       await getAcceptedApplications();
       await getRejectedApplications();
       await getPendingApplications();
-      setCurrent(pendingApplications);
+
       setHeading("Pending Applications");
+
       setIsLoading(false);
     };
 
@@ -247,9 +261,16 @@ function MainPage() {
                 pendingApplications={pendingApplications.length}
               />
             </div>
-            <div className="flex w-full lg:flex-row flex-col">
+            <div className="flex w-full lg:flex-row flex-col rounded-lg gap-5">
               <DashList applications={current} heading={heading} />
-              <div className="w-1/4 h-20"></div>
+              <div className="w-1/4 h-screen mint-1-bg flex justify-center rounded-lg">
+                <div className="w-44 h-44 my-10">
+                  <VolunteerPiChart />
+                  <div className="text-center font-semibold">
+                    Applications Chart
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
