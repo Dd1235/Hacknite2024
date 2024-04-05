@@ -59,34 +59,36 @@ function VolunteerDetails() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-8">
-      <h1 className="text-3xl font-bold text-purple-700 mb-4">
-        Volunteer Details
-      </h1>
-      <ul className="list-disc list-inside bg-white shadow-md rounded-lg p-6 mb-6">
-        {Object.entries(volunteer)
-          .slice(1, -3)
-          .map(([key, value]) => (
-            <li key={key} className="border-b border-gray-200 pb-2 mt-2">
-              <strong className="font-semibold">{key}:</strong>{" "}
-              {key === "availableDays" ? value.join(", ") : value}
-            </li>
-          ))}
-      </ul>
+    <div>
+      <div className="max-w-4xl mx-auto p-8">
+        <h1 className="text-3xl font-bold text-purple-700 mb-4">
+          Volunteer Details
+        </h1>
+        <ul className="list-disc list-inside bg-white shadow-md rounded-lg p-6 mb-6">
+          {Object.entries(volunteer)
+            .slice(1, -3)
+            .map(([key, value]) => (
+              <li key={key} className="border-b border-gray-200 pb-2 mt-2">
+                <strong className="font-semibold">{key}:</strong>{" "}
+                {key === "availableDays" ? value.join(", ") : value}
+              </li>
+            ))}
+        </ul>
 
-      <div className="flex justify-between space-x-4">
-        <button
-          onClick={handleAccept}
-          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          Accept
-        </button>
-        <button
-          onClick={handleReject}
-          className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          Reject
-        </button>
+        <div className="flex justify-between space-x-4">
+          <button
+            onClick={handleAccept}
+            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Accept
+          </button>
+          <button
+            onClick={handleReject}
+            className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Reject
+          </button>
+        </div>
       </div>
     </div>
   );

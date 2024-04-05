@@ -11,7 +11,7 @@ export default function GetInvolved(props) {
   return (
     <div className="dark:dark-bg">
       <div className="flex flex-col items-center justify-end overflow-hidden">
-        <div className="h-[10vh]"></div>
+        <div className="h-[15vh]"></div>
         <svg
           className="absolute h-[100%] max-w-none w-auto self-end"
           xmlns="http://www.w3.org/2000/svg"

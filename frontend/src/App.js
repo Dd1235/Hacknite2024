@@ -22,8 +22,8 @@ import VolunteerForm from "./pages/VolunteerForm";
 import PartnerForm from "./pages/PartnerForm";
 import VolunteerManagement from "./pages/dummyVolunteerOperations";
 import ThankVolunteers from "./pages/ThankVolunteers";
-import DonationOperations from "./pages/dummyDonationOperations";
-import MainPage from "./pages/dummyHandleApplications";
+import DonationOperations from "./pages/DonationOperations";
+import MainPage from "./pages/HandleApplications";
 import VolunteerDetails from "./pages/dummyVoluneerCard";
 import PartnersStats from "./pages/dummyPartnerOperatons";
 

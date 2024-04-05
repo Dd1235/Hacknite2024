@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -12,101 +12,114 @@ import {
 } from "recharts";
 
 function ImpactOverTime() {
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  const fetchTotalAmount = async () => {
+    try {
+      const response = await fetch("/api/donations/totalAmount");
+      const data = await response.json();
+      if (data.success) {
+        setTotalAmount(data.totalAmount);
+      } else {
+        throw new Error(data.message || "Failed to fetch the total amount");
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchTotalAmount();
+      setIsLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
   let data = [
     {
-      year: "2010",
-      beneficiaries: 900,
-      communities: 20,
-      schools: 5,
-    },
-    {
-      year: "2011",
-      beneficiaries: 1400,
-      communities: 25,
-      schools: 7,
-    },
-    {
-      year: "2012",
-      beneficiaries: 2100,
-      communities: 30,
-      schools: 10,
-    },
-    {
-      year: "2013",
-      beneficiaries: 2400,
-      communities: 35,
-      schools: 12,
-    },
-    {
       year: "2014",
-      beneficiaries: 2900,
-      communities: 40,
-      schools: 15,
+      beneficiaries: 751,
+      communities: 21,
+      schools: 6,
     },
     {
       year: "2015",
-      beneficiaries: 3800,
-      communities: 45,
-      schools: 18,
+      beneficiaries: 1300,
+      communities: 26,
+      schools: 8,
     },
     {
       year: "2016",
-      beneficiaries: 3500,
-      communities: 50,
-      schools: 20,
+      beneficiaries: 2174,
+      communities: 33,
+      schools: 10,
     },
     {
       year: "2017",
-      beneficiaries: 4600,
-      communities: 55,
-      schools: 22,
+      beneficiaries: 2426,
+      communities: 38,
+      schools: 16,
     },
     {
       year: "2018",
-      beneficiaries: 5200,
-      communities: 60,
-      schools: 25,
+      beneficiaries: 3181,
+      communities: 42,
+      schools: 19,
     },
     {
       year: "2019",
-      beneficiaries: 5000,
+      beneficiaries: 4119,
+      communities: 49,
+      schools: 22,
+    },
+    {
+      year: "2020",
+      beneficiaries: 3881,
+      communities: 56,
+      schools: 23,
+    },
+    {
+      year: "2021",
+      beneficiaries: 4812,
       communities: 65,
       schools: 28,
     },
     {
-      year: "2020",
-      beneficiaries: 6000,
-      communities: 70,
-      schools: 30,
+      year: "2022",
+      beneficiaries: 5516,
+      communities: 66,
+      schools: 29,
+    },
+    {
+      year: "2023",
+      beneficiaries: 5428,
+      communities: 74,
+      schools: 34,
+    },
+    {
+      year: "2024",
+      beneficiaries: 1300,
+      communities: 10,
+      schools: 5,
     },
   ];
 
-  const generateRealisticData = (data) => {
-    return data.map(({ year, beneficiaries, communities, schools }, index) => ({
-      year,
-      beneficiaries:
-        beneficiaries + Math.round(Math.random() * 300) - 150 + index * 50,
-      communities: communities + Math.round(Math.random() * 5) - 2 + index * 1,
-      schools: schools + Math.round(Math.random() * 3) - 1 + index * 0.5,
-    }));
-  };
-
-  data = generateRealisticData(data);
-
-  // Add random deviation to each data point
-  const randomizeData = (data) => {
-    return data.map(
-      ({ year, beneficiaries, communities, schools, healthcare_centers }) => ({
-        year,
-        beneficiaries: beneficiaries + Math.round(Math.random() * 1000),
-        communities: communities + Math.round(Math.random() * 10),
-        schools: schools + Math.round(Math.random() * 5),
-        healthcare_centers: healthcare_centers + Math.round(Math.random() * 3),
-      })
+  if (isLoading) return <div className="text-center text-lg">Loading...</div>;
+  if (error)
+    return (
+      <div className="text-center text-lg text-red-500">Error: {error}</div>
     );
-  };
 
-  const randomizedData = randomizeData(data);
+  console.log(totalAmount);
+  console.log(data[10]);
+  data[10].beneficiaries =
+    data[10].beneficiaries + Math.floor(totalAmount / 500);
+  data[10].communities = data[10].communities + Math.floor(totalAmount / 12500);
+  data[10].schools = data[10].schools + Math.floor(totalAmount / 20000);
 
   return (
     <ResponsiveContainer width="100%" height="100%">
