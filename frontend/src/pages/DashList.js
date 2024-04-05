@@ -7,7 +7,7 @@ export default function DashList(props) {
     <div className="lg:w-4/5">
       <div className="bg-white py-4 px-6 rounded-md mb-6">
         <h1 className="text-lg sm:text-3xl md:text-4xl lg:text-5xl font-bold playfair leading-5">
-          Pending Applications
+          {props.heading}
         </h1>
       </div>
       <div className="md:mt-6 flex flex-col gap-5">

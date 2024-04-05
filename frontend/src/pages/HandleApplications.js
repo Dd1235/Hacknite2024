@@ -13,6 +13,8 @@ function MainPage() {
   const [acceptedApplications, setAcceptedApplications] = useState([]);
   const [rejectedApplications, setRejectedApplications] = useState([]);
   const [pendingApplications, setPendingApplications] = useState([]);
+  const [current, setCurrent] = useState([]);
+  const [heading, setHeading] = useState("");
 
   const fetchTotalAmount = async () => {
     try {
@@ -91,6 +93,8 @@ function MainPage() {
       await getAcceptedApplications();
       await getRejectedApplications();
       await getPendingApplications();
+      setCurrent(pendingApplications);
+      setHeading("Pending Applications");
       setIsLoading(false);
     };
 
@@ -148,13 +152,22 @@ function MainPage() {
                 </Link>
               </li>
               <li>
-                <button className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <button
+                  onClick={() => {}}
+                  className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                >
                   <i className="fa-solid fa-heart  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                   <span className="ms-3">Donors</span>
                 </button>
               </li>
               <li>
-                <button className="flex w-full items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <button
+                  onClick={() => {
+                    setCurrent(applications);
+                    setHeading("All Applications");
+                  }}
+                  className="flex w-full items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                >
                   <i className="fa-solid fa-users text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                   <span className="ms-3">All Applications</span>
                   <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
@@ -163,7 +176,13 @@ function MainPage() {
                 </button>
               </li>
               <li>
-                <button className="flex w-full items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <button
+                  onClick={() => {
+                    setCurrent(acceptedApplications);
+                    setHeading("Accepted Application");
+                  }}
+                  className="flex w-full items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                >
                   <i className="fa-solid fa-square-check  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                   <span className="flex-1 ms-3 whitespace-nowrap">
                     Accepted Applications
@@ -174,7 +193,13 @@ function MainPage() {
                 </button>
               </li>
               <li>
-                <button className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <button
+                  onClick={() => {
+                    setCurrent(rejectedApplications);
+                    setHeading("Rejected Applications");
+                  }}
+                  className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                >
                   <i className="fa-solid fa-square-xmark  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                   <span className="flex-1 ms-3 whitespace-nowrap">
                     Rejected Applications
@@ -185,7 +210,13 @@ function MainPage() {
                 </button>
               </li>
               <li>
-                <button className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <button
+                  onClick={() => {
+                    setCurrent(pendingApplications);
+                    setHeading("Pending Applications");
+                  }}
+                  className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                >
                   <i className="fa-solid fa-clock  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                   <span className="flex-1 ms-3 whitespace-nowrap">
                     Pending Applications
@@ -217,7 +248,7 @@ function MainPage() {
               />
             </div>
             <div className="flex w-full lg:flex-row flex-col">
-              <DashList applications={pendingApplications} />
+              <DashList applications={current} heading={heading} />
               <div className="w-1/4 h-20"></div>
             </div>
           </div>
