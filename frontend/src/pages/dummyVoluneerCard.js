@@ -8,10 +8,15 @@ function VolunteerDetails() {
   const [volunteer, setVolunteer] = useState(null);
   const navigate = useNavigate();
 
+  const base_url =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.REACT_APP_BASE_URL}`
+      : "";
+
   useEffect(() => {
     const fetchVolunteer = async () => {
       try {
-        const response = await fetch(`/api/volunteers/${id}`);
+        const response = await fetch(`${base_url}/api/volunteers/${id}`);
         const data = await response.json();
         setVolunteer(data);
       } catch (error) {
@@ -24,7 +29,7 @@ function VolunteerDetails() {
 
   const handleAccept = async () => {
     try {
-      await fetch(`/api/volunteers/${id}/status`, {
+      await fetch(`${base_url}/api/volunteers/${id}/status`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +45,7 @@ function VolunteerDetails() {
 
   const handleReject = async () => {
     try {
-      await fetch(`/api/volunteers/${id}/status`, {
+      await fetch(`${base_url}/api/volunteers/${id}/status`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

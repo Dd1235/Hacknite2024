@@ -5,6 +5,11 @@ export default function DonorShoutout() {
   const [error, setError] = useState("");
   const [recentDonations, setRecentDonations] = useState([]);
 
+  const base_url =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.REACT_APP_BASE_URL}`
+      : "";
+
   const getTime = (createdAt) => {
     const createdAtDate = new Date(createdAt);
     const currentDate = new Date();
@@ -32,7 +37,7 @@ export default function DonorShoutout() {
 
   const fetchRecentDonations = async () => {
     try {
-      const response = await fetch("/api/donations/getrecent/4"); // Adjust the URL as needed
+      const response = await fetch(`${base_url}/api/donations/getrecent/4`); // Adjust the URL as needed
       const data = await response.json();
       if (data.success) {
         setRecentDonations(data.donations);

@@ -10,9 +10,14 @@ function VolunteerManagement() {
   // like application.firstName, application.birthDate, etc. go through backend/models/volunteerModel
   // use hooks to set the states, like i have done in the other form is possible
 
+  const base_url =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.REACT_APP_BASE_URL}`
+      : "";
+
   const getVolunteersPerYear = async () => {
     try {
-      const response = await fetch("/api/volunteers/peryear");
+      const response = await fetch(`${base_url}/api/volunteers/peryear`);
       const data = await response.json();
       setVolunteersPerYear(data);
     } catch (error) {
@@ -22,7 +27,7 @@ function VolunteerManagement() {
 
   const getAllApplications = async () => {
     try {
-      const response = await fetch("/api/volunteers/all");
+      const response = await fetch(`${base_url}/api/volunteers/all`);
       const data = await response.json();
       setApplications(data);
     } catch (error) {
@@ -32,7 +37,7 @@ function VolunteerManagement() {
 
   const getPendingApplications = async () => {
     try {
-      const response = await fetch("/api/volunteers/pending");
+      const response = await fetch(`${base_url}/api/volunteers/pending`);
       const data = await response.json();
       setApplications(data);
     } catch (error) {
@@ -42,7 +47,7 @@ function VolunteerManagement() {
 
   const getAcceptedApplications = async () => {
     try {
-      const response = await fetch("/api/volunteers/accepted");
+      const response = await fetch(`${base_url}/api/volunteers/accepted`);
       const data = await response.json();
       setApplications(data);
     } catch (error) {
@@ -52,7 +57,7 @@ function VolunteerManagement() {
 
   const getRejectedApplications = async () => {
     try {
-      const response = await fetch("/api/volunteers/rejected");
+      const response = await fetch(`${base_url}/api/volunteers/rejected`);
       const data = await response.json();
       setApplications(data);
     } catch (error) {
@@ -62,7 +67,7 @@ function VolunteerManagement() {
 
   const getNumberOfAcceptedApplications = async () => {
     try {
-      const response = await fetch("/api/volunteers/accepted/count");
+      const response = await fetch(`${base_url}/api/volunteers/accepted/count`);
       const data = await response.json();
       alert(`Number of accepted applications: ${data.count}`);
     } catch (error) {
@@ -72,7 +77,7 @@ function VolunteerManagement() {
 
   const getNumberOfPendingApplications = async () => {
     try {
-      const response = await fetch("/api/volunteers/pending/count");
+      const response = await fetch(`${base_url}/api/volunteers/pending/count`);
       const data = await response.json();
       alert(`Number of pending applications: ${data.count}`);
     } catch (error) {

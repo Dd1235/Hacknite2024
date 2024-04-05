@@ -5,10 +5,15 @@ const PartnersStats = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const base_url =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.REACT_APP_BASE_URL}`
+      : "";
+
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await fetch("/api/partners/stats");
+        const response = await fetch(`${base_url}/api/partners/stats`);
         if (!response.ok) throw new Error("Failed to fetch stats");
 
         const data = await response.json();

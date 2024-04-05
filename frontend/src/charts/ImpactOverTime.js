@@ -16,9 +16,14 @@ function ImpactOverTime() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
+  let base_url =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.REACT_APP_BASE_URL}`
+      : "";
+
   const fetchTotalAmount = async () => {
     try {
-      const response = await fetch("/api/donations/totalAmount");
+      const response = await fetch(`${base_url}/api/donations/totalAmount`);
       const data = await response.json();
       if (data.success) {
         setTotalAmount(data.totalAmount);
