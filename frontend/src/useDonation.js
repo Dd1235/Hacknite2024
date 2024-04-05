@@ -6,6 +6,11 @@ export const useDonation = () => {
   const [isLoading, setIsLoading] = useState(false);
   const history = useNavigate();
 
+  let url =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.REACT_APP_BASE_URL}/api/donations`
+      : "/api/donations";
+
   const submitForm = async (
     firstName,
     lastName,
@@ -17,7 +22,7 @@ export const useDonation = () => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("/api/donations", {
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
