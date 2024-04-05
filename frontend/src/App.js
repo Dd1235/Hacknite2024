@@ -28,6 +28,8 @@ import VolunteerDetails from "./pages/dummyVoluneerCard";
 import PartnersStats from "./pages/dummyPartnerOperatons";
 import NewsletterSignup from "./components/NewsletterSignup";
 
+// im development mode in package.json change "proxy" : "http://localhost:4000"
+
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("color-theme") === "dark" ||

@@ -1,4 +1,5 @@
 {
+    "proxy": "https://ngo-backend-lt2y.onrender.com/",
     "name": "node",
     "version": "1.0.0",
     "description": "",
