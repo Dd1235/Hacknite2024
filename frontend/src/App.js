@@ -26,6 +26,7 @@ import DonationOperations from "./pages/DonationOperations";
 import MainPage from "./pages/HandleApplications";
 import VolunteerDetails from "./pages/dummyVoluneerCard";
 import PartnersStats from "./pages/dummyPartnerOperatons";
+import NewsletterSignup from "./components/NewsletterSignup";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(
@@ -40,6 +41,14 @@ function App() {
   }, [isDarkMode]);
 
   const router = createBrowserRouter([
+    {
+      path: "/newsletter-signup",
+      element: (
+        <>
+          <NewsletterSignup />
+        </>
+      ),
+    },
     {
       path: "/partner-stats",
       element: (
