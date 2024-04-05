@@ -148,7 +148,11 @@ export default function Navbar(props) {
             </button>
           </div>
           <div
-            className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+            className={
+              isMenuOpen
+                ? "items-center justify-between w-full md:flex md:w-auto md:order-1"
+                : "items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+            }
             id="navbar-sticky"
           >
             <ul
