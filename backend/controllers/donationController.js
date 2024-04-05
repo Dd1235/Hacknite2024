@@ -10,10 +10,10 @@ const isValidPhoneNumber = (value) => {
 async function sendEmailOutlook(donation) {
   nodeoutlook.sendEmail({
     auth: {
-      user: "fruitygoosedeath@outlook.com",
-      pass: "Fruitygoose@123",
+      user: `${process.env.SMTP_USER}`,
+      pass: `${process.env.SMTP_PASS}`,
     },
-    from: "fruitygoosedeath@outlook.com",
+    from: `${process.env.SMTP_USER}`,
     to: `${donation.email}`,
     subject: `Thank you for your donation!`,
     html: `<b>Dear ${donation.firstName},</b><br>Thank you for your generous donation of Rs. ${donation.amount}. Your support helps us continue our mission.`,
@@ -128,11 +128,23 @@ const numberofUniqueDonors = async (req, res) => {
     res.status(400).json({ success: false, error: error.message });
   }
 };
+
+const getAllDonations = async (req, res) => {
+  try {
+    const donations = await Donation.find({}).sort({ createdAt: -1 });
+    res.status(200).json(donations);
+  } catch (error) {
+    console.error("Error fetching all donations:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 module.exports = {
   makeDonation,
   totalAmount,
   numberofUniqueDonors,
   getRecentDonations,
+  getAllDonations,
 };
 
 // to instead use breva, don't delete this comment!
@@ -144,8 +156,8 @@ module.exports = {
 //     secure: false,
 //     requireTLS: true,
 //     auth: {
-//       user: "deepya1235@gmail.com",
-//       pass: "xsmtpsib-04bd79881415694db953f1f20cd7b68219256d6590a5a5d4ed6416d131e6bfdf-2OIaqJYswUrEGCvt",
+//       user:
+//       pass:
 //     },
 //   });
 

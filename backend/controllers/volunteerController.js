@@ -24,10 +24,10 @@ async function sendEmail(volunteer) {
 
   nodeoutlook.sendEmail({
     auth: {
-      user: "fruitygoosedeath@outlook.com",
-      pass: "Fruitygoose@123",
+      user: `${process.env.SMTP_USER}`,
+      pass: `${process.env.SMTP_PASS}`,
     },
-    from: "fruitygoosedeath@outlook.com",
+    from: `${process.env.SMTP_USER}`,
     to: volunteer.email,
     replyTo: volunteer.email,
     ...emailContent,
