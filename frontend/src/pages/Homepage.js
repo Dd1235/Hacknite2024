@@ -11,6 +11,7 @@ import Mission from "../components/Mission";
 import CompanyTrust from "../components/CompanyTrust";
 import useScrollAnimation from "../components/useScrollAnimation";
 import DonorShoutout from "../components/DonorShoutout";
+import NewsletterSignup from "../components/NewsletterSignup";
 
 export default function Homepage(props) {
   const { ref: missionRef, isVisible: isMissionVisible } = useScrollAnimation();
@@ -30,11 +31,13 @@ export default function Homepage(props) {
         src={props.isDarkMode ? drkline : line}
         className="h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
         style={{ backgroundColor: "#BF735A" }}
+        alt="line"
       ></img>
       <div className="h-[10vh] flex justify-start">
         <img
           src="https://cdn.dribbble.com/users/4281/screenshots/1523012/media/0673c6f8b4e00a30cfa5423eca6b5be2.png"
           className="absolute -z-[1] w-32 md:w-40 lg:w-60 dark:hidden"
+          alt="doodle"
         />
       </div>
       <div
@@ -50,11 +53,13 @@ export default function Homepage(props) {
         <img
           src="https://cdn.dribbble.com/users/4281/screenshots/6797345/tiny_dood.png"
           className="absolute -z-[1] w-40 -top-10 md:w-60 md:-top-20 lg:w-1/5 lg:-top-32"
+          alt="doodle"
         />
       </div>
       <img
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
+        alt="line"
       ></img>
       <ParaRow
         title="Our Approach"
@@ -68,6 +73,7 @@ export default function Homepage(props) {
       <img
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
+        alt="line"
       ></img>
       <Images
         image1="https://imgs.search.brave.com/ELk9d51wvhH5L1CVKHi12rEXNr4pzAEDZIJT-kPs854/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/cm9vbXRvcmVhZC5v/cmcvbWVkaWEvczVp/Zmpsc3IvMW5lcGFs/LmpwZz9jcm9wPTAs/MC4wMjgwMzIyNzAw/NDk3OTQzODIsMCww/LjAyNjc2MjI1MDQ5/ODE1MDkzMiZjcm9w/bW9kZT1wZXJjZW50/YWdlJndpZHRoPTcz/MCZoZWlnaHQ9NDYw/JnJuZD0xMzI3NTUx/MjE2NTQ3MzAwMDAm/Zm9ybWF0PXdlYnAm/cXVhbGl0eT04MA"
