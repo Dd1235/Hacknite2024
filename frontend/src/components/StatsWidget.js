@@ -2,28 +2,46 @@ import React from "react";
 
 export default function StatsWidget(props) {
   return (
-    <div className="sanspro mint-1-bg flex py-7 h-full w-full justify-evenly rounded-md">
-      <div className="w-52 border-r-4 mint-2-border pl-1">
-        <div className="transform-scale font-semibold font-sm">
+    <div className="sanspro mint-1-bg sm:flex grid grid-cols-2 gap-3 sm:gap-1 text-center py-7 h-full px-5 sm:px-0 w-full justify-evenly rounded-md">
+      <div className="sm:w-52 border-r-4 mint-2-border flex flex-col justify-center items-center">
+        <div className="font-semibold text-sm lg:text-base w-4/5">
           Total Donations
         </div>
-        <div className="text-3xl font-semi-bold">₹63,802</div>
+        <div className="text-xl md:text-2xl lg:text-3xl font-semibold">
+          ₹{props.totalAmount}
+        </div>
       </div>
-      <div className="w-52 border-r-4 mint-2-border pl-1">
-        <div className="transform-scale font-base">Unique Donors</div>
-        <div className="text-3xl font-semi-bold">15</div>
+      <div className="sm:w-52 border-r-4 mint-2-border flex flex-col justify-center items-center">
+        <div className="font-semibold text-sm lg:text-base w-4/5">
+          Unique Donors
+        </div>
+        <div className="text-xl md:text-2xl lg:text-3xl font-semibold">
+          {props.uniqueDonors}
+        </div>
       </div>
-      <div className="w-52 border-r-4 mint-2-border pl-1">
-        <div className="transform-scale font-base">Accepted Applications</div>
-        <div className="text-3xl font-semi-bold">15</div>
+      <div className="sm:w-52 border-r-4 mint-2-border flex flex-col justify-center items-center">
+        <div className="font-semibold text-sm lg:text-base w-4/5">
+          Accepted Applications
+        </div>
+        <div className="text-xl md:text-2xl lg:text-3xl font-semibold">
+          {props.acceptedApplications}
+        </div>
       </div>
-      <div className="w-52 border-r-4 mint-2-border pl-1">
-        <div className="transform-scale font-base">Rejected Applications</div>
-        <div className="text-3xl font-semi-bold">9</div>
+      <div className="sm:w-52 border-r-4 mint-2-border flex flex-col justify-center items-center">
+        <div className="font-semibold text-sm lg:text-base w-4/5">
+          Rejected Applications
+        </div>
+        <div className="text-xl md:text-2xl lg:text-3xl font-semibold">
+          {props.rejectedApplications}
+        </div>
       </div>
-      <div className="w-52 mint-2-border pl-1">
-        <div className="transform-scale  font-base">Pending Applications</div>
-        <div className="text-3xl font-semi-bold">5</div>
+      <div className="sm:w-52 border-r-4 sm:border-r-0 mint-2-border flex flex-col justify-center items-center">
+        <div className="font-semibold text-sm lg:text-base w-4/5">
+          Pending Applications
+        </div>
+        <div className="text-xl md:text-2xl lg:text-3xl font-semibold">
+          {props.pendingApplications}
+        </div>
       </div>
     </div>
   );
