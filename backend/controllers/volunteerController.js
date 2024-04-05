@@ -1,6 +1,40 @@
 const Volunteer = require("../models/volunteerModel");
 const { parsePhoneNumberFromString } = require("libphonenumber-js");
 const mongoose = require("mongoose");
+var nodeoutlook = require("nodejs-nodemailer-outlook");
+
+async function sendEmail(volunteer) {
+  let emailContent = {};
+
+  if (volunteer.status === "accepted") {
+    emailContent = {
+      subject: `Welcome aboard, ${volunteer.firstName}!`,
+      html: `<b>Dear ${volunteer.firstName},</b><br>We are thrilled to welcome you aboard as a volunteer. Thank you for joining us in our mission.`,
+      text: `Dear ${volunteer.firstName},\nWe are thrilled to welcome you aboard as a volunteer. Thank you for joining us in our mission.`,
+    };
+  } else if (volunteer.status === "rejected") {
+    emailContent = {
+      subject: `Regarding your volunteer application`,
+      html: `<b>Dear ${volunteer.firstName},</b><br>We regret to inform you that your volunteer application has been rejected. Thank you for your interest in volunteering with us.`,
+      text: `Dear ${volunteer.firstName},\nWe regret to inform you that your volunteer application has been rejected. Thank you for your interest in volunteering with us.`,
+    };
+  } else {
+    return;
+  }
+
+  nodeoutlook.sendEmail({
+    auth: {
+      user: "fruitygoosedeath@outlook.com",
+      pass: "Fruitygoose@123",
+    },
+    from: "fruitygoosedeath@outlook.com",
+    to: volunteer.email,
+    replyTo: volunteer.email,
+    ...emailContent,
+    onError: (e) => console.log(e),
+    onSuccess: (i) => console.log(i),
+  });
+}
 
 const isValidPhoneNumber = (value) => {
   if (typeof value !== "string") {
@@ -85,15 +119,22 @@ const updateStatus = async (req, res) => {
     return res.status(400).json({ error: "No such application " });
   }
   const newStatus = req.body.status;
-  const volunteer = await Volunteer.findOneAndUpdate(
-    { _id: id },
-    { status: newStatus }
-  );
-  if (!volunteer) {
-    return res.status(404).json({ error: "No such application... " });
-  }
+  try {
+    const volunteer = await Volunteer.findOneAndUpdate(
+      { _id: id },
+      { status: newStatus },
+      { new: true }
+    );
+    if (!volunteer) {
+      return res.status(404).json({ error: "No such application... " });
+    }
+    await sendEmail(volunteer);
 
-  res.status(200).json(volunteer);
+    res.status(200).json(volunteer);
+  } catch (error) {
+    console.error("Error updating volunteer status:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
 
 const getAllApplications = async (req, res) => {
@@ -145,7 +186,6 @@ const getPerYear = async (req, res) => {
       },
       {
         $addFields: {
-          // Convert createdAt to a date if it's a string
           convertedDate: {
             $cond: {
               if: { $eq: [{ $type: "$createdAt" }, "string"] },
@@ -157,7 +197,7 @@ const getPerYear = async (req, res) => {
       },
       {
         $project: {
-          year: { $year: "$convertedDate" }, // Use the converted date here
+          year: { $year: "$convertedDate" },
         },
       },
       {
@@ -171,7 +211,7 @@ const getPerYear = async (req, res) => {
     res.status(200).json(applicationsPerYear);
   } catch (error) {
     console.error("Error fetching applications per year:", error);
-    res.status(500).json({ error: error.message }); // It's better to return error.message
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -185,4 +225,5 @@ module.exports = {
   getNumberOfPendingApplications,
   getVolunteerById,
   getPerYear,
+  sendEmail,
 };
