@@ -6,11 +6,14 @@ export const useSignup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { dispatch } = useAuthContext();
 
+  let base_url =
+    process.env.NODE_ENV === "production" ? process.env.REACT_APP_BASE_URL : "";
+
   const signup = async (email, password) => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("/api/user/signup", {
+    const response = await fetch(`${base_url}/api/user/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

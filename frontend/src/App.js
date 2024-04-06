@@ -56,6 +56,10 @@ function App() {
       path: "/signup",
       element: !user ? <Signup /> : <Navigate to="/" />,
     },
+    {
+      path: "/login",
+      element: !user ? <Login /> : <Navigate to="/" />,
+    },
 
     {
       path: "/newsletter-signup",
@@ -83,12 +87,13 @@ function App() {
     },
     {
       path: "/applications",
-      element: (
-        <>
-          <MainPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-        </>
+      element: user ? (
+        <MainPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      ) : (
+        <Navigate to="/login" replace />
       ),
     },
+
     {
       path: "/donation-operations",
       element: (
