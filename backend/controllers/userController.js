@@ -34,30 +34,14 @@ const signupUser = async (req, res) => {
 };
 
 const resetPassword = async (req, res) => {
-  const { email, token, newPassword } = req.body;
+  const { email, newPassword } = req.body;
 
   try {
-    const user = await UserAdmin.findOne({
-      email: email,
-      resetPasswordToken: token,
-      resetPasswordExpires: { $gt: Date.now() },
-    });
+    const result = await UserAdmin.resetPassword(email, newPassword);
 
-    if (!user) {
-      throw new Error("Password reset token is invalid or has expired.");
-    }
-
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(newPassword, salt);
-
-    user.password = hashedPassword;
-    user.resetPasswordToken = undefined;
-    user.resetPasswordExpires = undefined;
-    await user.save();
-
-    res.status(200).json({ message: "Password has been updated." });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(200).json({ message: "Password successfully reset.", result });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 };
 

@@ -69,6 +69,15 @@ const Login = () => {
         Log in
       </button>
       {error && <div className="text-sm text-red-600">{error}</div>}
+      <div className="text-center mt-4">
+        <button
+          type="button"
+          onClick={() => navigate("/forgot-password")} // Adjust the path as needed
+          className="text-sm text-indigo-600 hover:text-indigo-500"
+        >
+          Forgot Password?
+        </button>
+      </div>
     </form>
   );
 };

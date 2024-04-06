@@ -32,6 +32,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { Navigate } from "react-router-dom";
+import ForgotPassword from "./pages/forgotPassword";
 
 // import { DonationDetails } from "./pages/dummyDonationCard";
 
@@ -52,6 +53,14 @@ function App() {
   }, [isDarkMode]);
 
   const router = createBrowserRouter([
+    {
+      path: "/forgot-password",
+      element: (
+        <>
+          <ForgotPassword />
+        </>
+      ),
+    },
     {
       path: "/signup",
       element: !user ? <Signup /> : <Navigate to="/" />,
