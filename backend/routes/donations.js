@@ -7,6 +7,7 @@ const {
   numberofUniqueDonors,
   getRecentDonations,
   getAllDonations,
+  getDonationById,
 } = require("../controllers/donationController");
 
 // /api/donations
@@ -17,4 +18,5 @@ router.get("/totalAmount", totalAmount);
 router.get("/donors/count", numberofUniqueDonors);
 router.get("/getrecent/:n", getRecentDonations);
 router.get("/all", getAllDonations);
+router.get("/:id", getDonationById);
 module.exports = router;

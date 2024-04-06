@@ -139,12 +139,28 @@ const getAllDonations = async (req, res) => {
   }
 };
 
+const getDonationById = async (id) => {
+  try {
+    const donation = await Donation.findById(id);
+    if (!donation) {
+      console.log("Donation not found!");
+      return null;
+    }
+    console.log("Donation found:", donation);
+    return donation;
+  } catch (error) {
+    console.error("Error fetching donation by ID:", error);
+    return null;
+  }
+};
+
 module.exports = {
   makeDonation,
   totalAmount,
   numberofUniqueDonors,
   getRecentDonations,
   getAllDonations,
+  getDonationById,
 };
 
 // to instead use breva, don't delete this comment!
