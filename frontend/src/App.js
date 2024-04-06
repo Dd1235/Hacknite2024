@@ -28,7 +28,7 @@ import VolunteerDetails from "./pages/dummyVoluneerCard";
 import PartnersStats from "./pages/dummyPartnerOperatons";
 import NewsletterSignup from "./components/NewsletterSignup";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import DonationDetails from "./pages/dummyDonationCard";
+// import { DonationDetails } from "./pages/dummyDonationCard";
 
 // im development mode in package.json change "proxy" : "http://localhost:4000"
 // "vite": "^5.2.6"
@@ -46,14 +46,6 @@ function App() {
   }, [isDarkMode]);
 
   const router = createBrowserRouter([
-    {
-      path: "/donor-form/:id",
-      element: (
-        <>
-          <DonationDetails />
-        </>
-      ),
-    },
     {
       path: "/newsletter-signup",
       element: (

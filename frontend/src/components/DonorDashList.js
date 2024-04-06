@@ -30,7 +30,7 @@ function DonorDashList(props) {
               </div>
             </div>
             <Link
-              to={`/donor-form/${application._id}`}
+              to={`/donation-details/${application._id}`}
               state={{ donation: application }}
               className="h-fit mx-4 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-base px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
             >
