@@ -86,9 +86,9 @@ export default function PartnerForm() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
@@ -102,7 +102,7 @@ export default function PartnerForm() {
       >
         <div className="mb-6">
           <label
-            for="institution_name-partner"
+            htmlFor="institution_name-partner"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Institution name
@@ -121,8 +121,8 @@ export default function PartnerForm() {
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <label
-              // for="first_name-voluteer"
-              for="first_name-partner"
+              // htmlFor="first_name-voluteer"
+              htmlFor="first_name-partner"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               First name
@@ -139,7 +139,7 @@ export default function PartnerForm() {
           </div>
           <div>
             <label
-              for="last_name-partner"
+              htmlFor="last_name-partner"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Last name
@@ -156,7 +156,7 @@ export default function PartnerForm() {
           </div>
           <div>
             <label
-              for="phone-partner"
+              htmlFor="phone-partner"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Contact phone
@@ -174,7 +174,7 @@ export default function PartnerForm() {
         </div>
         <div className="mb-6">
           <label
-            for="email"
+            htmlFor="email"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Contact email
@@ -191,7 +191,7 @@ export default function PartnerForm() {
         </div>
         <div className="mb-6">
           <label
-            for="schedule-partner"
+            htmlFor="schedule-partner"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Message
@@ -217,7 +217,7 @@ export default function PartnerForm() {
             />
           </div>
           <label
-            for="remember"
+            htmlFor="remember"
             className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             I agree with the{" "}
