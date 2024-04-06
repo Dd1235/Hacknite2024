@@ -201,7 +201,7 @@ function MainPage(props) {
 
   if (isLoading)
     return (
-      <div className="text-center text-xl h-screen w-screen flex items-center justify-center flex-col dark:text-white">
+      <div className="text-center dark:dark-bg text-xl h-screen w-screen flex items-center justify-center flex-col dark:text-white">
         <div role="status">
           <svg
             aria-hidden="true"

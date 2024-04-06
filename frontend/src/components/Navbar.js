@@ -175,7 +175,7 @@ export default function Navbar(props) {
                     id={id}
                     onClick={() => {
                       HandleNav(id);
-                      setIsMenuOpen(!isMenuOpen);
+                      setIsMenuOpen(false);
                     }}
                   >
                     {id}

@@ -8,7 +8,7 @@ export default function StatsWidget(props) {
           Total Donations
         </div>
         <div className="text-xl md:text-2xl lg:text-3xl font-semibold">
-          ₹{props.totalAmount}
+          ₹{Number(props.totalAmount).toLocaleString()}
         </div>
       </div>
       <div className="sm:w-52 border-r-4 mint-2-border flex flex-col justify-center items-center">
