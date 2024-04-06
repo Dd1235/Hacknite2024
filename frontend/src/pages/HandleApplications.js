@@ -60,50 +60,63 @@ function MainPage(props) {
     }
   };
 
+  function filterItemsByStatus(items, status, index, update) {
+    const newData = items.filter((item) => item.status === status);
+    newApplicationData[index].value = newData.length;
+    if (update) {
+      setCurrent(newData);
+    }
+    return newData;
+  }
+
   const getAllApplications = async () => {
     try {
       const response = await fetch(`${base_url}/api/volunteers/all`);
       const data = await response.json();
       setApplications(data);
+      setAcceptedApplications(filterItemsByStatus(data, "accepted", 0, false));
+      setRejectedApplications(filterItemsByStatus(data, "rejected", 1, false));
+      setPendingApplications(filterItemsByStatus(data, "pending", 2, true));
+      updateApplicationData(newApplicationData);
     } catch (error) {
       console.error("Error getting all applications:", error);
     }
   };
 
-  const getAcceptedApplications = async () => {
-    try {
-      const response = await fetch(`${base_url}/api/volunteers/accepted`);
-      const data = await response.json();
-      setAcceptedApplications(data);
-      newApplicationData[0].value = data.length;
-    } catch (error) {
-      console.error("Error getting accepted applications:", error);
-    }
-  };
+  // const getAcceptedApplications = async () => {
+  //   try {
+  //     const response = await fetch(`${base_url}/api/volunteers/accepted`);
+  //     const data = await response.json();
+  //     setAcceptedApplications(data);
+  //     newApplicationData[0].value = data.length;
+  //   } catch (error) {
+  //     console.error("Error getting accepted applications:", error);
+  //   }
+  // };
 
-  const getRejectedApplications = async () => {
-    try {
-      const response = await fetch(`${base_url}/api/volunteers/rejected`);
-      const data = await response.json();
-      setRejectedApplications(data);
-      newApplicationData[1].value = data.length;
-    } catch (error) {
-      console.error("Error getting rejected applications:", error);
-    }
-  };
+  // const getRejectedApplications = async () => {
+  //   try {
+  //     const response = await fetch(`${base_url}/api/volunteers/rejected`);
+  //     const data = await response.json();
+  //     setRejectedApplications(data);
+  //     newApplicationData[1].value = data.length;
+  //   } catch (error) {
+  //     console.error("Error getting rejected applications:", error);
+  //   }
+  // };
 
-  const getPendingApplications = async () => {
-    try {
-      const response = await fetch(`${base_url}/api/volunteers/pending`);
-      const data = await response.json();
-      setPendingApplications(data);
-      setCurrent(data);
-      newApplicationData[2].value = data.length;
-      updateApplicationData(newApplicationData);
-    } catch (error) {
-      console.error("Error getting number of pending applications:", error);
-    }
-  };
+  // const getPendingApplications = async () => {
+  //   try {
+  //     const response = await fetch(`${base_url}/api/volunteers/pending`);
+  //     const data = await response.json();
+  //     setPendingApplications(data);
+  //     setCurrent(data);
+  //     newApplicationData[2].value = data.length;
+  //     updateApplicationData(newApplicationData);
+  //   } catch (error) {
+  //     console.error("Error getting number of pending applications:", error);
+  //   }
+  // };
 
   const getAllDonations = async () => {
     try {
@@ -169,9 +182,9 @@ function MainPage(props) {
       await fetchTotalAmount();
       await fetchUniqueDonorsCount();
       await getAllApplications();
-      await getAcceptedApplications();
-      await getRejectedApplications();
-      await getPendingApplications();
+      // await getAcceptedApplications();
+      // await getRejectedApplications();
+      // await getPendingApplications();
       await getAllDonations();
 
       setHeading("Pending Applications");
@@ -215,7 +228,7 @@ function MainPage(props) {
   const Main = () => {
     return (
       <div>
-        <div>
+        <div className="dark:dark-bg">
           <button
             type="button"
             className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -416,7 +429,7 @@ function MainPage(props) {
 
   const ApplicantCard = () => {
     return (
-      <div>
+      <div className="dark:dark-bg">
         <div className="max-w-4xl shadow sanspro mx-auto p-8 dark:dark-bg black-text dark:white-text">
           <h1 className="text-3xl font-bold black-text playfair mb-4 dark:white-text">
             <button
