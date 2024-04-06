@@ -27,13 +27,28 @@ function DonationDetails() {
     fetchDonation();
   }, [id]);
 
-  //   if (!donation) {
-  //     return <div>Loading...</div>;
-  //   }
-
   return (
     <div>
-      <h1>Donation Details</h1>
+      <div>
+        <div className="max-w-4xl shadow sanspro mx-auto p-8 dark:dark-bg black-text dark:white-text">
+          <h1 className="text-3xl font-bold black-text playfair mb-4 dark:white-text">
+            <button
+              className="mx-6 w-12 h-12 hover:bg-gray-300  rounded-full group"
+              onClick={() => navigate(-1)}
+            >
+              <i className="fa-solid fa-right-from-bracket text-2xl leading-9 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+            </button>
+            Donation Details
+          </h1>
+          <ul className="list-disc list-inside rounded-lg p-6 mb-6">
+            {Object.entries(donation).map(([key, value]) => (
+              <li key={key} className="border-b border-gray-200 pb-2 mt-2">
+                <strong className="font-semibold">{key}:</strong>{" "}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }

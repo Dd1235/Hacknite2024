@@ -1,6 +1,7 @@
 var nodeoutlook = require("nodejs-nodemailer-outlook");
 const { parsePhoneNumberFromString } = require("libphonenumber-js");
 const Donation = require("../models/donationModel");
+const mongoose = require("mongoose");
 
 const isValidPhoneNumber = (value) => {
   const phoneNumber = parsePhoneNumberFromString(value);
@@ -139,19 +140,16 @@ const getAllDonations = async (req, res) => {
   }
 };
 
-const getDonationById = async (id) => {
-  try {
-    const donation = await Donation.findById(id);
-    if (!donation) {
-      console.log("Donation not found!");
-      return null;
-    }
-    console.log("Donation found:", donation);
-    return donation;
-  } catch (error) {
-    console.error("Error fetching donation by ID:", error);
-    return null;
+const getDonationById = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "No such donation " });
   }
+  const donation = await Donation.findById(id);
+  if (!donation) {
+    return res.status(404).json({ error: "No such donatino" });
+  }
+  res.status(200).json(donation);
 };
 
 module.exports = {
