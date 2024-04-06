@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useDonation } from "../useDonation";
+import { useDonation } from "../hooks/useDonation";
 
 export default function DonateForm() {
   const navigate = useNavigate();
