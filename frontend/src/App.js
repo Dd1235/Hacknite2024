@@ -72,7 +72,7 @@ function App() {
       path: "/applications",
       element: (
         <>
-          <MainPage />
+          <MainPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
         </>
       ),
     },
@@ -388,7 +388,7 @@ function App() {
     },
   ]);
   return (
-    <div>
+    <div className="dark:dark-bg">
       <RouterProvider router={router} />
     </div>
   );

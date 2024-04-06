@@ -39,7 +39,7 @@ export default class VolunteerPiChart extends PureComponent {
   render() {
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <PieChart width={400} height={400}>
+        <PieChart width={700} height={700}>
           <Pie
             data={applicationData}
             cx="50%"

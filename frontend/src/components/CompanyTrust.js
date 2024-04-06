@@ -44,7 +44,7 @@ const Component = () => {
       </div>
       <Link
         to="/partner-form"
-        className="btn2 py-4 text-sm sm:text-base mt-5 sanspro"
+        className="btn hover:mint-3-bg hover:white-text py-4 text-sm sm:text-base mt-5 sanspro"
       >
         Become a Corporate Partner
       </Link>

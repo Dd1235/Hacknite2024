@@ -31,6 +31,7 @@ export default function Homepage(props) {
         className="h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
         style={{ backgroundColor: "#BF735A" }}
         alt="line"
+        id="OurMission"
       ></img>
       <div className="h-[10vh] flex justify-start">
         <img
@@ -59,6 +60,7 @@ export default function Homepage(props) {
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
         alt="line"
+        id="OurApproach"
       ></img>
       <ParaRow
         title="Our Approach"
@@ -114,6 +116,7 @@ export default function Homepage(props) {
         src={props.isDarkMode ? drkline : line}
         className="mint-1-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-2-bg"
         alt=""
+        id="OurImpact"
       ></img>
       <FullImgPara
         title="Our Impact"
@@ -143,7 +146,7 @@ export default function Homepage(props) {
         <form className="w-4/5 mt-3 sm:w-3/5 lg:w-2/5 flex items-center">
           <input
             type="email"
-            className="text-sm sm:text-base h-12 w-4/5 rounded-l-full px-5"
+            className="text-sm sm:text-base black-text h-12 w-4/5 rounded-l-full px-5"
             placeholder="Subscrible for email updates"
           />
           <input
@@ -158,7 +161,6 @@ export default function Homepage(props) {
         alt=""
       ></img>
       <DonorShoutout />
-      {/* <div className="h-[10vh]"></div> */}
     </div>
   );
 }

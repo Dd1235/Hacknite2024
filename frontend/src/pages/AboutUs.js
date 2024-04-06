@@ -99,6 +99,7 @@ export default function AboutUs(props) {
       <img
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
+        id="OurReports"
       ></img>
       <div className="h-[70vh] py-10 sanspro black-text dark:white-text lg:px-20">
         <div className="text-base sm:text-lg uppercase font-semibold text-center sanspro">

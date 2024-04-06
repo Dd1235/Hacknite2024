@@ -36,10 +36,26 @@ function VolunteerDetails() {
         },
         body: JSON.stringify({ status: "accepted" }),
       });
-      alert("Volunteer accepted");
-      navigate("/applications");
+      alert("Volunteer status updated: Accepted");
+      // navigate("/applications");
     } catch (error) {
-      console.error("Error accepting volunteer:", error);
+      console.error("Error updating volunteer status:", error);
+    }
+  };
+
+  const handlePending = async () => {
+    try {
+      await fetch(`${base_url}/api/volunteers/${id}/status`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: "pending" }),
+      });
+      alert("Volunteer status updated: Pending");
+      // navigate("/applications");
+    } catch (error) {
+      console.error("Error updating volunteer status:", error);
     }
   };
 
@@ -52,10 +68,10 @@ function VolunteerDetails() {
         },
         body: JSON.stringify({ status: "rejected" }),
       });
-      alert("Volunteer rejected");
-      navigate("/applications");
+      alert("Volunteer status updated: Rejected");
+      // navigate("/applications");
     } catch (error) {
-      console.error("Error rejecting volunteer:", error);
+      console.error("Error updating volunteer status:", error);
     }
   };
 
@@ -65,11 +81,17 @@ function VolunteerDetails() {
 
   return (
     <div>
-      <div className="max-w-4xl mx-auto p-8">
-        <h1 className="text-3xl font-bold text-purple-700 mb-4">
+      <div className="max-w-4xl shadow sanspro mx-auto p-8 dark:dark-bg black-text dark:white-text">
+        <h1 className="text-3xl font-bold black-text playfair mb-4 dark:white-text">
+          <button
+            className="mx-6 w-12 h-12 hover:bg-gray-300  rounded-full group"
+            onClick={() => navigate(-1)}
+          >
+            <i className="fa-solid fa-right-from-bracket text-2xl leading-9 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+          </button>
           Volunteer Details
         </h1>
-        <ul className="list-disc list-inside bg-white shadow-md rounded-lg p-6 mb-6">
+        <ul className="list-disc list-inside rounded-lg p-6 mb-6">
           {Object.entries(volunteer)
             .slice(1, -3)
             .map(([key, value]) => (
@@ -80,13 +102,20 @@ function VolunteerDetails() {
             ))}
         </ul>
 
-        <div className="flex justify-between space-x-4">
+        <div className="flex justify-between">
           <button
             onClick={handleAccept}
             className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Accept
           </button>
+          <button
+            onClick={handlePending}
+            className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Pending
+          </button>
+
           <button
             onClick={handleReject}
             className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

@@ -64,6 +64,7 @@ export default function GetInvolved(props) {
         src={props.isDarkMode ? drkline : line}
         className="mint-2-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
         alt="line"
+        id="OurPartnerships"
       ></img>
       <div className="h-[70vh] py-10 sanspro black-text dark:white-text lg:px-20">
         <div className="text-base sm:text-lg uppercase font-semibold text-center sanspro">
@@ -75,6 +76,7 @@ export default function GetInvolved(props) {
         src={props.isDarkMode ? drkline : line}
         className="mint-2-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
         alt="line"
+        id="OurTeam"
       ></img>
       <Mission title="Stay Involved" text="Never miss a chance to help" />
       <FromCards />

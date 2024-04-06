@@ -12,6 +12,7 @@
     "react-dom": "^18.2.0",
     "react-infinite-logo-slider": "^1.0.13",
     "react-router-dom": "^6.22.3",
+    "react-router-hash-link": "^2.4.3",
     "react-scripts": "^5.0.1",
     "react-tsparticles": "^2.12.2",
     "recharts": "^2.12.3",
@@ -47,6 +48,7 @@
   "main": "index.js",
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/react-router-hash-link": "^2.4.9",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "postcss-nesting": "^12.1.1",

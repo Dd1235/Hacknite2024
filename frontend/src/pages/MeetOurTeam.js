@@ -173,7 +173,7 @@ export default function MeetOurTeam(props) {
         invert={true}
         isDarkMode={props.isDarkMode}
       />
-      <div className="h-[10vh]"></div>
+      <div className="h-[10vh]" id="OurTeam"></div>
       <SmallHeading text="And Finally meet the web dev team" />
       <Team />
       <div className="h-[10vh]"></div>

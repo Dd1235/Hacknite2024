@@ -91,6 +91,7 @@ export default function Projects(props) {
           text="You can support our projects by volunteering your time, donating to our cause, or partnering with us. Together, we can make a difference in the lives of individuals and communities in rural India."
           btn={true}
           btnText="Join us"
+          link="/get-involved"
         />
       </div>
     </div>
