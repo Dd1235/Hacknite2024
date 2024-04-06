@@ -173,7 +173,10 @@ export default function Navbar(props) {
                         : "hover:mint-3-text hover:white-bg md:hover:bg-transparent md:hover:black-text"
                     } md:p-0 md:dark:hover:bg-transparent`}
                     id={id}
-                    onClick={() => HandleNav(id)}
+                    onClick={() => {
+                      HandleNav(id);
+                      setIsMenuOpen(!isMenuOpen);
+                    }}
                   >
                     {id}
                   </Link>
