@@ -55,9 +55,9 @@ export default function DonateForm() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
@@ -72,7 +72,7 @@ export default function DonateForm() {
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <label
-              for="first_name"
+              htmlFor="first_name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               First name
@@ -89,7 +89,7 @@ export default function DonateForm() {
           </div>
           <div>
             <label
-              for="last_name"
+              htmlFor="last_name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Last name
@@ -106,18 +106,17 @@ export default function DonateForm() {
           </div>
           <div>
             <label
-              for="countries"
+              htmlFor="countries"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Select an option
             </label>
             <select
               id="donation-type"
+              defaultValue="Mode of payment"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <option selected value="cash">
-                Cash
-              </option>
+              <option value="cash">Cash</option>
               <option value="upi">UPI</option>
               <option value="card">Card</option>
               <option value="product">Product/Item</option>
@@ -127,7 +126,7 @@ export default function DonateForm() {
           </div>
           <div>
             <label
-              for="phone"
+              htmlFor="phone"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Phone number
@@ -146,7 +145,7 @@ export default function DonateForm() {
           </div>
           <div>
             <label
-              for="amount"
+              htmlFor="amount"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Amount
@@ -164,7 +163,7 @@ export default function DonateForm() {
         </div>
         <div className="mb-6">
           <label
-            for="Note"
+            htmlFor="Note"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Donation Notes
@@ -180,7 +179,7 @@ export default function DonateForm() {
         </div>
         <div className="mb-6">
           <label
-            for="email"
+            htmlFor="email"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Email address
@@ -197,7 +196,7 @@ export default function DonateForm() {
         </div>
         <div className="mb-6">
           <label
-            for="address"
+            htmlFor="address"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Address
@@ -213,7 +212,7 @@ export default function DonateForm() {
         <div className="grid gap-6 sm:grid-cols-2 mb-6">
           <div>
             <label
-              for="city"
+              htmlFor="city"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               City
@@ -228,7 +227,7 @@ export default function DonateForm() {
           </div>
           <div>
             <label
-              for="state"
+              htmlFor="state"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               State

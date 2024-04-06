@@ -52,7 +52,7 @@ export default function DonorShoutout() {
   useEffect(() => {
     const fetchData = async () => {
       await fetchRecentDonations();
-      console.log(recentDonations);
+      // console.log(recentDonations);
       // console.log(recentDonations[0].firstName);
       setIsLoading(false);
     };

@@ -26,7 +26,7 @@ function MainPage(props) {
   const [donations, setDonations] = useState([]);
   const [showApp, setShowApp] = useState([]);
   const [isApp, setIsApp] = useState(false);
-  const [deetsHeading, setDeetsHeading] = useState("");
+  const [deetsHeading, setDeetsHeading] = useState("Volunteer Details");
 
   let newApplicationData = [
     { name: "Accepted Applications", value: 0 },
@@ -472,7 +472,7 @@ function MainPage(props) {
       <div className="dark:dark-bg h-screen">
         <div className="dark:dark-bg">
           <div className="max-w-4xl shadow sanspro mx-auto p-8 dark:dark-bg black-text dark:white-text">
-            <h1 className="text-3xl font-bold black-text playfair mb-4 dark:white-text">
+            <h1 className="text-3xl dark:white-text font-bold black-text playfair mb-4 dark:white-text">
               <button
                 className="mx-6 w-12 h-12 hover:bg-gray-300  rounded-full group"
                 onClick={() => setIsApp(false)}
@@ -507,27 +507,31 @@ function MainPage(props) {
                     ))}
             </ul>
 
-            <div className="flex justify-between">
-              <button
-                onClick={handleAccept}
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              >
-                Accept
-              </button>
-              <button
-                onClick={handlePending}
-                className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              >
-                Pending
-              </button>
+            {deetsHeading === "Volunteer Details" ? (
+              <div className="flex justify-between">
+                <button
+                  onClick={handleAccept}
+                  className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                >
+                  Accept
+                </button>
+                <button
+                  onClick={handlePending}
+                  className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                >
+                  Pending
+                </button>
 
-              <button
-                onClick={handleReject}
-                className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              >
-                Reject
-              </button>
-            </div>
+                <button
+                  onClick={handleReject}
+                  className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                >
+                  Reject
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>

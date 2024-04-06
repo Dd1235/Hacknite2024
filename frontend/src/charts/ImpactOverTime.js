@@ -119,8 +119,6 @@ function ImpactOverTime() {
       <div className="text-center text-lg text-red-500">Error: {error}</div>
     );
 
-  console.log(totalAmount);
-  console.log(data[10]);
   data[10].beneficiaries =
     data[10].beneficiaries + Math.floor(totalAmount / 500);
   data[10].communities = data[10].communities + Math.floor(totalAmount / 12500);

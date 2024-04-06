@@ -98,6 +98,7 @@ export default function VolunteerForm() {
 
       if (response.ok) {
         alert("Volunteer application submitted successfully.");
+        navigate("/thank-you-volunteer");
       } else {
         alert(data.error || "An error occurred. Please try again.");
       }
@@ -180,9 +181,9 @@ export default function VolunteerForm() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
@@ -212,7 +213,7 @@ export default function VolunteerForm() {
           <form onSubmit={handleSendOtp}>
             <div className="mb-3">
               <label
-                for="email"
+                htmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Enter your Email
@@ -236,7 +237,7 @@ export default function VolunteerForm() {
           <form onSubmit={handleVerifyOtp}>
             <div className="mb-3">
               <label
-                for="email"
+                htmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Enter Otp
@@ -268,7 +269,7 @@ export default function VolunteerForm() {
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <label
-              for="first_name-voluteer"
+              htmlFor="first_name-voluteer"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               First name
@@ -284,7 +285,7 @@ export default function VolunteerForm() {
           </div>
           <div>
             <label
-              for="last_name-volunteer"
+              htmlFor="last_name-volunteer"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Last name
@@ -300,7 +301,7 @@ export default function VolunteerForm() {
           </div>
           <div>
             <label
-              for="birthdate-volunteer"
+              htmlFor="birthdate-volunteer"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Birth Date
@@ -315,7 +316,7 @@ export default function VolunteerForm() {
           </div>
           <div>
             <label
-              for="phone-volunteer"
+              htmlFor="phone-volunteer"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Phone number
@@ -332,7 +333,7 @@ export default function VolunteerForm() {
         </div>
         <div className="mb-6">
           <label
-            for="email"
+            htmlFor="email"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Email address
@@ -350,7 +351,7 @@ export default function VolunteerForm() {
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <label
-              for="college_name-volunteer"
+              htmlFor="college_name-volunteer"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               College/School
@@ -365,7 +366,7 @@ export default function VolunteerForm() {
           </div>
           <div>
             <label
-              for="Department_name-volunteer"
+              htmlFor="Department_name-volunteer"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Department/Field
@@ -383,7 +384,7 @@ export default function VolunteerForm() {
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <label
-              for="company_name-volunteer"
+              htmlFor="company_name-volunteer"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Company
@@ -398,7 +399,7 @@ export default function VolunteerForm() {
           </div>
           <div>
             <label
-              for="Position_name-volunteer"
+              htmlFor="Position_name-volunteer"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Department/Position
@@ -415,7 +416,7 @@ export default function VolunteerForm() {
         <hr className="mb-6" />
         <div className="mb-6">
           <label
-            for="Note-volunteer"
+            htmlFor="Note-volunteer"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Do you have any volunteering experience? If yes, please describe.
@@ -442,7 +443,7 @@ export default function VolunteerForm() {
                 onChange={handleMondayChange}
               />
               <label
-                for="default-checkbox"
+                htmlFor="default-checkbox"
                 className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Mondays
@@ -457,7 +458,7 @@ export default function VolunteerForm() {
                 onChange={handleTuesdayChange}
               />
               <label
-                for="checked-checkbox"
+                htmlFor="checked-checkbox"
                 className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Tuesdays
@@ -472,7 +473,7 @@ export default function VolunteerForm() {
                 onChange={handleWednesdayChange}
               />
               <label
-                for="default-checkbox"
+                htmlFor="default-checkbox"
                 className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Wednesdays
@@ -487,7 +488,7 @@ export default function VolunteerForm() {
                 onChange={handleThursdayChange}
               />
               <label
-                for="default-checkbox"
+                htmlFor="default-checkbox"
                 className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Thursdays
@@ -502,7 +503,7 @@ export default function VolunteerForm() {
                 onChange={handleFridayChange}
               />
               <label
-                for="default-checkbox"
+                htmlFor="default-checkbox"
                 className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Fridays
@@ -517,7 +518,7 @@ export default function VolunteerForm() {
                 onChange={handleSaturdayChange}
               />
               <label
-                for="default-checkbox"
+                htmlFor="default-checkbox"
                 className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Saturdays
@@ -532,7 +533,7 @@ export default function VolunteerForm() {
                 onChange={handleSundayChange}
               />
               <label
-                for="default-checkbox"
+                htmlFor="default-checkbox"
                 className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Sundays
@@ -542,7 +543,7 @@ export default function VolunteerForm() {
         </div>
         <div className="mb-6">
           <label
-            for="schedule-volunteer"
+            htmlFor="schedule-volunteer"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Additional notes about your schedule
@@ -567,13 +568,13 @@ export default function VolunteerForm() {
             />
           </div>
           <label
-            for="remember"
-            className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            htmlFor="remember"
+            className="ms-2 flex gap-1 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             I agree with the{" "}
-            <div className="text-blue-600 hover:underline dark:text-blue-500">
+            <span className="text-blue-600 hover:underline dark:text-blue-500">
               terms and conditions
-            </div>
+            </span>
             .
           </label>
         </div>

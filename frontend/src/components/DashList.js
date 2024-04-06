@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import RandomIcon from "../resources/chooseIcon";
 
 export default function DashList(props) {
+  function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
   return (
     <div className="lg:w-4/5 black-text shadow rounded-lg p-2">
       <div className="dark:white-text py-4 px-6 rounded-md mb-6">
@@ -22,7 +26,8 @@ export default function DashList(props) {
               </div>
               <div className="details dark:white-text flex flex-col px-5 items-center sm:items-start">
                 <div className="md:text-base lg:text-xl leading-3 font-semibold mb-2">
-                  {application.firstName} {application.lastName}
+                  {capitalizeFirstLetter(application.firstName)}{" "}
+                  {capitalizeFirstLetter(application.lastName)}
                 </div>
                 <div className="text-gray-600 dark:text-gray-200">
                   {application.email}
@@ -31,7 +36,7 @@ export default function DashList(props) {
             </div>
             <button
               // to={`/volunteer-form/${application._id}`}
-              onClick={(event) => {
+              onClick={() => {
                 props.setShowApp(application);
                 props.setIsApp(true);
               }}
