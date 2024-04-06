@@ -105,7 +105,7 @@ function MainPage(props) {
 
   const getAllDonations = async () => {
     try {
-      const response = await fetch("/api/donations/all");
+      const response = await fetch(`${base_url}/api/donations/all`);
       const data = await response.json();
 
       setDonations(data);
