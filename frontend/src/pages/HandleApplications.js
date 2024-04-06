@@ -217,7 +217,7 @@ function MainPage(props) {
     };
 
     fetchData();
-  }, []);
+  }, [user]);
 
   if (isLoading)
     return (
