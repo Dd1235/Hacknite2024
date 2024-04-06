@@ -430,7 +430,10 @@ function MainPage(props) {
                     </div>
                   </div>
                   <div className="w-full sm:w-1/2 lg:w-full h-72 my-10">
-                    <VolunteerDash count={acceptedApplications.length} />
+                    <VolunteerDash
+                      count={acceptedApplications.length}
+                      isDarkMode={props.isDarkMode}
+                    />
                     <div className="text-center dark:text-white font-semibold">
                       Volunteers Chart 2024
                     </div>

@@ -47,7 +47,7 @@ export default class VolunteerPiChart extends PureComponent {
             labelLine={false}
             label={renderCustomizedLabel}
             outerRadius={80}
-            fill="#8884d8"
+            fill="#fff"
             dataKey="value"
           >
             {applicationData.map((entry, index) => (

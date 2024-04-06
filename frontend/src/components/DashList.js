@@ -17,7 +17,9 @@ export default function DashList(props) {
             className="flex flex-col sm:flex-row h-fit sm:py-0 py-5 items-center justify-between w-full shadow rounded-md overflow-hidden relative"
           >
             <div className="flex h-fit justify-between p-4  flex-col gap-4 sm:gap-0 sm:flex-row items-center">
-              <div className="h-12">{/* <RandomIcon /> */}</div>
+              <div className="h-14 w-14 overflow-hidden rounded-full flex items-center justify-center">
+                <img src={RandomIcon()} alt="catpfp" className="h-14" />
+              </div>
               <div className="details dark:white-text flex flex-col px-5 items-center sm:items-start">
                 <div className="md:text-base lg:text-xl leading-3 font-semibold mb-2">
                   {application.firstName} {application.lastName}

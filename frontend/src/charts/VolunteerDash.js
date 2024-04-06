@@ -34,11 +34,15 @@ function VolunteerDash(props) {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="month" />
-        <YAxis yAxisId="left" orientation="left" stroke="#0088FE" />
+        <XAxis dataKey="month" stroke="#fff" />
+        <YAxis yAxisId="left" orientation="left" stroke="#fff" />
         <Tooltip />
         <Legend />
-        <Bar yAxisId="left" dataKey="volunteers" fill="#0088FE" />
+        <Bar
+          yAxisId="left"
+          dataKey="volunteers"
+          fill={props.isDarkMode ? "#bae3ff" : "#0088FE"}
+        />
       </BarChart>
     </ResponsiveContainer>
   );
