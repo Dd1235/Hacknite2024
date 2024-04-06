@@ -11,6 +11,7 @@ const verifyEmail = require("./routes/volunteerEmailVerification");
 const volunteerRoutes = require("./routes/volunteers");
 const partnerRoutes = require("./routes/partners");
 const userRoutes = require("./routes/user");
+const resetPasswordRoutes = require("./routes/resetPassword");
 
 // Middlewares
 app.use(cors());
@@ -21,6 +22,7 @@ app.use("/api/validate_email", verifyEmail);
 app.use("/api/volunteers", volunteerRoutes);
 app.use("/api/partners", partnerRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/reset", resetPasswordRoutes);
 
 mongoose
   .connect(process.env.MONGODB_URI)

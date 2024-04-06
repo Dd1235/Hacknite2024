@@ -57,4 +57,31 @@ userSchema.statics.login = async function (email, password) {
   return user;
 };
 
+userSchema.statics.resetPassword = async function (email, newPassword) {
+  if (!email || !newPassword) {
+    throw Error("All fields are required!");
+  }
+  if (!validator.isEmail(email)) {
+    throw Error("Invalid email!");
+  }
+  if (!validator.isStrongPassword(newPassword)) {
+    throw Error(
+      "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one number and one special character!"
+    );
+  }
+
+  const user = await this.findOne({ email });
+  if (!user) {
+    throw Error("User not found!");
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  const hash = await bcrypt.hash(newPassword, salt);
+
+  user.password = hash;
+  await user.save();
+
+  return { message: "Password successfully reset." };
+};
+
 module.exports = mongoose.model("UserAdmin", userSchema);
