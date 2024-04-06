@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-// const cors = require("cors");
+const cors = require("cors");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -12,7 +12,7 @@ const volunteerRoutes = require("./routes/volunteers");
 const partnerRoutes = require("./routes/partners");
 
 // Middlewares
-// app.use(cors());
+app.use(cors());
 app.use(express.json()); // for parsing application/json
 
 app.use("/api/donations", donationRoutes);

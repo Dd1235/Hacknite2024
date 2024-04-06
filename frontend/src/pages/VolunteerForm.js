@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function VolunteerForm() {
+  let base_url =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.REACT_APP_BASE_URL}`
+      : "";
   const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState("");
@@ -82,7 +86,7 @@ export default function VolunteerForm() {
     };
 
     try {
-      const response = await fetch("api/volunteers", {
+      const response = await fetch(`${base_url}/api/volunteers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -105,7 +109,7 @@ export default function VolunteerForm() {
 
   const handleSendOtp = async (e) => {
     e.preventDefault();
-    const response = await fetch("api/validate_email/send", {
+    const response = await fetch(`${base_url}/api/validate_email/send`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -124,7 +128,7 @@ export default function VolunteerForm() {
 
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
-    const response = await fetch("/api/validate_email/verify", {
+    const response = await fetch(`${base_url}/api/validate_email/verify`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

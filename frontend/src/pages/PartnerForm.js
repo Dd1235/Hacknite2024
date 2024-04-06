@@ -5,6 +5,11 @@ import { useState } from "react";
 export default function PartnerForm() {
   const navigate = useNavigate();
 
+  let base_url =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.REACT_APP_BASE_URL}`
+      : "";
+
   const [institution, setInstitution] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -26,7 +31,7 @@ export default function PartnerForm() {
     };
 
     try {
-      const response = await fetch("/api/partners", {
+      const response = await fetch(`${base_url}/api/partners`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,6 +47,7 @@ export default function PartnerForm() {
 
       const data = await response.json();
       console.log("Success:", data);
+      alert("Partner form submitted successfully");
       setError("");
     } catch (error) {
       console.error("Error:", error);

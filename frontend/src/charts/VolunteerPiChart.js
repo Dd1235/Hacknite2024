@@ -5,6 +5,11 @@ import { applicationData } from "./data.js";
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 const RADIAN = Math.PI / 180;
 
+const base_url =
+  process.env.NODE_ENV === "production"
+    ? `${process.env.REACT_APP_BASE_URL}`
+    : "";
+
 const renderCustomizedLabel = ({
   cx,
   cy,

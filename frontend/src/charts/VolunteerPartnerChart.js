@@ -15,9 +15,14 @@ function VolunteerPartnerChart() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
+  let base_url =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.REACT_APP_BASE_URL}`
+      : "";
+
   const getVolunteersPerYear = async () => {
     try {
-      const response = await fetch("/api/volunteers/peryear");
+      const response = await fetch(`${base_url}/api/volunteers/peryear`);
       const data = await response.json();
       setVolunteersPerYear(data);
     } catch (error) {

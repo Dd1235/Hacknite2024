@@ -8,9 +8,14 @@ const DonationOperations = () => {
   const [recentDonations, setRecentDonations] = useState([]);
   const [donations, setDonations] = useState([]);
 
+  const base_url =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.REACT_APP_BASE_URL}`
+      : "";
+
   const fetchTotalAmount = async () => {
     try {
-      const response = await fetch("/api/donations/totalAmount");
+      const response = await fetch(`${base_url}/api/donations/totalAmount`);
       const data = await response.json();
       if (data.success) {
         setTotalAmount(data.totalAmount);
@@ -24,7 +29,7 @@ const DonationOperations = () => {
 
   const fetchUniqueDonorsCount = async () => {
     try {
-      const response = await fetch("/api/donations/donors/count");
+      const response = await fetch(`${base_url}/api/donations/donors/count`);
       const data = await response.json();
       if (data.success) {
         setUniqueDonors(data.count);
@@ -38,7 +43,7 @@ const DonationOperations = () => {
 
   const getAllDonations = async () => {
     try {
-      const response = await fetch("/api/donations/all");
+      const response = await fetch(`${base_url}/api/donations/all`);
       const data = await response.json();
       if (data.success) {
         setDonations(data.donations);
@@ -52,7 +57,7 @@ const DonationOperations = () => {
 
   const fetchRecentDonations = async () => {
     try {
-      const response = await fetch("/api/donations/getrecent/4"); // Adjust the URL as needed
+      const response = await fetch(`${base_url}/api/donations/getrecent/4`); // Adjust the URL as needed
       const data = await response.json();
       if (data.success) {
         setRecentDonations(data.donations);

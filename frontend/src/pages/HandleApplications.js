@@ -25,9 +25,14 @@ function MainPage() {
     { name: "Pending Applications", value: 0 },
   ];
 
+  let base_url =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.REACT_APP_BASE_URL}`
+      : "";
+
   const fetchTotalAmount = async () => {
     try {
-      const response = await fetch("/api/donations/totalAmount");
+      const response = await fetch(`${base_url}/api/donations/totalAmount`);
       const data = await response.json();
       if (data.success) {
         setTotalAmount(data.totalAmount);
@@ -41,7 +46,7 @@ function MainPage() {
 
   const fetchUniqueDonorsCount = async () => {
     try {
-      const response = await fetch("/api/donations/donors/count");
+      const response = await fetch(`${base_url}/api/donations/donors/count`);
       const data = await response.json();
       if (data.success) {
         setUniqueDonors(data.count);
@@ -55,7 +60,7 @@ function MainPage() {
 
   const getAllApplications = async () => {
     try {
-      const response = await fetch("/api/volunteers/all");
+      const response = await fetch(`${base_url}/api/volunteers/all`);
       const data = await response.json();
       setApplications(data);
     } catch (error) {
@@ -65,7 +70,7 @@ function MainPage() {
 
   const getAcceptedApplications = async () => {
     try {
-      const response = await fetch("/api/volunteers/accepted");
+      const response = await fetch(`${base_url}/api/volunteers/accepted`);
       const data = await response.json();
       setAcceptedApplications(data);
       newApplicationData[0].value = data.length;
@@ -76,7 +81,7 @@ function MainPage() {
 
   const getRejectedApplications = async () => {
     try {
-      const response = await fetch("/api/volunteers/rejected");
+      const response = await fetch(`${base_url}/api/volunteers/rejected`);
       const data = await response.json();
       setRejectedApplications(data);
       newApplicationData[1].value = data.length;
@@ -87,7 +92,7 @@ function MainPage() {
 
   const getPendingApplications = async () => {
     try {
-      const response = await fetch("/api/volunteers/pending");
+      const response = await fetch(`${base_url}/api/volunteers/pending`);
       const data = await response.json();
       setPendingApplications(data);
       setCurrent(data);
