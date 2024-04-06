@@ -4,6 +4,7 @@ import DashList from "../components/DashList.js";
 import { Link } from "react-router-dom";
 import VolunteerPiChart from "../charts/VolunteerPiChart";
 import { updateApplicationData } from "../charts/data.js";
+import VolunteerDash from "../charts/VolunteerDash.js";
 
 function MainPage(props) {
   const [isSidebar, setIsSidebar] = useState(false);
@@ -20,6 +21,7 @@ function MainPage(props) {
   const [donations, setDonations] = useState([]);
   const [showApp, setShowApp] = useState([]);
   const [isApp, setIsApp] = useState(false);
+  const [deetsHeading, setDeetsHeading] = useState("");
 
   let newApplicationData = [
     { name: "Accepted Applications", value: 0 },
@@ -277,6 +279,7 @@ function MainPage(props) {
                     onClick={() => {
                       setCurrent(donations);
                       setHeading("All Donations");
+                      setDeetsHeading("Donor Details");
                     }}
                     className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
@@ -292,6 +295,7 @@ function MainPage(props) {
                     onClick={() => {
                       setCurrent(applications);
                       setHeading("All Applications");
+                      setDeetsHeading("Volunteer Details");
                     }}
                     className="flex w-full items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
@@ -324,6 +328,7 @@ function MainPage(props) {
                     onClick={() => {
                       setCurrent(rejectedApplications);
                       setHeading("Rejected Applications");
+                      setDeetsHeading("Volunteer Details");
                     }}
                     className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
@@ -341,6 +346,7 @@ function MainPage(props) {
                     onClick={() => {
                       setCurrent(pendingApplications);
                       setHeading("Pending Applications");
+                      setDeetsHeading("Volunteer Details");
                     }}
                     className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
@@ -353,45 +359,48 @@ function MainPage(props) {
                     </span>
                   </button>
                 </li>
+                <button
+                  id="theme-toggle"
+                  type="button"
+                  onClick={() => {
+                    props.setIsDarkMode((prev) => !prev);
+                  }}
+                  className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                >
+                  {props.isDarkMode ? (
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                  ) : (
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                  )}
+                  <span className="ms-3">
+                    Switch to {props.isDarkMode ? "Light Mode" : "Dark Mode"}
+                  </span>
+                </button>
+                <button
+                  className=" flex lg:hidden w-full justify-center items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  onClick={() => setIsSidebar(false)}
+                >
+                  <i className="fa-solid fa-right-from-bracket  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                </button>
               </ul>
-              <button
-                id="theme-toggle"
-                type="button"
-                onClick={() => {
-                  props.setIsDarkMode((prev) => !prev);
-                }}
-                className="black-text w-fit dark:white-text hover:white-bg dark:hover:bg-gray-700 rounded-full text-sm p-2.5"
-              >
-                {props.isDarkMode ? (
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                  </svg>
-                ) : (
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                )}
-              </button>
-              <button
-                className=" flex lg:hidden w-full justify-center items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                onClick={() => setIsSidebar(false)}
-              >
-                <i className="fa-solid fa-right-from-bracket  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-              </button>
             </div>
           </aside>
 
@@ -413,11 +422,17 @@ function MainPage(props) {
                   setShowApp={setShowApp}
                   setIsApp={setIsApp}
                 />
-                <div className="w-1/4 h-screen mint-1-bg dark:mint-3-bg flex justify-center rounded-lg">
-                  <div className="w-44 h-44 my-10">
+                <div className="w-full lg:w-1/4 h-fit lg:pb-10 flex-col sm:flex-row lg:flex-col mint-1-bg dark:mint-3-bg flex justify-center lg:justify-start items-center rounded-lg">
+                  <div className="w-full sm:w-1/2 lg:w-44 lg:h-44 h-72 my-10">
                     <VolunteerPiChart />
                     <div className="text-center dark:text-white font-semibold">
                       Applications Chart
+                    </div>
+                  </div>
+                  <div className="w-full sm:w-1/2 lg:w-full h-72 my-10">
+                    <VolunteerDash count={acceptedApplications.length} />
+                    <div className="text-center dark:text-white font-semibold">
+                      Volunteers Chart 2024
                     </div>
                   </div>
                 </div>
@@ -431,48 +446,65 @@ function MainPage(props) {
 
   const ApplicantCard = () => {
     return (
-      <div className="dark:dark-bg">
-        <div className="max-w-4xl shadow sanspro mx-auto p-8 dark:dark-bg black-text dark:white-text">
-          <h1 className="text-3xl font-bold black-text playfair mb-4 dark:white-text">
-            <button
-              className="mx-6 w-12 h-12 hover:bg-gray-300  rounded-full group"
-              onClick={() => setIsApp(false)}
-            >
-              <i className="fa-solid fa-right-from-bracket text-2xl leading-9 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-            </button>
-            Volunteer Details
-          </h1>
-          <ul className="list-disc list-inside rounded-lg p-6 mb-6">
-            {Object.entries(showApp)
-              .slice(1, -3)
-              .map(([key, value]) => (
-                <li key={key} className="border-b border-gray-200 pb-2 mt-2">
-                  <strong className="font-semibold">{key}:</strong>{" "}
-                  {key === "availableDays" ? value.join(", ") : value}
-                </li>
-              ))}
-          </ul>
+      <div className="dark:dark-bg h-screen">
+        <div className="dark:dark-bg">
+          <div className="max-w-4xl shadow sanspro mx-auto p-8 dark:dark-bg black-text dark:white-text">
+            <h1 className="text-3xl font-bold black-text playfair mb-4 dark:white-text">
+              <button
+                className="mx-6 w-12 h-12 hover:bg-gray-300  rounded-full group"
+                onClick={() => setIsApp(false)}
+              >
+                <i className="fa-solid fa-right-from-bracket text-2xl leading-9 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+              </button>
+              {deetsHeading}
+            </h1>
+            <ul className="list-disc list-inside rounded-lg p-6 mb-6">
+              {deetsHeading === "Volunteer Details"
+                ? Object.entries(showApp)
+                    .slice(1, -3)
+                    .map(([key, value]) => (
+                      <li
+                        key={key}
+                        className="border-b border-gray-200 pb-2 mt-2"
+                      >
+                        <strong className="font-semibold">{key}:</strong>{" "}
+                        {key === "availableDays" ? value.join(", ") : value}
+                      </li>
+                    ))
+                : Object.entries(showApp)
+                    .slice(1, -2)
+                    .map(([key, value]) => (
+                      <li
+                        key={key}
+                        className="border-b border-gray-200 pb-2 mt-2"
+                      >
+                        <strong className="font-semibold">{key}:</strong>{" "}
+                        {key === "availableDays" ? value.join(", ") : value}
+                      </li>
+                    ))}
+            </ul>
 
-          <div className="flex justify-between">
-            <button
-              onClick={handleAccept}
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            >
-              Accept
-            </button>
-            <button
-              onClick={handlePending}
-              className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            >
-              Pending
-            </button>
+            <div className="flex justify-between">
+              <button
+                onClick={handleAccept}
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              >
+                Accept
+              </button>
+              <button
+                onClick={handlePending}
+                className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              >
+                Pending
+              </button>
 
-            <button
-              onClick={handleReject}
-              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            >
-              Reject
-            </button>
+              <button
+                onClick={handleReject}
+                className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              >
+                Reject
+              </button>
+            </div>
           </div>
         </div>
       </div>
