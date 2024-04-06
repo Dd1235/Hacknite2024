@@ -72,7 +72,7 @@ const Login = () => {
       <div className="text-center mt-4">
         <button
           type="button"
-          onClick={() => navigate("/forgot-password")} // Adjust the path as needed
+          onClick={() => navigate("/forgot-password")}
           className="text-sm text-indigo-600 hover:text-indigo-500"
         >
           Forgot Password?
