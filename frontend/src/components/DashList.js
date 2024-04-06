@@ -30,7 +30,6 @@ export default function DashList(props) {
             <button
               // to={`/volunteer-form/${application._id}`}
               onClick={(event) => {
-                console.log(application);
                 props.setShowApp(application);
                 props.setIsApp(true);
               }}
