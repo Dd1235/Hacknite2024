@@ -28,12 +28,18 @@ import VolunteerDetails from "./pages/dummyVoluneerCard";
 import PartnersStats from "./pages/dummyPartnerOperatons";
 import NewsletterSignup from "./components/NewsletterSignup";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import { useAuthContext } from "./hooks/useAuthContext";
+import { Navigate } from "react-router-dom";
+
 // import { DonationDetails } from "./pages/dummyDonationCard";
 
 // im development mode in package.json change "proxy" : "http://localhost:4000"
 // "vite": "^5.2.6"
 // removed
 function App() {
+  const { user } = useAuthContext();
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("color-theme") === "dark" ||
       (!("color-theme" in localStorage) &&
@@ -46,6 +52,15 @@ function App() {
   }, [isDarkMode]);
 
   const router = createBrowserRouter([
+    {
+      path: "/signup",
+      element: !user ? <Signup /> : <Navigate to="/" />,
+    },
+    {
+      path: "/login",
+      element: !user ? <Login /> : <Navigate to="/" />,
+    },
+
     {
       path: "/newsletter-signup",
       element: (
@@ -72,12 +87,13 @@ function App() {
     },
     {
       path: "/applications",
-      element: (
-        <>
-          <MainPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-        </>
+      element: user ? (
+        <MainPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      ) : (
+        <Navigate to="/login" replace />
       ),
     },
+
     {
       path: "/donation-operations",
       element: (

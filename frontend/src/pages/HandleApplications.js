@@ -4,9 +4,14 @@ import DashList from "../components/DashList.js";
 import { Link } from "react-router-dom";
 import VolunteerPiChart from "../charts/VolunteerPiChart";
 import { updateApplicationData } from "../charts/data.js";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
 import VolunteerDash from "../charts/VolunteerDash.js";
 
 function MainPage(props) {
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
+
   const [isSidebar, setIsSidebar] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -184,6 +189,21 @@ function MainPage(props) {
   };
 
   useEffect(() => {
+    if (!user) {
+      return (
+        <div className="max-w-md mx-auto mt-10 text-center">
+          <p className="mb-4 text-lg font-semibold text-gray-700">
+            You are not authorized to access this page.
+          </p>
+          <button
+            onClick={() => navigate("/login")}
+            className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
+          >
+            Go to Login Page
+          </button>
+        </div>
+      );
+    }
     const fetchData = async () => {
       await fetchTotalAmount();
       await fetchUniqueDonorsCount();
