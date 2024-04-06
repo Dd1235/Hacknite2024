@@ -13,7 +13,7 @@ const DogIcon = () => {
           <path d="M0 38h38V0H0v38Z"></path>
         </clipPath>
       </defs>
-      <g clip-path="url(#a)" transform="matrix(1.25 0 0 -1.25 0 47.5)">
+      <g clipPath="url(#a)" transform="matrix(1.25 0 0 -1.25 0 47.5)">
         <path fill="#dd2e44" d="M16 7V4s0-3 3-3 3 3 3 3v3h-6Z"></path>
         <path
           fill="#272b2b"

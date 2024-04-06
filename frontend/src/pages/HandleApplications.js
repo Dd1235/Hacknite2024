@@ -4,7 +4,6 @@ import DashList from "../components/DashList.js";
 import { Link } from "react-router-dom";
 import VolunteerPiChart from "../charts/VolunteerPiChart";
 import { updateApplicationData } from "../charts/data.js";
-import DonorDashList from "../components/DonorDashList.js";
 
 function MainPage(props) {
   const [isSidebar, setIsSidebar] = useState(false);
@@ -19,6 +18,8 @@ function MainPage(props) {
   const [current, setCurrent] = useState([]);
   const [heading, setHeading] = useState("");
   const [donations, setDonations] = useState([]);
+  const [showApp, setShowApp] = useState([]);
+  const [isApp, setIsApp] = useState(false);
 
   let newApplicationData = [
     { name: "Accepted Applications", value: 0 },
@@ -115,6 +116,54 @@ function MainPage(props) {
     }
   };
 
+  const handleAccept = async () => {
+    try {
+      await fetch(`${base_url}/api/volunteers/${showApp._id}/status`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: "accepted" }),
+      });
+      alert("Volunteer status updated: Accepted");
+      // navigate("/applications");
+    } catch (error) {
+      console.error("Error updating volunteer status:", error);
+    }
+  };
+
+  const handlePending = async () => {
+    try {
+      await fetch(`${base_url}/api/volunteers/${showApp._id}/status`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: "pending" }),
+      });
+      alert("Volunteer status updated: Pending");
+      // navigate("/applications");
+    } catch (error) {
+      console.error("Error updating volunteer status:", error);
+    }
+  };
+
+  const handleReject = async () => {
+    try {
+      await fetch(`${base_url}/api/volunteers/${showApp._id}/status`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: "rejected" }),
+      });
+      alert("Volunteer status updated: Rejected");
+      // navigate("/applications");
+    } catch (error) {
+      console.error("Error updating volunteer status:", error);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       await fetchTotalAmount();
@@ -139,7 +188,7 @@ function MainPage(props) {
         <div role="status">
           <svg
             aria-hidden="true"
-            class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600 dark:fill-white"
+            className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600 dark:fill-white"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +202,7 @@ function MainPage(props) {
               fill="currentFill"
             />
           </svg>
-          <span class="sr-only">Loading...</span>
+          <span className="sr-only">Loading...</span>
         </div>
         Loading...
       </div>
@@ -163,191 +212,198 @@ function MainPage(props) {
       <div className="text-center text-lg text-red-500">Error: {error}</div>
     );
 
-  return (
-    <div>
+  const Main = () => {
+    return (
       <div>
-        <button
-          type="button"
-          className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          onClick={() => setIsSidebar(true)}
-        >
-          <span className="sr-only">Open sidebar</span>
-          <svg
-            className="w-6 h-6"
-            aria-hidden="true"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
+        <div>
+          <button
+            type="button"
+            className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            onClick={() => setIsSidebar(true)}
           >
-            <path
-              clipRule="evenodd"
-              fillRule="evenodd"
-              d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
-            ></path>
-          </svg>
-        </button>
-
-        <aside
-          id="default-sidebar"
-          className={
-            isSidebar
-              ? "fixed top-0 left-0 z-40 w-64 h-screen transition-transform lg:translate-x-0"
-              : "-translate-x-full fixed top-0 left-0 z-40 w-64 h-screen transition-transform lg:translate-x-0"
-          }
-          aria-label="Sidebar"
-        >
-          <div className="flex flex-col justify-between h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-            <ul className="space-y-2 font-medium">
-              <li>
-                <Link
-                  to="/"
-                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                >
-                  <i className="fa-solid fa-house text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                  <span className="ms-3">Homepage</span>
-                </Link>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setCurrent(donations);
-                    setHeading("All Donations");
-                  }}
-                  className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                >
-                  <i className="fa-solid fa-heart  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                  <span className="ms-3">Donors</span>
-                  <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                    {donations.length}
-                  </span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setCurrent(applications);
-                    setHeading("All Applications");
-                  }}
-                  className="flex w-full items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                >
-                  <i className="fa-solid fa-users text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                  <span className="ms-3">All Applications</span>
-                  <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                    {applications.length}
-                  </span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setCurrent(acceptedApplications);
-                    setHeading("Accepted Application");
-                  }}
-                  className="flex w-full items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                >
-                  <i className="fa-solid fa-square-check  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                  <span className="flex-1 ms-3 whitespace-nowrap">
-                    Accepted Applications
-                  </span>
-                  <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                    {acceptedApplications.length}
-                  </span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setCurrent(rejectedApplications);
-                    setHeading("Rejected Applications");
-                  }}
-                  className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                >
-                  <i className="fa-solid fa-square-xmark  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                  <span className="flex-1 ms-3 whitespace-nowrap">
-                    Rejected Applications
-                  </span>
-                  <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                    {rejectedApplications.length}
-                  </span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setCurrent(pendingApplications);
-                    setHeading("Pending Applications");
-                  }}
-                  className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                >
-                  <i className="fa-solid fa-clock  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                  <span className="flex-1 ms-3 whitespace-nowrap">
-                    Pending Applications
-                  </span>
-                  <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                    {pendingApplications.length}
-                  </span>
-                </button>
-              </li>
-            </ul>
-            <button
-              id="theme-toggle"
-              type="button"
-              onClick={() => {
-                props.setIsDarkMode((prev) => !prev);
-              }}
-              className="black-text w-fit dark:white-text hover:white-bg dark:hover:bg-gray-700 rounded-full text-sm p-2.5"
+            <span className="sr-only">Open sidebar</span>
+            <svg
+              className="w-6 h-6"
+              aria-hidden="true"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              {props.isDarkMode ? (
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                </svg>
-              ) : (
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-              )}
-            </button>
-            <button
-              className=" flex lg:hidden w-full justify-center items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              onClick={() => setIsSidebar(false)}
-            >
-              <i className="fa-solid fa-right-from-bracket  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-            </button>
-          </div>
-        </aside>
+              <path
+                clipRule="evenodd"
+                fillRule="evenodd"
+                d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+              ></path>
+            </svg>
+          </button>
 
-        <div className="p-4 lg:ml-64">
-          <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-            <div className="flex items-center justify-center h-fit sm:h-32 mb-4 rounded">
-              <StatsWidget
-                totalAmount={totalAmount}
-                uniqueDonors={uniqueDonors}
-                acceptedApplications={acceptedApplications.length}
-                rejectedApplications={rejectedApplications.length}
-                pendingApplications={pendingApplications.length}
-              />
+          <aside
+            id="default-sidebar"
+            className={
+              isSidebar
+                ? "fixed top-0 left-0 z-40 w-64 h-screen transition-transform lg:translate-x-0"
+                : "-translate-x-full fixed top-0 left-0 z-40 w-64 h-screen transition-transform lg:translate-x-0"
+            }
+            aria-label="Sidebar"
+          >
+            <div className="flex flex-col justify-between h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+              <ul className="space-y-2 font-medium">
+                <li>
+                  <Link
+                    to="/"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i className="fa-solid fa-house text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span className="ms-3">Homepage</span>
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setCurrent(donations);
+                      setHeading("All Donations");
+                    }}
+                    className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i className="fa-solid fa-heart  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span className="ms-3">Donors</span>
+                    <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                      {donations.length}
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setCurrent(applications);
+                      setHeading("All Applications");
+                    }}
+                    className="flex w-full items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i className="fa-solid fa-users text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span className="ms-3">All Applications</span>
+                    <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                      {applications.length}
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setCurrent(acceptedApplications);
+                      setHeading("Accepted Application");
+                    }}
+                    className="flex w-full items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i className="fa-solid fa-square-check  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Accepted Applications
+                    </span>
+                    <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                      {acceptedApplications.length}
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setCurrent(rejectedApplications);
+                      setHeading("Rejected Applications");
+                    }}
+                    className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i className="fa-solid fa-square-xmark  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Rejected Applications
+                    </span>
+                    <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                      {rejectedApplications.length}
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setCurrent(pendingApplications);
+                      setHeading("Pending Applications");
+                    }}
+                    className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i className="fa-solid fa-clock  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Pending Applications
+                    </span>
+                    <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                      {pendingApplications.length}
+                    </span>
+                  </button>
+                </li>
+              </ul>
+              <button
+                id="theme-toggle"
+                type="button"
+                onClick={() => {
+                  props.setIsDarkMode((prev) => !prev);
+                }}
+                className="black-text w-fit dark:white-text hover:white-bg dark:hover:bg-gray-700 rounded-full text-sm p-2.5"
+              >
+                {props.isDarkMode ? (
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                  </svg>
+                ) : (
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                )}
+              </button>
+              <button
+                className=" flex lg:hidden w-full justify-center items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                onClick={() => setIsSidebar(false)}
+              >
+                <i className="fa-solid fa-right-from-bracket  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+              </button>
             </div>
-            <div className="flex w-full lg:flex-row flex-col rounded-lg gap-5">
-              <DashList applications={current} heading={heading} />
-              <div className="w-1/4 h-screen mint-1-bg dark:mint-3-bg flex justify-center rounded-lg">
-                <div className="w-44 h-44 my-10">
-                  <VolunteerPiChart />
-                  <div className="text-center dark:text-white font-semibold">
-                    Applications Chart
+          </aside>
+
+          <div className="p-4 lg:ml-64">
+            <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+              <div className="flex items-center justify-center h-fit sm:h-32 mb-4 rounded">
+                <StatsWidget
+                  totalAmount={totalAmount}
+                  uniqueDonors={uniqueDonors}
+                  acceptedApplications={acceptedApplications.length}
+                  rejectedApplications={rejectedApplications.length}
+                  pendingApplications={pendingApplications.length}
+                />
+              </div>
+              <div className="flex w-full lg:flex-row flex-col rounded-lg gap-5">
+                <DashList
+                  applications={current}
+                  heading={heading}
+                  setShowApp={setShowApp}
+                  setIsApp={setIsApp}
+                />
+                <div className="w-1/4 h-screen mint-1-bg dark:mint-3-bg flex justify-center rounded-lg">
+                  <div className="w-44 h-44 my-10">
+                    <VolunteerPiChart />
+                    <div className="text-center dark:text-white font-semibold">
+                      Applications Chart
+                    </div>
                   </div>
                 </div>
               </div>
@@ -355,8 +411,60 @@ function MainPage(props) {
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
+
+  const ApplicantCard = () => {
+    return (
+      <div>
+        <div className="max-w-4xl shadow sanspro mx-auto p-8 dark:dark-bg black-text dark:white-text">
+          <h1 className="text-3xl font-bold black-text playfair mb-4 dark:white-text">
+            <button
+              className="mx-6 w-12 h-12 hover:bg-gray-300  rounded-full group"
+              onClick={() => setIsApp(false)}
+            >
+              <i className="fa-solid fa-right-from-bracket text-2xl leading-9 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+            </button>
+            Volunteer Details
+          </h1>
+          <ul className="list-disc list-inside rounded-lg p-6 mb-6">
+            {Object.entries(showApp)
+              .slice(1, -3)
+              .map(([key, value]) => (
+                <li key={key} className="border-b border-gray-200 pb-2 mt-2">
+                  <strong className="font-semibold">{key}:</strong>{" "}
+                  {key === "availableDays" ? value.join(", ") : value}
+                </li>
+              ))}
+          </ul>
+
+          <div className="flex justify-between">
+            <button
+              onClick={handleAccept}
+              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Accept
+            </button>
+            <button
+              onClick={handlePending}
+              className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Pending
+            </button>
+
+            <button
+              onClick={handleReject}
+              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Reject
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  return <div>{isApp ? <ApplicantCard /> : <Main />}</div>;
 }
 
 export default MainPage;
