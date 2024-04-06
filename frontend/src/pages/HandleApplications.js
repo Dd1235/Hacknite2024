@@ -78,6 +78,7 @@ function MainPage(props) {
       setRejectedApplications(filterItemsByStatus(data, "rejected", 1, false));
       setPendingApplications(filterItemsByStatus(data, "pending", 2, true));
       updateApplicationData(newApplicationData);
+      setHeading("Pending Applications");
     } catch (error) {
       console.error("Error getting all applications:", error);
     }
@@ -139,6 +140,7 @@ function MainPage(props) {
         body: JSON.stringify({ status: "accepted" }),
       });
       alert("Volunteer status updated: Accepted");
+      await getAllApplications();
       // navigate("/applications");
     } catch (error) {
       console.error("Error updating volunteer status:", error);
@@ -155,6 +157,7 @@ function MainPage(props) {
         body: JSON.stringify({ status: "pending" }),
       });
       alert("Volunteer status updated: Pending");
+      await getAllApplications();
       // navigate("/applications");
     } catch (error) {
       console.error("Error updating volunteer status:", error);
@@ -171,6 +174,7 @@ function MainPage(props) {
         body: JSON.stringify({ status: "rejected" }),
       });
       alert("Volunteer status updated: Rejected");
+      await getAllApplications();
       // navigate("/applications");
     } catch (error) {
       console.error("Error updating volunteer status:", error);
@@ -186,8 +190,6 @@ function MainPage(props) {
       // await getRejectedApplications();
       // await getPendingApplications();
       await getAllDonations();
-
-      setHeading("Pending Applications");
 
       setIsLoading(false);
     };
