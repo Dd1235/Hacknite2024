@@ -27,6 +27,7 @@ import MainPage from "./pages/HandleApplications";
 import VolunteerDetails from "./pages/dummyVoluneerCard";
 import PartnersStats from "./pages/dummyPartnerOperatons";
 import NewsletterSignup from "./components/NewsletterSignup";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // im development mode in package.json change "proxy" : "http://localhost:4000"
 // "vite": "^5.2.6"
