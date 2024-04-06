@@ -10,6 +10,10 @@ export default function VolunteerForm() {
       : "";
   const navigate = useNavigate();
 
+  function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [birthDate, setBirthDate] = useState("");
@@ -71,15 +75,15 @@ export default function VolunteerForm() {
     ].filter(Boolean);
 
     const volunteerData = {
-      firstName,
-      lastName,
+      firstName: capitalizeFirstLetter(firstName),
+      lastName: capitalizeFirstLetter(lastName),
       birthDate,
       phoneNumber,
       email,
-      college,
-      field,
-      company,
-      position,
+      college: capitalizeFirstLetter(college),
+      field: capitalizeFirstLetter(field),
+      company: capitalizeFirstLetter(company),
+      position: capitalizeFirstLetter(position),
       experience,
       availableDays,
       notes,
