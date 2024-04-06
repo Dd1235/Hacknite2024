@@ -4,6 +4,7 @@ import DashList from "../components/DashList.js";
 import { Link } from "react-router-dom";
 import VolunteerPiChart from "../charts/VolunteerPiChart";
 import { updateApplicationData } from "../charts/data.js";
+import DonorDashList from "../components/DonorDashList.js";
 
 function MainPage(props) {
   const [isSidebar, setIsSidebar] = useState(false);
