@@ -13,10 +13,14 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await login(email, password);
-    if (result && !error) {
-      navigate("/applications");
-      // history.push("/applications");
+    try {
+      await login(email, password);
+
+      if (!error) {
+        navigate("/applications");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
     }
   };
 
