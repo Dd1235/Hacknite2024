@@ -34,7 +34,7 @@ function VolunteerDash(props) {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="month" stroke="#fff" />
+        <XAxis dataKey="month" stroke={props.isDarkMode ? "#fff" : "#0088FE"} />
         <YAxis yAxisId="left" orientation="left" stroke="#fff" />
         <Tooltip />
         <Legend />

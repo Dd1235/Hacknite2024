@@ -11,6 +11,10 @@ import {
 } from "recharts";
 
 function VolunteerPartnerChart() {
+  const [partnersPerYear, setPartnersPerYear] = useState({
+    totalPartners: 0,
+    partnersPerYear: [],
+  });
   const [volunteersPerYear, setVolunteersPerYear] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -30,9 +34,24 @@ function VolunteerPartnerChart() {
     }
   };
 
+  const getPartnersPerYear = async () => {
+    try {
+      const response = await fetch(`${base_url}/api/partners/stats`);
+      if (!response.ok) throw new Error("Failed to fetch stats");
+
+      const data = await response.json();
+      setPartnersPerYear(data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       await getVolunteersPerYear();
+      await getPartnersPerYear();
       setIsLoading(false);
     };
 
@@ -50,7 +69,7 @@ function VolunteerPartnerChart() {
     { year: 2021, volunteers: 292, partners: 22 },
     { year: 2022, volunteers: 300, partners: 25 },
     { year: 2023, volunteers: 332, partners: 28 },
-    { year: 2024, volunteers: 140, partners: 9 },
+    { year: 2024, volunteers: 140, partners: 0 },
   ];
 
   if (isLoading) return <div className="text-center text-lg">Loading...</div>;
@@ -61,6 +80,7 @@ function VolunteerPartnerChart() {
     );
 
   data[10].volunteers = data[10].volunteers + volunteersPerYear[0].count;
+  data[10].partners = data[10].partners + partnersPerYear.totalPartners;
 
   return (
     <ResponsiveContainer width="100%" height="100%">

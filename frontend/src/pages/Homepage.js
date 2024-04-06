@@ -10,7 +10,7 @@ import Mission from "../components/Mission";
 import CompanyTrust from "../components/CompanyTrust";
 import useScrollAnimation from "../components/useScrollAnimation";
 import DonorShoutout from "../components/DonorShoutout";
-// import NewsletterSignup from "../components/NewsletterSignup";
+import NewsletterSignup from "../components/NewsletterSignup";
 
 export default function Homepage(props) {
   const { ref: missionRef, isVisible: isMissionVisible } = useScrollAnimation();
@@ -136,7 +136,7 @@ export default function Homepage(props) {
         className="mint-1-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-2-bg"
         alt=""
       ></img>
-      <div className="sanspro black-text dark:white-text h-[50vh] mint-1-bg dark:mint-3-bg flex flex-col gap-5 items-center justify-center">
+      {/* <div className="sanspro black-text dark:white-text h-[50vh] mint-1-bg dark:mint-3-bg flex flex-col gap-5 items-center justify-center">
         <div className="uppercase text-sm sm:text-base font-semibold">
           Stay Involved
         </div>
@@ -154,7 +154,8 @@ export default function Homepage(props) {
             className="h-12 text-sm sm:text-base w-1/5 rounded-r-full border-4 mint-2-border dark:border-white dark:white-text dark:hover:mint-3-text font-semibold mint-2-text hover:white-bg cursor-pointer"
           />
         </form>
-      </div>
+      </div> */}
+      <NewsletterSignup />
       <img
         src={props.isDarkMode ? drkline : line}
         className="mint-1-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-2-bg"

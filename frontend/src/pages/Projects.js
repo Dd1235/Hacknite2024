@@ -21,7 +21,13 @@ export default function Projects(props) {
         className="bg-amber-800 h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
         alt=""
       ></img>
-      <div className="h-[5vh]"></div>
+      <div className="h-[5vh] flex ">
+        <img
+          src="https://i.pinimg.com/564x/54/42/df/5442df1c5503a20b46b7ab5e7a80aeec.jpg"
+          alt=""
+          className="absolute -z-[1] w-20 sm:w-24 md:w-32 lg:w-44 ml-2 sm:ml-8"
+        />
+      </div>
       <div
         ref={projectRef}
         className={`fade-in-component ${isProjectVisible ? "visible" : ""}`}
@@ -32,7 +38,13 @@ export default function Projects(props) {
           isDarkMode={props.isDarkMode}
         />
       </div>
-      <div className="h-[5vh]"></div>
+      <div className="h-[5vh] relative flex justify-end">
+        <img
+          src="https://i.pinimg.com/564x/04/14/36/041436d58510f46d972414d3d2109c74.jpg"
+          alt=""
+          className="absolute -z-[1] -top-14 sm:-top-16 md:-top-24 lg:-top-32 w-24 sm:w-28 md:w-36 lg:w-44 mr-8"
+        />
+      </div>
       <img
         src={props.isDarkMode ? drkline : line}
         className="bg-amber-800 h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
@@ -82,6 +94,13 @@ export default function Projects(props) {
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
         alt=""
       ></img>
+      <div className="h-[10vh] flex">
+        <img
+          src="https://i.pinimg.com/564x/ae/82/31/ae82314951534e7e027d67bdf5e8a31f.jpg"
+          alt=""
+          className="absolute -z-[1] w-20 sm:w-24 md:w-32 lg:w-44 ml-2 sm:ml-8 brightness-110"
+        />
+      </div>
       <div
         ref={involveRef}
         className={`fade-in-component ${isInvolveVisible ? "visible" : ""}`}
@@ -92,6 +111,13 @@ export default function Projects(props) {
           btn={true}
           btnText="Join us"
           link="/get-involved"
+        />
+      </div>
+      <div className="h-[5vh] relative flex justify-end">
+        <img
+          src="https://i.pinimg.com/564x/80/7e/f3/807ef3c93dfca755772176fcd0f78a33.jpg"
+          alt=""
+          className="absolute -z-[1] -top-14 sm:-top-16 md:-top-24 lg:-top-32 w-20 sm:w-20 md:w-28 lg:w-36 mr-8"
         />
       </div>
     </div>

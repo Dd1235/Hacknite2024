@@ -1,4 +1,6 @@
 import React from "react";
+import Hunger from "../resources/hunger.jpeg";
+import food from "../resources/food.jpg";
 
 export default function Gallery() {
   return (
@@ -6,11 +8,7 @@ export default function Gallery() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="grid gap-4">
           <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://media.gettyimages.com/id/1339978825/photo/portrait-of-rural-school-girls-holding-slate-with-english-alphabet-on-it.jpg?s=612x612&w=0&k=20&c=ObPLloSlkWe5fWVXBQMCyq1g5WXhxt1d6dCCchnGMhc="
-              alt=""
-            />
+            <img className="h-auto max-w-full rounded-lg" src={Hunger} alt="" />
           </div>
           <div>
             <img
@@ -75,11 +73,7 @@ export default function Gallery() {
         </div>
         <div className="grid gap-4">
           <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://media.gettyimages.com/id/840815460/photo/little-girl-sitting-in-the-field-writing-portrait-in-the-nature.jpg?s=612x612&w=0&k=20&c=okws04gFm8a7OQsfsXDyBmJCAYU2qhHxqUR1YLOe0rA="
-              alt=""
-            />
+            <img className="h-auto max-w-full rounded-lg" src={food} alt="" />
           </div>
           <div>
             <img
