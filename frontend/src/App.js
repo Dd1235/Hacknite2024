@@ -27,6 +27,7 @@ import MainPage from "./pages/HandleApplications";
 import VolunteerDetails from "./pages/dummyVoluneerCard";
 import PartnersStats from "./pages/dummyPartnerOperatons";
 import NewsletterSignup from "./components/NewsletterSignup";
+import Login from "./pages/Login";
 
 // im development mode in package.json change "proxy" : "http://localhost:4000"
 // "vite": "^5.2.6"
@@ -49,6 +50,14 @@ function App() {
       element: (
         <>
           <NewsletterSignup />
+        </>
+      ),
+    },
+    {
+      path: "/log-in",
+      element: (
+        <>
+          <Login isDarkMode={isDarkMode} />
         </>
       ),
     },

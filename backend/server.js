@@ -4,12 +4,14 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 const donationRoutes = require("./routes/donations");
 // const volunteerRoutes = require("./routes/volunteers");
 const verifyEmail = require("./routes/volunteerEmailVerification");
 const volunteerRoutes = require("./routes/volunteers");
 const partnerRoutes = require("./routes/partners");
+require("../models/userDetails");
+const registerloginresetRoutes = require("./routes/registerloginreset");
 
 // Middlewares
 app.use(cors());
@@ -19,6 +21,7 @@ app.use("/api/donations", donationRoutes);
 app.use("/api/validate_email", verifyEmail);
 app.use("/api/volunteers", volunteerRoutes);
 app.use("/api/partners", partnerRoutes);
+application.use("/login-user", registerloginresetRoutes);
 
 mongoose
   .connect(process.env.MONGODB_URI)
