@@ -1,4 +1,4 @@
-import React, { props } from "react";
+import React from "react";
 import HeadingRow from "../components/HeadingRow";
 import line from "../resources/line.png";
 import drkline from "../resources/drkline.png";
@@ -63,6 +63,7 @@ export default function GetInvolved(props) {
       <img
         src={props.isDarkMode ? drkline : line}
         className="mint-2-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
+        alt="line"
       ></img>
       <div className="h-[70vh] py-10 sanspro black-text dark:white-text lg:px-20">
         <div className="text-base sm:text-lg uppercase font-semibold text-center sanspro">
@@ -73,6 +74,7 @@ export default function GetInvolved(props) {
       <img
         src={props.isDarkMode ? drkline : line}
         className="mint-2-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px]"
+        alt="line"
       ></img>
       <Mission title="Stay Involved" text="Never miss a chance to help" />
       <FromCards />

@@ -1,5 +1,4 @@
-import React, { useState, useEffect, props } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import FullImgPara from "../components/FullImgPara";
 import Hero from "../components/Hero";
 import Images from "../components/Images";
@@ -11,7 +10,7 @@ import Mission from "../components/Mission";
 import CompanyTrust from "../components/CompanyTrust";
 import useScrollAnimation from "../components/useScrollAnimation";
 import DonorShoutout from "../components/DonorShoutout";
-import NewsletterSignup from "../components/NewsletterSignup";
+// import NewsletterSignup from "../components/NewsletterSignup";
 
 export default function Homepage(props) {
   const { ref: missionRef, isVisible: isMissionVisible } = useScrollAnimation();
@@ -88,11 +87,13 @@ export default function Homepage(props) {
       <img
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-2-bg"
+        alt=""
       ></img>
       <div className="h-[10vh] flex">
         <img
           src="https://i.pinimg.com/564x/42/ab/ac/42abac19815b7c25ff405e549e5358f7.jpg"
           className="absolute -z-[1] w-32 lg:w-44 ml-8"
+          alt=""
         />
       </div>
       <div
@@ -106,11 +107,13 @@ export default function Homepage(props) {
         <img
           src="https://i.pinimg.com/564x/fd/5e/96/fd5e96e50aa1591acc56274935c2fc5d.jpg"
           className="absolute -z-[1] -top-20 w-40 lg:w-44 mr-8"
+          alt=""
         />
       </div>
       <img
         src={props.isDarkMode ? drkline : line}
         className="mint-1-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-2-bg"
+        alt=""
       ></img>
       <FullImgPara
         title="Our Impact"
@@ -122,11 +125,13 @@ export default function Homepage(props) {
       <img
         src={props.isDarkMode ? drkline : line}
         className="mint-1-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-2-bg"
+        alt=""
       ></img>
       <CompanyTrust />
       <img
         src={props.isDarkMode ? drkline : line}
         className="mint-1-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-2-bg"
+        alt=""
       ></img>
       <div className="sanspro black-text dark:white-text h-[50vh] mint-1-bg dark:mint-3-bg flex flex-col gap-5 items-center justify-center">
         <div className="uppercase text-sm sm:text-base font-semibold">
@@ -150,6 +155,7 @@ export default function Homepage(props) {
       <img
         src={props.isDarkMode ? drkline : line}
         className="mint-1-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-2-bg"
+        alt=""
       ></img>
       <DonorShoutout />
       {/* <div className="h-[10vh]"></div> */}

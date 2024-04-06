@@ -1,4 +1,4 @@
-import React, { props } from "react";
+import React from "react";
 import HeadingRow from "../components/HeadingRow";
 import Accordion from "../components/Accordion";
 

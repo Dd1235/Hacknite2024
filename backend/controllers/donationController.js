@@ -134,7 +134,7 @@ const getAllDonations = async (req, res) => {
     const donations = await Donation.find({}).sort({ createdAt: -1 });
     res.status(200).json(donations);
   } catch (error) {
-    console.error("Error fetching all donations:", error);
+    console.log("Error fetching all donations:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };

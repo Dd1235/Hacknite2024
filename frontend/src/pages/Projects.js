@@ -1,4 +1,4 @@
-import React, { props } from "react";
+import React from "react";
 import HeadingRow from "../components/HeadingRow";
 import line from "../resources/line.png";
 import drkline from "../resources/drkline.png";
@@ -19,6 +19,7 @@ export default function Projects(props) {
       <img
         src={props.isDarkMode ? drkline : line}
         className="bg-amber-800 h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
+        alt=""
       ></img>
       <div className="h-[5vh]"></div>
       <div
@@ -35,6 +36,7 @@ export default function Projects(props) {
       <img
         src={props.isDarkMode ? drkline : line}
         className="bg-amber-800 h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
+        alt=""
       ></img>
       <div className="h-[10vh]"></div>
       <Bullets
@@ -53,11 +55,13 @@ export default function Projects(props) {
       <img
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
+        alt=""
       ></img>
       <div className="h-[10vh] flex justify-center relative">
         <img
           src="https://i.pinimg.com/564x/50/2e/e3/502ee362c57841b0c1cb3d20483d9d1d.jpg"
           className="absolute -z-[1] h-20 top-10 md:h-24 md:top-10 dark:hidden"
+          alt=""
         />
       </div>
       <SmallHeading text="Upcoming Events" />
@@ -76,6 +80,7 @@ export default function Projects(props) {
       <img
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
+        alt=""
       ></img>
       <div
         ref={involveRef}

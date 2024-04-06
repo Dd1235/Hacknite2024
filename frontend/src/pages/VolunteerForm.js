@@ -567,12 +567,9 @@ export default function VolunteerForm() {
             className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             I agree with the{" "}
-            <a
-              href="#"
-              className="text-blue-600 hover:underline dark:text-blue-500"
-            >
+            <div className="text-blue-600 hover:underline dark:text-blue-500">
               terms and conditions
-            </a>
+            </div>
             .
           </label>
         </div>

@@ -43,9 +43,6 @@
   .come-up:hover {
     transform: translateY(-20px);
   }
-  * {
-    transition: all 0.2s;
-  }
   .add-shadow {
     text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
   }

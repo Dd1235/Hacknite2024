@@ -1,4 +1,4 @@
-import React, { props, useState } from "react";
+import React from "react";
 import HeadingRow from "../components/HeadingRow";
 import TextRow from "../components/TextRow";
 import line from "../resources/line.png";
@@ -146,6 +146,7 @@ export default function MeetOurTeam(props) {
       <img
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
+        alt=""
       ></img>
       <TextRow
         text="Our team is made up of dedicated individuals who are passionate about education and community development. From our volunteers on the ground to our board members and advisors, everyone at EduReach India Foundation is committed to making a difference."
@@ -154,6 +155,7 @@ export default function MeetOurTeam(props) {
       <img
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:lgtgrey-bg"
+        alt=""
       ></img>
       <div className="h-[10vh]"></div>
       <Quote
@@ -178,6 +180,7 @@ export default function MeetOurTeam(props) {
       <img
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-3-bg"
+        alt=""
       ></img>
       <div
         ref={teamRef}
@@ -196,11 +199,13 @@ export default function MeetOurTeam(props) {
         <img
           src="https://i.pinimg.com/564x/9b/5a/20/9b5a20ef51fbac452b07f22dbdaa3e11.jpg"
           className="absolute -z-[1] w-24 -top-20 md:w-32 md:-top-28 lg:w-56 lg:-top-52 brightness-110"
+          alt=""
         />
       </div>
       <img
         src={props.isDarkMode ? drkline : line}
         className="grey-bg h-6 w-full sm:h-6 md:h-[30px] lg:h-[50px] dark:mint-3-bg"
+        alt=""
       ></img>
       <ThreePara
         title1="Volunteer"

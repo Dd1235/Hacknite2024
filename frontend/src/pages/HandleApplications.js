@@ -17,6 +17,7 @@ function MainPage() {
   const [pendingApplications, setPendingApplications] = useState([]);
   const [current, setCurrent] = useState([]);
   const [heading, setHeading] = useState("");
+  const [donations, setDonations] = useState([]);
 
   let newApplicationData = [
     { name: "Accepted Applications", value: 0 },
@@ -97,15 +98,26 @@ function MainPage() {
     }
   };
 
+  const getAllDonations = async () => {
+    try {
+      const response = await fetch("/api/donations/all");
+      const data = await response.json();
+
+      setDonations(data.donations);
+    } catch (error) {
+      setError((prevError) => prevError + " " + error.message);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       await fetchTotalAmount();
       await fetchUniqueDonorsCount();
       await getAllApplications();
-      await getAllApplications();
       await getAcceptedApplications();
       await getRejectedApplications();
       await getPendingApplications();
+      await getAllDonations();
 
       setHeading("Pending Applications");
 
