@@ -28,16 +28,44 @@ function MainPage(props) {
   const [isApp, setIsApp] = useState(false);
   const [deetsHeading, setDeetsHeading] = useState("Volunteer Details");
 
+  let touchStartX = 0;
+  let touchEndX = 0;
   let newApplicationData = [
     { name: "Accepted Applications", value: 0 },
     { name: "Rejected Applications", value: 1 },
     { name: "Pending Applications", value: 0 },
   ];
-
   let base_url =
     process.env.NODE_ENV === "production"
       ? `${process.env.REACT_APP_BASE_URL}`
       : "";
+
+  const handleTouchStart = (e) => {
+    // console.log(e);
+    touchStartX = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    // console.log(e);
+    touchEndX = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    // console.log(touchEndX);
+    if (touchEndX == 0) {
+      return;
+    }
+    const difference = touchEndX - touchStartX;
+    if (difference > 50) {
+      setIsSidebar(true); // Swipe right
+      // console.log("Hi", difference);
+    } else if (difference < -50) {
+      setIsSidebar(false); // Swipe left
+      // console.log("hello", difference);
+    } else {
+      console.log(difference);
+    }
+  };
 
   const fetchTotalAmount = async () => {
     try {
@@ -80,7 +108,9 @@ function MainPage(props) {
     try {
       const response = await fetch(`${base_url}/api/volunteers/all`);
       const data = await response.json();
-      data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+      // console.log(data);
+      // data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+      // console.log(data, "hi");
       setApplications(data);
       setAcceptedApplications(filterItemsByStatus(data, "accepted", 0, false));
       setRejectedApplications(filterItemsByStatus(data, "rejected", 1, false));
@@ -190,21 +220,6 @@ function MainPage(props) {
   };
 
   useEffect(() => {
-    if (!user) {
-      return (
-        <div className="max-w-md mx-auto mt-10 text-center">
-          <p className="mb-4 text-lg font-semibold text-gray-700">
-            You are not authorized to access this page.
-          </p>
-          <button
-            onClick={() => navigate("/login")}
-            className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
-          >
-            Go to Login Page
-          </button>
-        </div>
-      );
-    }
     const fetchData = async () => {
       await fetchTotalAmount();
       await fetchUniqueDonorsCount();
@@ -218,7 +233,23 @@ function MainPage(props) {
     };
 
     fetchData();
-  }, [user]);
+  }, []);
+
+  if (!user) {
+    return (
+      <div className="max-w-md mx-auto mt-10 text-center">
+        <p className="mb-4 text-lg font-semibold text-gray-700">
+          You are not authorized to access this page.
+        </p>
+        <button
+          onClick={() => navigate("/login")}
+          className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
+        >
+          Go to Login Page
+        </button>
+      </div>
+    );
+  }
 
   if (isLoading)
     return (
@@ -279,8 +310,8 @@ function MainPage(props) {
             id="default-sidebar"
             className={
               isSidebar
-                ? "fixed top-0 left-0 z-40 w-64 h-screen transition-transform lg:translate-x-0"
-                : "-translate-x-full fixed top-0 left-0 z-40 w-64 h-screen transition-transform lg:translate-x-0"
+                ? "fixed top-0 left-0 z-40 w-64 h-screen lg:translate-x-0"
+                : "-translate-x-full fixed top-0 left-0 z-40 w-64 h-screen lg:translate-x-0"
             }
             aria-label="Sidebar"
           >
@@ -301,6 +332,8 @@ function MainPage(props) {
                       setCurrent(donations);
                       setHeading("All Donations");
                       setDeetsHeading("Donor Details");
+                      setIsSidebar(false);
+                      window.scrollTo({ top: 0, behavior: "auto" });
                     }}
                     className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
@@ -317,6 +350,8 @@ function MainPage(props) {
                       setCurrent(applications);
                       setHeading("All Applications");
                       setDeetsHeading("Volunteer Details");
+                      setIsSidebar(false);
+                      window.scrollTo({ top: 0, behavior: "auto" });
                     }}
                     className="flex w-full items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
@@ -332,6 +367,9 @@ function MainPage(props) {
                     onClick={() => {
                       setCurrent(acceptedApplications);
                       setHeading("Accepted Application");
+                      setDeetsHeading("Volunteer Details");
+                      setIsSidebar(false);
+                      window.scrollTo({ top: 0, behavior: "auto" });
                     }}
                     className="flex w-full items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
@@ -350,6 +388,8 @@ function MainPage(props) {
                       setCurrent(rejectedApplications);
                       setHeading("Rejected Applications");
                       setDeetsHeading("Volunteer Details");
+                      setIsSidebar(false);
+                      window.scrollTo({ top: 0, behavior: "auto" });
                     }}
                     className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
@@ -368,6 +408,8 @@ function MainPage(props) {
                       setCurrent(pendingApplications);
                       setHeading("Pending Applications");
                       setDeetsHeading("Volunteer Details");
+                      setIsSidebar(false);
+                      window.scrollTo({ top: 0, behavior: "auto" });
                     }}
                     className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
@@ -415,17 +457,14 @@ function MainPage(props) {
                     Switch to {props.isDarkMode ? "Light Mode" : "Dark Mode"}
                   </span>
                 </button>
-                <button
-                  className=" flex lg:hidden w-full justify-center items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                  onClick={() => setIsSidebar(false)}
-                >
+                <button className=" flex lg:hidden w-full justify-center items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                   <i className="fa-solid fa-right-from-bracket  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                 </button>
               </ul>
             </div>
           </aside>
 
-          <div className="p-4 lg:ml-64">
+          <div className="p-4 lg:ml-64" onClick={() => setIsSidebar(false)}>
             <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
               <div className="flex items-center justify-center h-fit sm:h-32 mb-4 rounded">
                 <StatsWidget
@@ -472,10 +511,10 @@ function MainPage(props) {
     return (
       <div className="dark:dark-bg h-screen">
         <div className="dark:dark-bg">
-          <div className="max-w-4xl shadow sanspro mx-auto p-8 dark:dark-bg black-text dark:white-text">
-            <h1 className="text-3xl dark:white-text font-bold black-text playfair mb-4 dark:white-text">
+          <div className="sm:max-w-4xl shadow sanspro mx-auto p-8 dark:dark-bg black-text dark:white-text">
+            <h1 className="text-3xl text-center sm:text-left dark:white-text font-bold black-text playfair mb-4 dark:white-text">
               <button
-                className="mx-6 w-12 h-12 hover:bg-gray-300  rounded-full group"
+                className="sm:mx-6 w-12 h-12 hover:bg-gray-300 rounded-full group"
                 onClick={() => setIsApp(false)}
               >
                 <i className="fa-solid fa-right-from-bracket text-2xl leading-9 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -539,7 +578,15 @@ function MainPage(props) {
     );
   };
 
-  return <div>{isApp ? <ApplicantCard /> : <Main />}</div>;
+  return (
+    <div
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {isApp ? <ApplicantCard /> : <Main />}
+    </div>
+  );
 }
 
 export default MainPage;

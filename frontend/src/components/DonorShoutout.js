@@ -67,7 +67,7 @@ export default function DonorShoutout() {
       <div className="text-center text-lg text-red-500">Error: {error}</div>
     );
   return (
-    <div className=" break-words black-text flex flex-col justify-center items-center">
+    <div className="overflow-hidden relative break-words black-text flex flex-col justify-center items-center">
       <h1 className="text-center text-2xl dark:white-text md:text-3xl lg:text-5xl font-bold playfair mt-5">
         Some Recent Donors
       </h1>
