@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import Logo from "../resources/Vector.png";
 import drkLogo from "../resources/Vector-blk.png";
+import Timer from "../components/Timer";
 
 function ForgotPassword(props) {
   const [isOtpSent, setIsOtpSent] = useState(false);
@@ -12,6 +13,7 @@ function ForgotPassword(props) {
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [start, setStart] = useState(false);
 
   let navigate = useNavigate();
   const { dispatch } = useAuthContext();
@@ -35,6 +37,7 @@ function ForgotPassword(props) {
       const data = await response.json();
       if (response.ok) {
         setIsOtpSent(true);
+        setStart(true);
         setMessage("OTP has been sent to your email.");
         localStorage.removeItem("user");
         dispatch({ type: "LOGOUT" });
@@ -186,6 +189,9 @@ function ForgotPassword(props) {
                     placeholder="••••••••"
                     required=""
                   />
+                  <div className="flex w-full justify-end gap-1 h-0">
+                    Otp expires in <Timer start={start} />
+                  </div>
                 </div>
                 <button className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                   Verify OTP

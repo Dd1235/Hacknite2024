@@ -42,7 +42,9 @@ export default function Footer() {
             </li>
             <li>123 Main Street, Bangalore</li>
             <li>Rural India </li>
-            <li>Email: fruitygoosedeath@outlook.com</li>
+            <li className=" break-words w-full">
+              Email: fruitygoosedeath@outlook.com
+            </li>
             <li>Phone: +91 123 456 7890</li>
           </ul>
           <ul className="w-[30%] lg:w-[23%] flex flex-col justify-start items-start gap-1 lg:gap-3 text-sm lg:text-base">
