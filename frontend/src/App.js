@@ -57,7 +57,7 @@ function App() {
       path: "/forgot-password",
       element: (
         <>
-          <ForgotPassword />
+          <ForgotPassword isDarkMode={isDarkMode} />
         </>
       ),
     },
