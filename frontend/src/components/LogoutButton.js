@@ -5,9 +5,12 @@ const LogoutButton = () => {
   const { dispatch } = useAuthContext();
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
 
-    dispatch({ type: "LOGOUT" });
+    if (confirmLogout) {
+      localStorage.removeItem("user");
+      dispatch({ type: "LOGOUT" });
+    }
   };
 
   return (
