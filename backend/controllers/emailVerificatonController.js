@@ -2,6 +2,7 @@ const otpGenerator = require("otp-generator");
 const OTP = require("../models/otpModel");
 
 const { sendOTP } = require("./otpController");
+const { Volunteer } = require("../models/volunteerModel");
 
 const emailoptsend = async (req, res) => {
   try {
@@ -16,6 +17,14 @@ const emailoptsend = async (req, res) => {
     if (!emailRegex.test(email)) {
       return res.status(400).json({ error: "Invalid email format" });
     }
+
+    const volunteerExists = await Volunteer.findOne({ email });
+    if (volunteerExists) {
+      return res
+        .status(409)
+        .json({ error: "Volunteer application already exists" });
+    }
+
     const expiresAt = new Date(new Date().getTime() + 10 * 60000); // OTP expires in 10 minutes
 
     const upsertData = { otp, expiresAt };
