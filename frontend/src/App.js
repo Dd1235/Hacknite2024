@@ -63,11 +63,11 @@ function App() {
     },
     {
       path: "/signup",
-      element: !user ? <Signup /> : <Navigate to="/" />,
+      element: !user ? <Signup /> : <Navigate to="/applications" />,
     },
     {
       path: "/login",
-      element: !user ? <Login /> : <Navigate to="/" />,
+      element: !user ? <Login /> : <Navigate to="/applications" />,
     },
 
     {
