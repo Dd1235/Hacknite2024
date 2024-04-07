@@ -78,7 +78,7 @@ function App() {
       element: !user ? (
         <>
           <ScrollToTop />
-          <Signup />{" "}
+          <Signup />
         </>
       ) : (
         <>
@@ -101,34 +101,33 @@ function App() {
         </>
       ),
     },
-
-    {
-      path: "/newsletter-signup",
-      element: (
-        <>
-          <ScrollToTop />
-          <NewsletterSignup />
-        </>
-      ),
-    },
-    {
-      path: "/partner-stats",
-      element: (
-        <>
-          <ScrollToTop />
-          <PartnersStats />
-        </>
-      ),
-    },
-    {
-      path: "/volunteer-form/:id",
-      element: (
-        <>
-          <ScrollToTop />
-          <VolunteerDetails />
-        </>
-      ),
-    },
+    // {
+    //   path: "/newsletter-signup",
+    //   element: (
+    //     <>
+    //       <ScrollToTop />
+    //       <NewsletterSignup />
+    //     </>
+    //   ),
+    // },
+    // {
+    //   path: "/partner-stats",
+    //   element: (
+    //     <>
+    //       <ScrollToTop />
+    //       <PartnersStats />
+    //     </>
+    //   ),
+    // },
+    // {
+    //   path: "/volunteer-form/:id",
+    //   element: (
+    //     <>
+    //       <ScrollToTop />
+    //       <VolunteerDetails />
+    //     </>
+    //   ),
+    // },
     {
       path: "/applications",
       element: user ? (
@@ -144,25 +143,25 @@ function App() {
       ),
     },
 
-    {
-      path: "/donation-operations",
-      element: (
-        <>
-          <ScrollToTop />
-          <DonationOperations />
-        </>
-      ),
-    },
+    // {
+    //   path: "/donation-operations",
+    //   element: (
+    //     <>
+    //       <ScrollToTop />
+    //       <DonationOperations />
+    //     </>
+    //   ),
+    // },
 
-    {
-      path: "/volunteer-management",
-      element: (
-        <>
-          <ScrollToTop />
-          <VolunteerManagement />
-        </>
-      ),
-    },
+    // {
+    //   path: "/volunteer-management",
+    //   element: (
+    //     <>
+    //       <ScrollToTop />
+    //       <VolunteerManagement />
+    //     </>
+    //   ),
+    // },
     {
       path: "/thank-you-donation",
       element: (
@@ -193,6 +192,7 @@ function App() {
         </>
       ),
     },
+
     {
       path: "/",
       element: (
@@ -235,6 +235,7 @@ function App() {
       ),
       errorElement: <ErrorPage />,
     },
+
     {
       path: "/about-us",
       element: (
@@ -276,6 +277,7 @@ function App() {
         </>
       ),
     },
+
     {
       path: "/meet-our-team",
       element: (
@@ -317,6 +319,7 @@ function App() {
         </>
       ),
     },
+
     {
       path: "/projects",
       element: (
@@ -358,6 +361,7 @@ function App() {
         </>
       ),
     },
+
     {
       path: "/get-involved",
       element: (
@@ -399,6 +403,7 @@ function App() {
         </>
       ),
     },
+
     {
       path: "/faqs",
       element: (
@@ -440,6 +445,7 @@ function App() {
         </>
       ),
     },
+
     {
       path: "/donate-form",
       element: (
@@ -449,6 +455,7 @@ function App() {
         </>
       ),
     },
+
     {
       path: "/volunteer-form",
       element: (
@@ -458,6 +465,7 @@ function App() {
         </>
       ),
     },
+
     {
       path: "/partner-form",
       element: (
