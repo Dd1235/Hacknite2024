@@ -199,34 +199,6 @@ function ForgotPassword(props) {
     );
   } else {
     return (
-      // <div className="max-w-md mx-auto my-10 p-6 shadow rounded">
-      //   <h2 className="text-xl font-semibold mb-4">Set New Password</h2>
-      //   <form onSubmit={handleChangePassword} className="space-y-4">
-      //     <div className="relative">
-      //       <input
-      //         type={passwordVisible ? "text" : "password"}
-      //         placeholder="Enter new password"
-      //         value={password}
-      //         onChange={(e) => setPassword(e.target.value)}
-      //         required
-      //         className="w-full p-2 border rounded"
-      //       />
-      //       <span
-      //         onClick={togglePasswordVisibility}
-      //         className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 cursor-pointer"
-      //       >
-      //         {passwordVisible ? "Hide" : "Show"}
-      //       </span>
-      //     </div>
-      //     <button
-      //       type="submit"
-      //       className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-      //     >
-      //       Change Password
-      //     </button>
-      //   </form>
-      //   {message && <p className="text-red-500 mt-2">{message}</p>}
-      // </div>
       <section className="bg-gray-50 dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
           <div className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">

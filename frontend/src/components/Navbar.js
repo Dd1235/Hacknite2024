@@ -11,9 +11,7 @@ export default function Navbar(props) {
   const HandleNav = (id) => {
     setActiveElement(id);
 
-    // goose chaged, now you go to the top of the page when you click on a nav item, can have smooth behaviour too
     window.scrollTo({ top: 0, behavior: "auto" });
-    // goose changed
   };
 
   const toggleMenu = () => {
@@ -38,17 +36,21 @@ export default function Navbar(props) {
       } else {
         document.getElementById("navbar").classList.add("mint-1-bg");
       }
+
+      // Close the navbar if it's open and the person starts scrolling down
+      if (isMenuOpen && window.scrollY > 0) {
+        setIsMenuOpen(false);
+      }
     };
 
-    window.onscroll = scrollFunction;
+    window.addEventListener("scroll", scrollFunction);
 
     return () => {
-      window.onscroll = null;
+      window.removeEventListener("scroll", scrollFunction);
     };
   }, [isMenuOpen]);
 
   useEffect(() => {
-    // Update activeElement based on the current location
     const pathname = location.pathname;
     const id = ids.find((item) => item.path === pathname)?.id;
     if (id) {

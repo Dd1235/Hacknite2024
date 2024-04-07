@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 import { useNavigate } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
+import Logo from "../resources/Vector.png";
+import drkLogo from "../resources/Vector-blk.png";
 
-const Login = () => {
+const Login = (props) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,10 +15,14 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await login(email, password);
 
-    const success = await login(email, password);
-    if (success) {
-      navigate("/applications");
+      if (!error) {
+        navigate("/applications");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
     }
   };
 
@@ -27,23 +33,24 @@ const Login = () => {
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
-        <a
-          href="#"
-          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
-        >
+        <div className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img
             className="w-8 h-8 mr-2"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
+            src={props.isDarkMode ? Logo : drkLogo}
             alt="logo"
           />
           EduReach
-        </a>
+        </div>
         <form
           className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
           onSubmit={handleSubmit}
         >
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h3 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              <i
+                onClick={() => navigate(-1)}
+                className="fa-solid fa-right-from-bracket cursor-pointer mr-2 text-gray-500 transition duration-75 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              ></i>
               Sign in to your Account
             </h3>
             <div className="space-y-4 md:space-y-6">
@@ -65,6 +72,7 @@ const Login = () => {
                   required=""
                 />
               </div>
+
               <div>
                 <label
                   htmlFor="password"
@@ -92,14 +100,13 @@ const Login = () => {
                   required=""
                 />
               </div>
+
               <button
                 disabled={isLoading}
                 className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Log in
               </button>
-              {error && <div className="text-sm text-red-600">{error}</div>}
-
               <button
                 type="button"
                 onClick={() => navigate("/forgot-password")}
@@ -107,6 +114,7 @@ const Login = () => {
               >
                 Forgot Password?
               </button>
+              {error && <div className="text-sm text-red-600">{error}</div>}
             </div>
           </div>
         </form>
