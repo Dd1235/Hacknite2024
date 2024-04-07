@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 import { useNavigate } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
+import Logo from "../resources/Vector.png";
+import drkLogo from "../resources/Vector-blk.png";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -37,7 +39,7 @@ const Login = () => {
         >
           <img
             className="w-8 h-8 mr-2"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
+            src={props.isDarkMode ? Logo : drkLogo}
             alt="logo"
           />
           EduReach
