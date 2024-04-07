@@ -4,6 +4,14 @@ This is the frontend repository for a intra college hackathon(Hacknite) for fres
 
 This is a prototype NGO site created for the Hacknite hackathon. It is hosted [here](https://frontend-hacknite.vercel.app/) using Vercel.
 
+Login credentials for the admin page:
+username: jayant.sharma@iiitb.ac.in
+password: Jayant@12345
+
+The demonstration video of the project is [here](https://youtu.be/K6EdkfQtQXQ?si=I2JaGpgd5DFtu485)
+
+
+
 ## Getting Started
 
 To get started with the frontend, follow these steps:
