@@ -80,6 +80,7 @@ function MainPage(props) {
     try {
       const response = await fetch(`${base_url}/api/volunteers/all`);
       const data = await response.json();
+      data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
       setApplications(data);
       setAcceptedApplications(filterItemsByStatus(data, "accepted", 0, false));
       setRejectedApplications(filterItemsByStatus(data, "rejected", 1, false));

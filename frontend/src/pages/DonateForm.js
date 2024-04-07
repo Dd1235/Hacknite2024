@@ -251,6 +251,7 @@ export default function DonateForm() {
               required
             />
           </div>
+
           <label
             htmlFor="remember"
             className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
