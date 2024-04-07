@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../resources/Vector.png";
 import drkLogo from "../resources/Vector-blk.png";
 
-const Login = () => {
+const Login = (props) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
