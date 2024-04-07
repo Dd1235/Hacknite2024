@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Timer from "../components/Timer";
 
 export default function VolunteerForm() {
   let base_url =
@@ -35,6 +36,7 @@ export default function VolunteerForm() {
   const [otp, setOtp] = useState("");
   const [message, setMessage] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
+  const [start, setStart] = useState(false);
   // const navigate = useNavigate();
 
   const handleMondayChange = (e) => {
@@ -125,6 +127,7 @@ export default function VolunteerForm() {
     const data = await response.json();
     if (response.ok) {
       setIsOtpSent(true);
+      setStart(true);
       setMessage("OTP has been sent to your email.");
     } else {
       setMessage(data.error || "An error occurred while sending OTP.");
@@ -253,6 +256,9 @@ export default function VolunteerForm() {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
+              <div className="flex w-full justify-end gap-1 h-0">
+                Otp expires in <Timer start={start} />
+              </div>
             </div>
             <button
               type="submit"
