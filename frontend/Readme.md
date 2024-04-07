@@ -1,8 +1,8 @@
 # Frontend
 
-This is the frontend repository for a intra college hackathon(Hacknite) for freshmen students at IIIT Bangalore.
+This is the frontend repository for a intra college hackathon(Hacknite) for freshmen students of IIIT Bangalore.
 
-This is a dummy NGO site, hosted [here](https://frontend-hacknite.vercel.app/) using vercel.
+This is a prototype NGO site created for the Hacknite hackathon. It is hosted [here](https://frontend-hacknite.vercel.app/) using Vercel.
 
 ## Getting Started
 
@@ -28,4 +28,4 @@ To get started with the frontend, follow these steps:
 
 ## License
 
-This project is licensed under the [MIT License](link-to-license-file).
+This project is licensed under the [MIT License](https://frontend-hacknite.vercel.app/oops).
