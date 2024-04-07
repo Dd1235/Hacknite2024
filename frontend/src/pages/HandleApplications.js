@@ -7,6 +7,7 @@ import { updateApplicationData } from "../charts/data.js";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import VolunteerDash from "../charts/VolunteerDash.js";
+import LogoutButton from "../components/LogoutButton.js";
 
 function MainPage(props) {
   const { user } = useAuthContext();
@@ -456,6 +457,7 @@ function MainPage(props) {
                     Switch to {props.isDarkMode ? "Light Mode" : "Dark Mode"}
                   </span>
                 </button>
+                <LogoutButton />
                 <button className=" flex lg:hidden w-full justify-center items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                   <i className="fa-solid fa-right-from-bracket  text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                 </button>
