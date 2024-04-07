@@ -86,12 +86,13 @@ This section provides a detailed reference to the API endpoints available in the
 ## Donations Endpoints
 
 - `POST /api/donations`: Records a new donation.
-- `GET /api/donations/chart`: Fetches monthly donation averages.
 - `GET /api/donations/totalAmount`: Retrieves the total amount of donations.
 - `GET /api/donations/donors/count`: Counts the number of unique donors.
 - `GET /api/donations/getrecent/:n`: Retrieves the most recent `n` donations.
 - `GET /api/donations/all`: Fetches all donations.
 - `GET /api/donations/:id`: Fetches a specific donation by ID.
+- `GET /api/donations/chart`: Fetches monthly donation averages.
+  
 
 ## Volunteer Endpoints
 
