@@ -4,27 +4,16 @@ import VisibilitySensor from "react-visibility-sensor";
 
 const AnimatedCounter = () => {
   return (
-    <div
-      style={{
-        height: "2vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-      }}
-    >
-      <div style={{ height: "100vh" }}></div>
+    <div className="h-fit flex flex-col justify-center items-center">
       <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
         {({ isVisible }) => (
-          <div style={{ fontSize: "48px", textAlign: "center" }}>
+          <div className="text-4xl text-center">
             Trusted by over{" "}
-            {isVisible ? <CountUp start={0} end={20000} duration={1} /> : "0"}{" "}
+            {isVisible ? <CountUp start={0} end={500} duration={0.7} /> : "0"}{" "}
             companies
           </div>
         )}
       </VisibilitySensor>
-
-      <div style={{ height: "100vh" }}></div>
     </div>
   );
 };
