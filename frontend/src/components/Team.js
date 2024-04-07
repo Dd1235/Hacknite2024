@@ -14,11 +14,11 @@ export default function Team() {
           <div className="p-5">
             <a href="#">
               <h5 className="playfair mb-2 text-2xl font-bold tracking-tight dark:text-white">
-                Fruity
+                Jayant Sharma
               </h5>
             </a>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              "Soup."
+              "Soup." <br /> Frontend Team <br /> Fruity
             </p>
           </div>
         </div>
@@ -30,11 +30,11 @@ export default function Team() {
           <div className="p-5">
             <a href="#">
               <h5 className="playfair mb-2 text-2xl font-bold tracking-tight dark:text-white">
-                Goose
+                Dedeepya Avancha
               </h5>
             </a>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              "Send help"
+              "Send help" <br /> Backend Team <br /> Goose
             </p>
           </div>
         </div>
@@ -46,11 +46,12 @@ export default function Team() {
           <div className="p-5">
             <a href="#">
               <h5 className="playfair mb-2 text-2xl font-bold tracking-tight dark:text-white">
-                Deathmode
+                Harsh Modi
               </h5>
             </a>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
               "Teri marzi hai vo daalde bhai"
+              <br /> Personality Hire <br /> Deathmode
             </p>
           </div>
         </div>
@@ -65,10 +66,10 @@ export default function Team() {
           />
           <div className="flex flex-col justify-between px-4 leading-normal">
             <h5 className="text-2xl font-bold tracking-tight dark:text-white">
-              Fruity
+              Jayant Sharma
             </h5>
             <p className="font-normal text-sm text-gray-700 dark:text-gray-400">
-              "Soup.""
+              "Soup."
             </p>
           </div>
         </div>
@@ -80,7 +81,7 @@ export default function Team() {
           />
           <div className="flex flex-col justify-between px-4 leading-normal">
             <h5 className="text-2xl font-bold tracking-tight dark:text-white">
-              Goose
+              Dedeepya Avancha
             </h5>
             <p className="font-normal text-sm text-gray-700 dark:text-gray-400">
               "Send Help"
@@ -95,7 +96,7 @@ export default function Team() {
           />
           <div className="flex flex-col justify-between px-4 leading-normal">
             <h5 className="text-2xl font-bold tracking-tight dark:text-white">
-              Deathmode
+              Harsh Modi
             </h5>
             <p className="font-normal text-sm text-gray-700 dark:text-gray-400">
               "Teri marzi hai vo daalde bhai"

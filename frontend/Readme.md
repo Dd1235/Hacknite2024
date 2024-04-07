@@ -26,6 +26,23 @@ To get started with the frontend, follow these steps:
 
 5. The backend repository can be found [here](https://github.com/Dd1235/Backend_hacknite)
 
+## URL Structures
+
+- `/`: Homepage.
+- `/about-us`: About Us page.
+- `/meet-our-team`: Meet Our Team page.
+- `/projects`: Projects page.
+- `/get-involved`: Get Involved page.
+- `/faqs`: FAQs page.
+- `/donate-form`: Donation form page.
+- `/volunteer-form`: Volunteer form page.
+- `/partner-form`: Partner form page.
+- `/forgot-password`: Forgot password page.
+- `/login`: Login page if user is not logged in, otherwise redirects to `/applications`.
+- `/applications`: Admin page to review volunteer applications if user is logged in, otherwise redirects to `/login`.
+- `/thank-you-donation`: Thank you page for donations.
+- `/thank-you-volunteer`: Thank you page for volunteers.
+
 ## License
 
 This project is licensed under the [MIT License](https://frontend-hacknite.vercel.app/oops).

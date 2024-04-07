@@ -44,7 +44,7 @@ const Login = (props) => {
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h3 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               <i
-                onClick={() => navigate(-1)}
+                onClick={() => navigate("/")}
                 className="fa-solid fa-right-from-bracket cursor-pointer mr-2 text-gray-500 transition duration-75 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
               ></i>
               Sign in to your Account
