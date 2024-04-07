@@ -57,7 +57,7 @@ function App() {
       path: "/forgot-password",
       element: (
         <>
-          <ForgotPassword />
+          <ForgotPassword isDarkMode={isDarkMode} />
         </>
       ),
     },
@@ -67,7 +67,11 @@ function App() {
     },
     {
       path: "/login",
-      element: !user ? <Login /> : <Navigate to="/applications" />,
+      element: !user ? (
+        <Login isDarkMode={isDarkMode} />
+      ) : (
+        <Navigate to="/applications" />
+      ),
     },
 
     {
