@@ -7,12 +7,13 @@ import logo5 from "../resources/logo-5.webp";
 import logo6 from "../resources/logo-6.png";
 import Slider from "react-infinite-logo-slider";
 import { Link } from "react-router-dom";
+import AnimatedCounter from "./AnimatedCounter";
 
 const Component = () => {
   return (
     <div className="flex flex-col items-center justify-center py-14 overflow-x-hidden">
       <div className="playfair font-bold text-center w-4/5 black-text dark:white-text  text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-10">
-        Trusted by over 20,000 brands
+        <AnimatedCounter />
       </div>
       <div className="flex items-center justify-center">
         <Slider
