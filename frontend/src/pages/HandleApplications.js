@@ -57,14 +57,12 @@ function MainPage(props) {
       return;
     }
     const difference = touchEndX - touchStartX;
-    if (difference > 50) {
+    if (difference > 200) {
       setIsSidebar(true); // Swipe right
       // console.log("Hi", difference);
-    } else if (difference < -50) {
+    } else if (difference < -200) {
       setIsSidebar(false); // Swipe left
       // console.log("hello", difference);
-    } else {
-      console.log(difference);
     }
   };
 
@@ -283,7 +281,11 @@ function MainPage(props) {
 
   const Main = () => {
     return (
-      <div>
+      <div
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div className="dark:dark-bg">
           <button
             type="button"
@@ -464,7 +466,6 @@ function MainPage(props) {
               </ul>
             </div>
           </aside>
-
           <div className="p-4 lg:ml-64" onClick={() => setIsSidebar(false)}>
             <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
               <div className="flex items-center justify-center h-fit sm:h-32 mb-4 rounded">
@@ -579,15 +580,7 @@ function MainPage(props) {
     );
   };
 
-  return (
-    <div
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-    >
-      {isApp ? <ApplicantCard /> : <Main />}
-    </div>
-  );
+  return <div>{isApp ? <ApplicantCard /> : <Main />}</div>;
 }
 
 export default MainPage;

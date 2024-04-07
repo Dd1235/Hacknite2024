@@ -20,7 +20,7 @@ function NewsletterSignup() {
         // style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"
       ></iframe> */}
       <iframe
-        className="h-[70vh] md:h-[50vh] w-full block mint-1-bg"
+        className="h-[70vh] md:h-[50vh] w-full block mint-1-bg dark:grey-bg"
         src="https://81fda0db.sibforms.com/serve/MUIFAALrNNSWsYxVwFv4vEm9SDWFpZ7e0VZydb5x4ltdpylIBr6vn90EZIoFfB2OKmCpJFG5Zrq6WiYHQSkx9Iihu6RzoWvECjBGk1NUHgcTgKJmj6wc_zqa4RH4KKXFEe2a4C0eBz0ZCL02T3i4La-baPReVNqW8x13GVOAo2DEv2f6JZWhvStXDITXdi1SBIQiXMDLRdcuyOc5"
         frameBorder="0"
         scrolling="auto"
