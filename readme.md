@@ -73,6 +73,24 @@ You can set these environment variables in a `.env` file in the root directory o
    ```
 
    This will deploy the development server on `localhost:3000`.
+
+## URL Structures
+
+- `/`: Homepage.
+- `/about-us`: About Us page.
+- `/meet-our-team`: Meet Our Team page.
+- `/projects`: Projects page.
+- `/get-involved`: Get Involved page.
+- `/faqs`: FAQs page.
+- `/donate-form`: Donation form page.
+- `/volunteer-form`: Volunteer form page.
+- `/partner-form`: Partner form page.
+- `/forgot-password`: Forgot password page.
+- `/login`: Login page if user is not logged in, otherwise redirects to `/applications`.
+- `/applications`: Admin page to review volunteer applications if user is logged in, otherwise redirects to `/login`.
+- `/thank-you-donation`: Thank you page for donations.
+- `/thank-you-volunteer`: Thank you page for volunteers.
+
 # API Reference
 
 This section provides a detailed reference to the API endpoints available in the project, including the request methods, paths, and a brief description of what each endpoint does.
