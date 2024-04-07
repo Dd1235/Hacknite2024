@@ -139,7 +139,7 @@ const updateStatus = async (req, res) => {
 
 const getAllApplications = async (req, res) => {
   try {
-    const volunteers = await Volunteer.find({}).sort({ createdAt: -1 });
+    const volunteers = await Volunteer.find({}).sort({ updatedAt: -1 });
     res.status(200).json(volunteers);
   } catch (error) {
     console.error("Error fetching all applications:", error);
