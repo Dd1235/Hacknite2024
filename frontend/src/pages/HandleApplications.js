@@ -220,6 +220,21 @@ function MainPage(props) {
   };
 
   useEffect(() => {
+    if (!user) {
+      return (
+        <div className="max-w-md mx-auto mt-10 text-center">
+          <p className="mb-4 text-lg font-semibold text-gray-700">
+            You are not authorized to access this page.
+          </p>
+          <button
+            onClick={() => navigate("/login")}
+            className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
+          >
+            Go to Login Page
+          </button>
+        </div>
+      );
+    }
     const fetchData = async () => {
       await fetchTotalAmount();
       await fetchUniqueDonorsCount();
@@ -233,23 +248,7 @@ function MainPage(props) {
     };
 
     fetchData();
-  }, []);
-
-  if (!user) {
-    return (
-      <div className="max-w-md mx-auto mt-10 text-center">
-        <p className="mb-4 text-lg font-semibold text-gray-700">
-          You are not authorized to access this page.
-        </p>
-        <button
-          onClick={() => navigate("/login")}
-          className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
-        >
-          Go to Login Page
-        </button>
-      </div>
-    );
-  }
+  }, [user]);
 
   if (isLoading)
     return (
