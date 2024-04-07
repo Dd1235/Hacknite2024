@@ -35,7 +35,11 @@ export default function Footer() {
             <div className="uppercase text-sm lg:text-lg font-semibold mint-3-text dark:mint-1-text mb-2">
               Contact Us
             </div>
-            <li>EduReach India Foundation</li>
+            <li>
+              <a href="https://maps.app.goo.gl/ZPQ3Shq6qu8aCQXd9">
+                EduReach India Foundation
+              </a>
+            </li>
             <li>123 Main Street, Bangalore</li>
             <li>Rural India </li>
             <li>Email: fruitygoosedeath@outlook.com</li>
