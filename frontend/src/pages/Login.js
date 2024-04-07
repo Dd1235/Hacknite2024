@@ -15,14 +15,10 @@ const Login = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await login(email, password);
 
-      if (!error) {
-        navigate("/applications");
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
+    const success = await login(email, password);
+    if (success) {
+      navigate("/applications");
     }
   };
 
