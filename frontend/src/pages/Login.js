@@ -13,10 +13,14 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await login(email, password);
-    if (result && !error) {
-      navigate("/applications");
-      // history.push("/applications");
+    try {
+      await login(email, password);
+
+      if (!error) {
+        navigate("/applications");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
     }
   };
 
@@ -72,7 +76,7 @@ const Login = () => {
       <div className="text-center mt-4">
         <button
           type="button"
-          onClick={() => navigate("/forgot-password")} // Adjust the path as needed
+          onClick={() => navigate("/forgot-password")}
           className="text-sm text-indigo-600 hover:text-indigo-500"
         >
           Forgot Password?

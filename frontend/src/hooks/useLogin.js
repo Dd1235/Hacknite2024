@@ -20,20 +20,17 @@ export const useLogin = () => {
     });
     const json = await response.json();
 
-    if (!response.ok) {
-      setIsLoading(false);
+    if (
+      response.status === 200 ||
+      (response.status >= 300 && response.status < 400)
+    ) {
+      localStorage.setItem("user", JSON.stringify(json));
+      dispatch({ type: "LOGIN", payload: json });
+    } else {
       setError(json.error);
     }
-    if (response.ok) {
-      // save the user to local storage
-      localStorage.setItem("user", JSON.stringify(json));
 
-      // update the auth context
-      dispatch({ type: "LOGIN", payload: json });
-
-      // update loading state
-      setIsLoading(false);
-    }
+    setIsLoading(false);
   };
 
   return { login, isLoading, error };
