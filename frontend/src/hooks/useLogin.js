@@ -20,17 +20,19 @@ export const useLogin = () => {
     });
     const json = await response.json();
 
-    if (
-      response.status === 200 ||
-      (response.status >= 300 && response.status < 400)
-    ) {
-      localStorage.setItem("user", JSON.stringify(json));
-      dispatch({ type: "LOGIN", payload: json });
-    } else {
+    if (!response.ok) {
+      setIsLoading(false);
       setError(json.error);
+      return false;
     }
+    if (response.ok) {
+      localStorage.setItem("user", JSON.stringify(json));
 
-    setIsLoading(false);
+      dispatch({ type: "LOGIN", payload: json });
+
+      setIsLoading(false);
+      return true;
+    }
   };
 
   return { login, isLoading, error };

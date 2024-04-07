@@ -13,14 +13,10 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await login(email, password);
 
-      if (!error) {
-        navigate("/applications");
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
+    const success = await login(email, password);
+    if (success) {
+      navigate("/applications");
     }
   };
 
@@ -69,7 +65,6 @@ const Login = () => {
                   required=""
                 />
               </div>
-
               <div>
                 <label
                   htmlFor="password"
@@ -97,7 +92,6 @@ const Login = () => {
                   required=""
                 />
               </div>
-
               <button
                 disabled={isLoading}
                 className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -105,6 +99,7 @@ const Login = () => {
                 Log in
               </button>
               {error && <div className="text-sm text-red-600">{error}</div>}
+
               <button
                 type="button"
                 onClick={() => navigate("/forgot-password")}
