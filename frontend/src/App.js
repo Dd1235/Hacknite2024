@@ -31,7 +31,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import { useAuthContext } from "./hooks/useAuthContext";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import ForgotPassword from "./pages/forgotPassword";
 
 // import { DonationDetails } from "./pages/dummyDonationCard";
@@ -39,6 +39,17 @@ import ForgotPassword from "./pages/forgotPassword";
 // im development mode in package.json change "proxy" : "http://localhost:4000"
 // "vite": "^5.2.6"
 // removed
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   const { user } = useAuthContext();
   const [isDarkMode, setIsDarkMode] = useState(
@@ -57,20 +68,37 @@ function App() {
       path: "/forgot-password",
       element: (
         <>
+          <ScrollToTop />
           <ForgotPassword isDarkMode={isDarkMode} />
         </>
       ),
     },
     {
       path: "/signup",
-      element: !user ? <Signup /> : <Navigate to="/applications" />,
+      element: !user ? (
+        <>
+          <ScrollToTop />
+          <Signup />{" "}
+        </>
+      ) : (
+        <>
+          <ScrollToTop />
+          <Navigate to="/applications" />
+        </>
+      ),
     },
     {
       path: "/login",
       element: !user ? (
-        <Login isDarkMode={isDarkMode} />
+        <>
+          <ScrollToTop />
+          <Login isDarkMode={isDarkMode} />
+        </>
       ) : (
-        <Navigate to="/applications" />
+        <>
+          <ScrollToTop />
+          <Navigate to="/applications" />
+        </>
       ),
     },
 
@@ -78,6 +106,7 @@ function App() {
       path: "/newsletter-signup",
       element: (
         <>
+          <ScrollToTop />
           <NewsletterSignup />
         </>
       ),
@@ -86,6 +115,7 @@ function App() {
       path: "/partner-stats",
       element: (
         <>
+          <ScrollToTop />
           <PartnersStats />
         </>
       ),
@@ -94,6 +124,7 @@ function App() {
       path: "/volunteer-form/:id",
       element: (
         <>
+          <ScrollToTop />
           <VolunteerDetails />
         </>
       ),
@@ -101,9 +132,15 @@ function App() {
     {
       path: "/applications",
       element: user ? (
-        <MainPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+        <>
+          <ScrollToTop />
+          <MainPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+        </>
       ) : (
-        <Navigate to="/login" replace />
+        <>
+          <ScrollToTop />
+          <Navigate to="/login" replace />
+        </>
       ),
     },
 
@@ -111,6 +148,7 @@ function App() {
       path: "/donation-operations",
       element: (
         <>
+          <ScrollToTop />
           <DonationOperations />
         </>
       ),
@@ -120,6 +158,7 @@ function App() {
       path: "/volunteer-management",
       element: (
         <>
+          <ScrollToTop />
           <VolunteerManagement />
         </>
       ),
@@ -128,6 +167,7 @@ function App() {
       path: "/thank-you-donation",
       element: (
         <>
+          <ScrollToTop />
           <Navbar
             title="EduReach"
             isDarkMode={isDarkMode}
@@ -142,6 +182,7 @@ function App() {
       path: "/thank-you-volunteer",
       element: (
         <>
+          <ScrollToTop />
           <Navbar
             title="EduReach"
             isDarkMode={isDarkMode}
@@ -156,6 +197,7 @@ function App() {
       path: "/",
       element: (
         <>
+          <ScrollToTop />
           <Navbar
             title="EduReach"
             isDarkMode={isDarkMode}
@@ -197,6 +239,7 @@ function App() {
       path: "/about-us",
       element: (
         <>
+          <ScrollToTop />
           <Navbar
             title="EduReach"
             isDarkMode={isDarkMode}
@@ -237,6 +280,7 @@ function App() {
       path: "/meet-our-team",
       element: (
         <>
+          <ScrollToTop />
           <Navbar
             title="EduReach"
             isDarkMode={isDarkMode}
@@ -277,6 +321,7 @@ function App() {
       path: "/projects",
       element: (
         <>
+          <ScrollToTop />
           <Navbar
             title="EduReach"
             isDarkMode={isDarkMode}
@@ -317,6 +362,7 @@ function App() {
       path: "/get-involved",
       element: (
         <>
+          <ScrollToTop />
           <Navbar
             title="EduReach"
             isDarkMode={isDarkMode}
@@ -357,6 +403,7 @@ function App() {
       path: "/faqs",
       element: (
         <>
+          <ScrollToTop />
           <Navbar
             title="EduReach"
             isDarkMode={isDarkMode}
@@ -397,6 +444,7 @@ function App() {
       path: "/donate-form",
       element: (
         <>
+          <ScrollToTop />
           <DonateForm />
         </>
       ),
@@ -405,6 +453,7 @@ function App() {
       path: "/volunteer-form",
       element: (
         <>
+          <ScrollToTop />
           <VolunteerForm />
         </>
       ),
@@ -413,6 +462,7 @@ function App() {
       path: "/partner-form",
       element: (
         <>
+          <ScrollToTop />
           <PartnerForm />
         </>
       ),
